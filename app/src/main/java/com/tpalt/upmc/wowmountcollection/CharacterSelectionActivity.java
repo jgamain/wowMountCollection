@@ -38,6 +38,7 @@ public class CharacterSelectionActivity extends AppCompatActivity {
     private String accessToken;
     private RequestQueue mRequestQueue;
     private List<WowCharacter> charactersList;
+    private int tokenRequestCount = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,7 +71,7 @@ public class CharacterSelectionActivity extends AppCompatActivity {
             if(this.accessToken == null){
                 new RequestAccessToken().execute(code);
             } else {
-                requestUserCharacters();
+                requestUserCharacters(code);
             }
         }
     }
@@ -81,9 +82,11 @@ public class CharacterSelectionActivity extends AppCompatActivity {
     class RequestAccessToken extends AsyncTask<String, Void, String> {
 
         private Exception exception;
+        private String code;
 
         protected String doInBackground(String... strings) {
             if(strings.length != 1) return null;
+            code = strings[0];
             try{
                 JSONObject keysJson = UsefulTools.loadJSONFromAsset(getBaseContext(), UsefulTools.KEYS_FILE);
                 String clientId = keysJson.getString("clientId");
@@ -97,7 +100,7 @@ public class CharacterSelectionActivity extends AppCompatActivity {
                         .setClientId(clientId)
                         .setClientSecret(clientSecret)
                         .setRedirectURI(WMCApplication.WMC_URL)
-                        .setCode(strings[0])
+                        .setCode(code)
                         .buildBodyMessage();
 
                 OAuthClient oAuthClient = new OAuthClient(new URLConnectionClient());
@@ -118,16 +121,16 @@ public class CharacterSelectionActivity extends AppCompatActivity {
         protected void onPostExecute(String token) {
             // TODO: check this.exception
             accessToken = token;
-            requestUserCharacters();
+            requestUserCharacters(code);
         }
     }
 
     /**
      * Send a request to the API to set the user's characters list.
      */
-    private void requestUserCharacters(){
+    private void requestUserCharacters(String code){
         String url = "https://" + WMCApplication.region + ".api.battle.net/wow/user/characters?access_token=" + this.accessToken;
-
+        final String c = code;
         // Formulate the request and handle the response.
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>() {
@@ -141,9 +144,24 @@ public class CharacterSelectionActivity extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        // Handle error
                         Log.d("OAUTH", "requestUserCharacters failed");
                         error.printStackTrace();
+                        //try to get a new token (3 times max)
+                        if(tokenRequestCount <= 3){
+                            tokenRequestCount++;
+                            Log.d("OAUTH", "requesting another token...");
+                            try {
+                                //delay to keep the requests number under 100 per second & 36000 per hour
+                                Thread.sleep(1000);
+                                new RequestAccessToken().execute(c);
+
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                        else {
+                            //TODO: inform the user
+                        }
                     }
                 });
 
@@ -157,6 +175,7 @@ public class CharacterSelectionActivity extends AppCompatActivity {
             JSONObject charactersJson = new JSONObject(characters);
             JSONArray charactersArray = charactersJson.getJSONArray("characters");
             this.charactersList.clear();
+            Log.d("OAUTH", "nb characters: " + charactersArray.length());
             for(int i = 0; i < charactersArray.length(); i++){
                 JSONObject charac = charactersArray.getJSONObject(i);
                 this.charactersList.add(new WowCharacter(charac));

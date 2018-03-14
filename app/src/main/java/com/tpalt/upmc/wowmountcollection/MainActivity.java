@@ -7,6 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 
 import net.smartam.leeloo.client.request.OAuthClientRequest;
 import net.smartam.leeloo.common.exception.OAuthSystemException;
@@ -16,19 +18,50 @@ import org.json.JSONObject;
 
 public class MainActivity extends AppCompatActivity {
 
+    private String selectedRegion;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //set default selection for the region
+        RadioGroup radioGroup = findViewById(R.id.regionGroup);
+        radioGroup.check(R.id.euRegion);
+        selectedRegion = "eu";
+
         Button coButton = findViewById(R.id.button);
         coButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                WMCApplication.setRegion(selectedRegion);
                 new RequestAuthorize().execute();
             }
         });
 
+    }
+
+
+
+    public void onRadioButtonClicked(View view) {
+        // Is the button now checked?
+        boolean checked = ((RadioButton) view).isChecked();
+
+        // Check which radio button was clicked
+        switch(view.getId()) {
+            case R.id.euRegion:
+                if (checked)
+                    selectedRegion = "eu";
+                    break;
+            case R.id.usRegion:
+                if (checked)
+                    selectedRegion = "us";
+                    break;
+            case R.id.apacRegion:
+                if (checked)
+                    selectedRegion = "apac";
+                break;
+        }
     }
 
     /**
