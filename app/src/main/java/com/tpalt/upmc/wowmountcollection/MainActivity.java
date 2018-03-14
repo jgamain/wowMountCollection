@@ -39,44 +39,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // ATTENTION: This was auto-generated to handle app links.
-        /*
-        Intent appLinkIntent = getIntent();
-        String appLinkAction = appLinkIntent.getAction();
-        Uri appLinkData = appLinkIntent.getData();
-        */
-        handleIntent(getIntent());
     }
 
-
-    protected void onNewIntent(Intent intent) {
-        super.onNewIntent(intent);
-        handleIntent(intent);
-    }
-
-    private void handleIntent(Intent intent) {
-        String appLinkAction = intent.getAction();
-        Uri appLinkData = intent.getData();
-        if (Intent.ACTION_VIEW.equals(appLinkAction) && appLinkData != null){
-            Log.i("INFO", "**** Catch the redireted URI !");
-
-        }
-    }
-
-
-
-/*
-    @Override
-    protected void onNewIntent(Intent intent)
-    {
-        Uri uri = intent.getData();
-
-        if (uri != null && uri.toString()
-                .startsWith("https://www.wowmountcollection.ovh"))
-        {
-            String code = uri.getQueryParameter("code");
-            Log.i("INFO", "**** Catch the redireted URI !");
-        }
-    }
-    */
 }
