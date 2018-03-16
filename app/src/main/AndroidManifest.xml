@@ -22,7 +22,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".CharacterSelectionActivity">
+        <activity android:name=".LoadMountsActivity">
             <intent-filter android:autoVerify="true">
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />

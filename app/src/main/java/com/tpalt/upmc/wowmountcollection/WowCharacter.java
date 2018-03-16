@@ -1,9 +1,13 @@
 package com.tpalt.upmc.wowmountcollection;
 
+import android.content.Context;
 import android.util.Log;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Jeanne on 14/03/2018.
@@ -27,5 +31,10 @@ public class WowCharacter {
         } catch (JSONException e) {
             e.printStackTrace();
         }
+    }
+
+    public List<Mount> getMountList(Context context){
+        //TODO: get mounts from the api
+        return new ArrayList<>();
     }
 }

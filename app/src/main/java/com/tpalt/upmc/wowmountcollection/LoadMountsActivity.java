@@ -33,19 +33,17 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CharacterSelectionActivity extends AppCompatActivity {
+public class LoadMountsActivity extends AppCompatActivity {
 
     private String accessToken;
     private RequestQueue mRequestQueue;
-    private List<WowCharacter> charactersList;
     private int tokenRequestCount = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_character_selection);
+        setContentView(R.layout.activity_load_mounts);
 
-        charactersList = new ArrayList<>();
         startRequestQueue();
         handleIntent(getIntent());
     }
@@ -88,17 +86,13 @@ public class CharacterSelectionActivity extends AppCompatActivity {
             if(strings.length != 1) return null;
             code = strings[0];
             try{
-                JSONObject keysJson = UsefulTools.loadJSONFromAsset(getBaseContext(), UsefulTools.KEYS_FILE);
-                String clientId = keysJson.getString("clientId");
-                String clientSecret = keysJson.getString("clientSecret");
-
                 OAuthClientRequest request = null;
 
                 request = OAuthClientRequest.tokenLocation(
                         "https://" + WMCApplication.region + ".battle.net/oauth/token")
                         .setGrantType(GrantType.AUTHORIZATION_CODE)
-                        .setClientId(clientId)
-                        .setClientSecret(clientSecret)
+                        .setClientId(WMCApplication.getClientId(getApplicationContext()))
+                        .setClientSecret(WMCApplication.getClientSecret(getApplicationContext()))
                         .setRedirectURI(WMCApplication.WMC_URL)
                         .setCode(code)
                         .buildBodyMessage();
@@ -108,8 +102,6 @@ public class CharacterSelectionActivity extends AppCompatActivity {
                 OAuthJSONAccessTokenResponse response = oAuthClient.accessToken(request);
                 return response.getAccessToken();
 
-            } catch (JSONException e) {
-                e.printStackTrace();
             } catch (OAuthSystemException e) {
                 e.printStackTrace();
             } catch (OAuthProblemException e) {
@@ -138,7 +130,7 @@ public class CharacterSelectionActivity extends AppCompatActivity {
                     public void onResponse(String response) {
                         // Do something with the response
                         Log.d("OAUTH", "requestUserCharacters success");
-                        setCharactersList(response);
+                        loadMountList(response);
                     }
                 },
                 new Response.ErrorListener() {
@@ -170,15 +162,28 @@ public class CharacterSelectionActivity extends AppCompatActivity {
 
     }
 
-    public void setCharactersList(String characters){
+    /**
+     * Loads the mounts of each character in the WMCApplication.
+     */
+    public void loadMountList(String characterList){
         try {
-            JSONObject charactersJson = new JSONObject(characters);
+            JSONObject charactersJson = new JSONObject(characterList);
             JSONArray charactersArray = charactersJson.getJSONArray("characters");
-            this.charactersList.clear();
             Log.d("OAUTH", "nb characters: " + charactersArray.length());
             for(int i = 0; i < charactersArray.length(); i++){
                 JSONObject charac = charactersArray.getJSONObject(i);
-                this.charactersList.add(new WowCharacter(charac));
+                WowCharacter wowCharacter = new WowCharacter(charac);
+
+                try {
+                    //delay to keep the requests number under 100 per second & 36000 per hour
+                    Thread.sleep(1000);
+                    for(Mount m : wowCharacter.getMountList(getApplicationContext())){
+                        WMCApplication.addMount(m);
+                    }
+
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
 
         } catch (JSONException e) {
@@ -191,4 +196,5 @@ public class CharacterSelectionActivity extends AppCompatActivity {
         this.mRequestQueue.stop();
         super.onDestroy();
     }
+
 }

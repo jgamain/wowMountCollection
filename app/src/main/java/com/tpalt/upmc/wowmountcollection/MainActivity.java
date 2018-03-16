@@ -73,20 +73,15 @@ public class MainActivity extends AppCompatActivity {
 
         protected Intent doInBackground(String... strings) {
             try {
-                JSONObject keysJson = UsefulTools.loadJSONFromAsset(getBaseContext(), UsefulTools.KEYS_FILE);
-                String clientId = keysJson.getString("clientId");
-
                 String authenticationUrl = "https://" + WMCApplication.region + ".battle.net/oauth/authorize";
                 OAuthClientRequest request = OAuthClientRequest
                         .authorizationLocation(authenticationUrl)
-                        .setClientId(clientId).setRedirectURI(WMCApplication.WMC_URL)
+                        .setClientId(WMCApplication.getClientId(getApplicationContext())).setRedirectURI(WMCApplication.WMC_URL)
                         .buildQueryMessage();
-
 
                 return new Intent(Intent.ACTION_VIEW,
                         Uri.parse(request.getLocationUri() + "&response_type=code&scope=wow.profile&app=oauth"));
-            } catch (JSONException e) {
-                e.printStackTrace();
+
             } catch (OAuthSystemException e) {
                 e.printStackTrace();
             }
