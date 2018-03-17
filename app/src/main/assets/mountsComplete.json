@@ -246,7 +246,7 @@
 		"source": "achievement"
     }, {
         "name": "Violet Pandaren Phoenix",
-		"nameFr": "Phénix pandaren pourpre,"
+		"nameFr": "Phénix pandaren pourpre",
         "spellId": 132119,
         "creatureId": 66970,
         "itemId": 90712,
@@ -1059,7 +1059,7 @@
         "isJumping": false,
         "seats": 1,
         "difficulty": 2,
-        "source": "quest",
+        "source": "quest"
     }, {
         "name": "Black Riding Goat",
         "nameFr": "Chèvre de monte noire",
@@ -1074,7 +1074,7 @@
         "isJumping": true,
         "seats": 1,
         "difficulty": 2,
-        "source": "reputation",
+        "source": "reputation"
     }, {
         "name": "Dread Raven",
         "nameFr": "Corbeau de l’effroi",
@@ -1089,7 +1089,7 @@
         "isJumping": false,
         "seats": 1,
         "difficulty": 3,
-        "source": "diverse",
+        "source": "diverse"
     }, {
         "name": "Shadowblade's Lethal Omen",
         "nameFr": "Présage mortel de lame-de-l'ombre",
@@ -1104,7 +1104,7 @@
         "isJumping": false,
         "seats": 1,
         "difficulty": 2,
-        "source": "vendor",
+        "source": "vendor"
     }, {
         "name": "Great Red Elekk",
         "nameFr": "Grand elekk rouge",
@@ -1728,6 +1728,7 @@
         "profession": "Alchemy"
     }, {
         "name": "Blue Skeletal Warhorse",
+        "nameFr": "Cheval de guerre squelette bleu",
         "spellId": 64656,
         "creatureId": 11195,
         "itemId": 0,
@@ -1736,9 +1737,13 @@
         "isGround": true,
         "isFlying": false,
         "isAquatic": true,
-        "isJumping": true
+        "isJumping": true,
+        "seats": 1,
+        "difficulty": -1,
+        "faction": "Horde"
     }, {
         "name": "White Kodo",
+        "nameFr": "Kodo blanc",
         "spellId": 64657,
         "creatureId": 12147,
         "itemId": 46100,
@@ -1747,9 +1752,14 @@
         "isGround": true,
         "isFlying": false,
         "isAquatic": true,
-        "isJumping": true
+        "isJumping": true,
+        "seats": 1,
+        "difficulty": 1,
+        "source": "vendor",
+        "faction": "Horde"
     }, {
         "name": "Black Wolf",
+        "nameFr": "Loup noir",
         "spellId": 64658,
         "creatureId": 356,
         "itemId": 46099,
@@ -1758,9 +1768,14 @@
         "isGround": true,
         "isFlying": false,
         "isAquatic": true,
-        "isJumping": true
+        "isJumping": true,
+        "seats": 1,
+        "difficulty": 1,
+        "source": "vendor",
+        "faction": "Horde"
     }, {
         "name": "Darkspear Raptor",
+        "nameFr": "Raptor sombrelance",
         "spellId": 63635,
         "creatureId": 33299,
         "itemId": 45593,
@@ -1769,9 +1784,14 @@
         "isGround": true,
         "isFlying": false,
         "isAquatic": true,
-        "isJumping": true
+        "isJumping": true,
+        "seats": 1,
+        "difficulty": 2,
+        "source": "vendor",
+        "faction": "Horde"
     }, {
         "name": "Venomhide Ravasaur",
+        "nameFr": "Ravasaure peau-de-venin",
         "spellId": 64659,
         "creatureId": 34156,
         "itemId": 46102,
@@ -1780,9 +1800,14 @@
         "isGround": true,
         "isFlying": false,
         "isAquatic": true,
-        "isJumping": true
+        "isJumping": true,
+        "seats": 1,
+        "difficulty": 2,
+        "source": "quest",
+        "faction": "Horde"
     }, {
         "name": "Soaring Skyterror",
+        "nameFr": "Terreur-du-ciel majestueuse",
         "spellId": 191633,
         "creatureId": -65040,
         "itemId": 128706,
@@ -1791,9 +1816,13 @@
         "isGround": true,
         "isFlying": true,
         "isAquatic": false,
-        "isJumping": false
+        "isJumping": false,
+        "seats": 1,
+        "difficulty": 2,
+        "source": "achievement"
     }, {
         "name": "Ironforge Ram",
+        "nameFr": "Bélier de Forgefer",
         "spellId": 63636,
         "creatureId": 33316,
         "itemId": 45586,
@@ -1802,9 +1831,14 @@
         "isGround": true,
         "isFlying": false,
         "isAquatic": true,
-        "isJumping": true
+        "isJumping": true,
+        "seats": 1,
+        "difficulty": 2,
+        "source": "vendor",
+        "faction": "Alliance"
     }, {
         "name": "Red Qiraji War Tank",
+        "nameFr": "Char de guerre qiraji rouge",
         "spellId": 239767,
         "creatureId": -75705,
         "itemId": 151625,
@@ -1813,9 +1847,13 @@
         "isGround": true,
         "isFlying": false,
         "isAquatic": true,
-        "isJumping": true
+        "isJumping": true,
+        "seats": 1,
+        "difficulty": 2,
+        "source": "loot"
     }, {
         "name": "Darnassian Nightsaber",
+        "nameFr": "Sabre-de-nuit darnassien",
         "spellId": 63637,
         "creatureId": 33298,
         "itemId": 45591,
@@ -1824,9 +1862,14 @@
         "isGround": true,
         "isFlying": false,
         "isAquatic": true,
-        "isJumping": true
+        "isJumping": true,
+        "seats": 1,
+        "difficulty": 2,
+        "source": "vendor",
+        "faction": "Alliance"
     }, {
         "name": "Blue Qiraji War Tank",
+        "nameFr": "Char de guerre qiraji bleu",
         "spellId": 239766,
         "creatureId": -75706,
         "itemId": 151626,
@@ -1835,9 +1878,13 @@
         "isGround": true,
         "isFlying": false,
         "isAquatic": true,
-        "isJumping": true
+        "isJumping": true,
+        "seats": 1,
+        "difficulty": 1,
+        "source": "loot"
     }, {
         "name": "Gnomeregan Mechanostrider",
+        "nameFr": "Mécanotrotteur de Gnomeregan",
         "spellId": 63638,
         "creatureId": 33301,
         "itemId": 45589,
@@ -1846,9 +1893,14 @@
         "isGround": true,
         "isFlying": false,
         "isAquatic": true,
-        "isJumping": true
+        "isJumping": true,
+        "seats": 1,
+        "difficulty": 2,
+        "source": "vendor",
+        "faction": "Alliance"
     }, {
         "name": "Swift Nether Drake",
+        "nameFr": "Drake du Néant rapide",
         "spellId": 37015,
         "creatureId": 21510,
         "itemId": 30609,
@@ -1857,9 +1909,13 @@
         "isGround": true,
         "isFlying": true,
         "isAquatic": false,
-        "isJumping": false
+        "isJumping": false,
+        "seats": 1,
+        "difficulty": -1,
+        "source": "diverse"
     }, {
         "name": "Exodar Elekk",
+        "nameFr": "Elekk de l'Exodar",
         "spellId": 63639,
         "creatureId": 33318,
         "itemId": 45590,
@@ -1868,9 +1924,14 @@
         "isGround": true,
         "isFlying": false,
         "isAquatic": true,
-        "isJumping": true
+        "isJumping": true,
+        "seats": 1,
+        "difficulty": 2,
+        "source": "vendor",
+        "faction": "Alliance"
     }, {
         "name": "Orgrimmar Wolf",
+        "nameFr": "Loup d'Orgrimmar",
         "spellId": 63640,
         "creatureId": 33320,
         "itemId": 45595,
@@ -1879,9 +1940,14 @@
         "isGround": true,
         "isFlying": false,
         "isAquatic": true,
-        "isJumping": true
+        "isJumping": true,
+        "seats": 1,
+        "difficulty": 2,
+        "source": "vendor",
+        "faction": "Horde"
     }, {
         "name": "Thunder Bluff Kodo",
+        "nameFr": "Kodo des Pitons-du-Tonnerre",
         "spellId": 63641,
         "creatureId": 33300,
         "itemId": 45592,
@@ -1890,9 +1956,14 @@
         "isGround": true,
         "isFlying": false,
         "isAquatic": true,
-        "isJumping": true
+        "isJumping": true,
+        "seats": 1,
+        "difficulty": 2,
+        "source": "vendor",
+        "faction": "Horde"
     }, {
         "name": "Black Qiraji War Tank",
+        "nameFr": "Char de guerre qiraji noir",
         "spellId": 239770,
         "creatureId": -75707,
         "itemId": 0,
@@ -1901,9 +1972,13 @@
         "isGround": true,
         "isFlying": false,
         "isAquatic": true,
-        "isJumping": true
+        "isJumping": true,
+        "seats": 1,
+        "difficulty": -1,
+        "source": "quest"
     }, {
         "name": "Silvermoon Hawkstrider",
+        "nameFr": "Faucon-pérégrin de Lune-d’Argent",
         "spellId": 63642,
         "creatureId": 33323,
         "itemId": 45596,
@@ -1912,9 +1987,14 @@
         "isGround": true,
         "isFlying": false,
         "isAquatic": true,
-        "isJumping": true
+        "isJumping": true,
+        "seats": 1,
+        "difficulty": 2,
+        "source": "vendor",
+        "faction": "Horde"
     }, {
         "name": "Forsaken Warhorse",
+        "nameFr": "Cheval de guerre des Réprouvés",
         "spellId": 63643,
         "creatureId": 33324,
         "itemId": 45597,
@@ -1923,9 +2003,14 @@
         "isGround": true,
         "isFlying": false,
         "isAquatic": true,
-        "isJumping": true
+        "isJumping": true,
+        "seats": 1,
+        "difficulty": 2,
+        "source": "vendor",
+        "faction": "Horde"
     }, {
         "name": "Nether Drake",
+        "nameFr": "Drake du Néant",
         "spellId": 28828,
         "creatureId": 16597,
         "itemId": 0,
@@ -1934,9 +2019,13 @@
         "isGround": true,
         "isFlying": true,
         "isAquatic": false,
-        "isJumping": false
+        "isJumping": false,
+        "seats": 1,
+        "difficulty": 2,
+        "source": "vendor"
     }, {
         "name": "Antoran Gloomhound",
+        "nameFr": "Molosse ombreux antoréen",
         "spellId": 253087,
         "creatureId": -79480,
         "itemId": 152815,
@@ -1945,9 +2034,13 @@
         "isGround": true,
         "isFlying": true,
         "isAquatic": false,
-        "isJumping": false
+        "isJumping": false,
+        "seats": 1,
+        "difficulty": 2,
+        "source": "achievement"
     }, {
         "name": "Prestigious War Steed",
+        "nameFr": "Palefroi de guerre prestigieux",
         "spellId": 193695,
         "creatureId": -65760,
         "itemId": 129280,
@@ -1956,9 +2049,14 @@
         "isGround": true,
         "isFlying": false,
         "isAquatic": true,
-        "isJumping": true
+        "isJumping": true,
+        "seats": 1,
+        "difficulty": 3,
+        "source": "achievement",
+        "faction": "Alliance"
     }, {
         "name": "Highlord's Vengeful Charger",
+        "nameFr": "Destrier vengeur de généralissime",
         "spellId": 231587,
         "creatureId": -74149,
         "itemId": 143503,
@@ -1967,9 +2065,13 @@
         "isGround": true,
         "isFlying": true,
         "isAquatic": false,
-        "isJumping": false
+        "isJumping": false,
+        "seats": 1,
+        "difficulty": 3,
+        "source": "quest"
     }, {
         "name": "Antoran Charhound",
+        "nameFr": "Molosse embrasé antoréen",
         "spellId": 253088,
         "creatureId": -79479,
         "itemId": 152816,
@@ -1978,9 +2080,13 @@
         "isGround": true,
         "isFlying": true,
         "isAquatic": false,
-        "isJumping": false
+        "isJumping": false,
+        "seats": 1,
+        "difficulty": 3,
+        "source": "loot"
     }, {
         "name": "Predatory Bloodgazer",
+        "nameFr": "Scrutesang prédateur",
         "spellId": 213158,
         "creatureId": -70060,
         "itemId": 137577,
@@ -1989,9 +2095,13 @@
         "isGround": true,
         "isFlying": false,
         "isAquatic": true,
-        "isJumping": true
+        "isJumping": true,
+        "seats": 1,
+        "difficulty": 2,
+        "source": "quest"
     }, {
         "name": "Highlord's Valorous Charger",
+        "nameFr": "Destrier valeureux de généralissime",
         "spellId": 231589,
         "creatureId": -74151,
         "itemId": 143505,
@@ -2000,9 +2110,13 @@
         "isGround": true,
         "isFlying": true,
         "isAquatic": false,
-        "isJumping": false
+        "isJumping": false,
+        "seats": 1,
+        "difficulty": 3,
+        "source": "quest"
     }, {
         "name": "Wooly White Rhino",
+        "nameFr": "Rhinocéros laineux blanc",
         "spellId": 74918,
         "creatureId": 40191,
         "itemId": 54068,
@@ -2011,9 +2125,13 @@
         "isGround": true,
         "isFlying": false,
         "isAquatic": true,
-        "isJumping": true
+        "isJumping": true,
+        "seats": 1,
+        "difficulty": 3,
+        "source": "diverse"
     }, {
         "name": "Flametalon of Alysrazor",
+        "nameFr": "Serres-de-Flammes d'Alysrazor",
         "spellId": 101542,
         "creatureId": 54395,
         "itemId": 71665,
@@ -2022,9 +2140,13 @@
         "isGround": true,
         "isFlying": false,
         "isAquatic": true,
-        "isJumping": true
+        "isJumping": true,
+        "seats": 1,
+        "difficulty": 3,
+        "source": "loot"
     }, {
         "name": "Highlord's Vigilant Charger",
+        "nameFr": "Destrier vigilant de généralissime",
         "spellId": 231588,
         "creatureId": -74150,
         "itemId": 143504,
@@ -2033,9 +2155,13 @@
         "isGround": true,
         "isFlying": true,
         "isAquatic": false,
-        "isJumping": false
+        "isJumping": false,
+        "seats": 1,
+        "difficulty": 3,
+        "source": "quest"
     }, {
         "name": "Snowfeather Hunter",
+        "nameFr": "Chasseur de Neige-Plume",
         "spellId": 213163,
         "creatureId": -70063,
         "itemId": 137578,
@@ -2044,9 +2170,13 @@
         "isGround": true,
         "isFlying": false,
         "isAquatic": true,
-        "isJumping": true
+        "isJumping": true,
+        "seats": 1,
+        "difficulty": 2,
+        "source": "quest"
     }, {
         "name": "Swift Zhevra",
+        "nameFr": "Zhévra rapide",
         "spellId": 49322,
         "creatureId": 27684,
         "itemId": 37719,
@@ -2055,9 +2185,13 @@
         "isGround": true,
         "isFlying": false,
         "isAquatic": true,
-        "isJumping": true
+        "isJumping": true,
+        "seats": 1,
+        "difficulty": 3,
+        "source": "diverse"
     }, {
         "name": "Viridian Sharptalon",
+        "nameFr": "Serres-tranchantes viridien",
         "spellId": 213165,
         "creatureId": -70061,
         "itemId": 137580,
@@ -2066,9 +2200,13 @@
         "isGround": true,
         "isFlying": false,
         "isAquatic": true,
-        "isJumping": true
+        "isJumping": true,
+        "seats": 1,
+        "difficulty": 2,
+        "source": "quest"
     }, {
         "name": "Azure Drake",
+        "nameFr": "Drake azur",
         "spellId": 59567,
         "creatureId": 31694,
         "itemId": 43952,
@@ -2077,9 +2215,13 @@
         "isGround": true,
         "isFlying": true,
         "isAquatic": false,
-        "isJumping": false
+        "isJumping": false,
+        "seats": 1,
+        "difficulty": 3,
+        "source": "loot"
     }, {
         "name": "Brilliant Direbeak",
+        "nameFr": "Bec-sinistre brillant",
         "spellId": 213164,
         "creatureId": -70062,
         "itemId": 137579,
@@ -2088,9 +2230,13 @@
         "isGround": true,
         "isFlying": false,
         "isAquatic": true,
-        "isJumping": true
+        "isJumping": true,
+        "seats": 1,
+        "difficulty": 2,
+        "source": "quest"
     }, {
         "name": "Blue Drake",
+        "nameFr": "Drake bleu",
         "spellId": 59568,
         "creatureId": 31695,
         "itemId": 43953,
@@ -2099,9 +2245,13 @@
         "isGround": true,
         "isFlying": true,
         "isAquatic": false,
-        "isJumping": false
+        "isJumping": false,
+        "seats": 1,
+        "difficulty": 3,
+        "source": "loot"
     }, {
         "name": "Thundering Cobalt Cloud Serpent",
+        "nameFr": "Serpent-nuage de cobalt fulminant",
         "spellId": 139442,
         "creatureId": 70300,
         "itemId": 95057,
@@ -2110,9 +2260,13 @@
         "isGround": true,
         "isFlying": true,
         "isAquatic": false,
-        "isJumping": false
+        "isJumping": false,
+        "seats": 1,
+        "difficulty": 3,
+        "source": "loot"
     }, {
         "name": "Lambent Mana Ray",
+        "nameFr": "Raie de mana diaprée",
         "spellId": 253107,
         "creatureId": -79484,
         "itemId": 152844,
@@ -2121,9 +2275,13 @@
         "isGround": true,
         "isFlying": true,
         "isAquatic": false,
-        "isJumping": false
+        "isJumping": false,
+        "seats": 1,
+        "difficulty": 2,
+        "source": "loot"
     }, {
         "name": "Bronze Drake",
+        "nameFr": "Drake bronze",
         "spellId": 59569,
         "creatureId": 31717,
         "itemId": 43951,
@@ -2132,9 +2290,13 @@
         "isGround": true,
         "isFlying": true,
         "isAquatic": false,
-        "isJumping": false
+        "isJumping": false,
+        "seats": 1,
+        "difficulty": 1,
+        "source": "loot"
     }, {
         "name": "Vibrant Mana Ray",
+        "nameFr": "Raie de mana éclatante",
         "spellId": 253106,
         "creatureId": -79485,
         "itemId": 152842,
@@ -2143,9 +2305,13 @@
         "isGround": true,
         "isFlying": true,
         "isAquatic": false,
-        "isJumping": false
+        "isJumping": false,
+        "seats": 1,
+        "difficulty": 2,
+        "source": "loot"
     }, {
         "name": "Red Drake",
+        "nameFr": "Drake rouge",
         "spellId": 59570,
         "creatureId": 30161,
         "itemId": 43955,
@@ -2154,9 +2320,13 @@
         "isGround": true,
         "isFlying": true,
         "isAquatic": false,
-        "isJumping": false
+        "isJumping": false,
+        "seats": 1,
+        "difficulty": 1,
+        "source": "reputation"
     }, {
         "name": "Twilight Drake",
+        "nameFr": "Drake du Crépuscule",
         "spellId": 59571,
         "creatureId": 31698,
         "itemId": 43954,
@@ -2165,9 +2335,13 @@
         "isGround": true,
         "isFlying": true,
         "isAquatic": false,
-        "isJumping": false
+        "isJumping": false,
+        "seats": 1,
+        "difficulty": 1,
+        "source": "loot"
     }, {
         "name": "Onyx Cloud Serpent",
+        "nameFr": "Serpent-nuage onyx",
         "spellId": 127154,
         "creatureId": 58525,
         "itemId": 87768,
@@ -2176,9 +2350,13 @@
         "isGround": true,
         "isFlying": true,
         "isAquatic": false,
-        "isJumping": false
+        "isJumping": false,
+        "seats": 1,
+        "difficulty": 2,
+        "source": "quest"
     }, {
         "name": "Black Polar Bear",
+        "nameFr": "Ours polaire noir",
         "spellId": 59572,
         "creatureId": 31699,
         "itemId": 0,
@@ -2187,9 +2365,12 @@
         "isGround": true,
         "isFlying": false,
         "isAquatic": true,
-        "isJumping": true
+        "isJumping": true,
+        "seats": 1,
+        "difficulty": -1
     }, {
         "name": "Crimson Cloud Serpent",
+        "nameFr": "Serpent-nuage cramoisi",
         "spellId": 127156,
         "creatureId": 58521,
         "itemId": 87769,
@@ -2198,9 +2379,13 @@
         "isGround": true,
         "isFlying": true,
         "isAquatic": false,
-        "isJumping": false
+        "isJumping": false,
+        "seats": 1,
+        "difficulty": 2,
+        "source": "achievement"
     }, {
         "name": "Cobalt Primordial Direhorn",
+        "nameFr": "Navrecorne primordial cobalt",
         "spellId": 138423,
         "creatureId": 69829,
         "itemId": 94228,
@@ -2209,9 +2394,12 @@
         "isGround": true,
         "isFlying": false,
         "isAquatic": true,
-        "isJumping": true
+        "isJumping": true,
+        "seats": 1,
+        "source": "loot"
     }, {
         "name": "Vicious Warsaber",
+        "nameFr": "Sabre de guerre vicieux",
         "spellId": 146615,
         "creatureId": 73042,
         "itemId": 102514,
@@ -2220,9 +2408,14 @@
         "isGround": true,
         "isFlying": false,
         "isAquatic": true,
-        "isJumping": true
+        "isJumping": true,
+        "seats": 1,
+        "difficulty": 3,
+        "source": "achievement",
+        "faction": "Alliance"
     }, {
         "name": "Scintillating Mana Ray",
+        "nameFr": "Raie de mana scintillante",
         "spellId": 253109,
         "creatureId": -79486,
         "itemId": 152840,
@@ -2231,9 +2424,13 @@
         "isGround": true,
         "isFlying": true,
         "isAquatic": false,
-        "isJumping": false
+        "isJumping": false,
+        "seats": 1,
+        "difficulty": 2,
+        "source": "loot"
     }, {
         "name": "Heavenly Onyx Cloud Serpent",
+        "nameFr": "Serpent-nuage céleste onyx",
         "spellId": 127158,
         "creatureId": 64986,
         "itemId": 87771,
@@ -2242,9 +2439,13 @@
         "isGround": true,
         "isFlying": true,
         "isAquatic": false,
-        "isJumping": false
+        "isJumping": false,
+        "seats": 1,
+        "difficulty": 3,
+        "source": "loot"
     }, {
         "name": "Felglow Mana Ray",
+        "nameFr": "Raie de mana gangreluisante",
         "spellId": 253108,
         "creatureId": -79487,
         "itemId": 152841,
@@ -2253,9 +2454,13 @@
         "isGround": true,
         "isFlying": true,
         "isAquatic": false,
-        "isJumping": false
+        "isJumping": false,
+        "seats": 1,
+        "difficulty": 2,
+        "source": "loot"
     }, {
         "name": "Heavenly Crimson Cloud Serpent",
+        "nameFr": "Serpent-nuage céleste cramoisi",
         "spellId": 127161,
         "creatureId": 64990,
         "itemId": 87773,
@@ -2264,9 +2469,13 @@
         "isGround": true,
         "isFlying": true,
         "isAquatic": false,
-        "isJumping": false
+        "isJumping": false,
+        "seats": 1,
+        "difficulty": 3,
+        "source": "achievement"
     }, {
         "name": "Jade Primordial Direhorn",
+        "nameFr": "Navrecorne primordial jade",
         "spellId": 138426,
         "creatureId": 69831,
         "itemId": 94231,
@@ -2275,9 +2484,13 @@
         "isGround": true,
         "isFlying": false,
         "isAquatic": true,
-        "isJumping": true
+        "isJumping": true,
+        "seats": 1,
+        "difficulty": 2,
+        "source": "loot"
     }, {
         "name": "Wild Dreamrunner",
+        "nameFr": "Courserêve sauvage",
         "spellId": 242875,
         "creatureId": -76424,
         "itemId": 147804,
@@ -2286,9 +2499,13 @@
         "isGround": true,
         "isFlying": false,
         "isAquatic": true,
-        "isJumping": true
+        "isJumping": true,
+        "seats": 1,
+        "difficulty": 2,
+        "source": "loot"
     }, {
         "name": "Highmountain Elderhorn",
+        "nameFr": "Noble-bois de Haut-Roc",
         "spellId": 242874,
         "creatureId": -67039,
         "itemId": 147807,
@@ -2297,9 +2514,13 @@
         "isGround": true,
         "isFlying": false,
         "isAquatic": true,
-        "isJumping": true
+        "isJumping": true,
+        "seats": 1,
+        "difficulty": 2,
+        "source": "loot"
     }, {
         "name": "Amber Primordial Direhorn",
+        "nameFr": "Navrecorne primordial d’ambre",
         "spellId": 138424,
         "creatureId": 69832,
         "itemId": 94230,
@@ -2308,9 +2529,13 @@
         "isGround": true,
         "isFlying": false,
         "isAquatic": true,
-        "isJumping": true
+        "isJumping": true,
+        "seats": 1,
+        "difficulty": 2,
+        "source": "loot"
     }, {
         "name": "Clutch of Ji-Kun",
+        "nameFr": "Etreinte de Ji Kun",
         "spellId": 139448,
         "creatureId": 70302,
         "itemId": 95059,
@@ -2319,9 +2544,13 @@
         "isGround": true,
         "isFlying": true,
         "isAquatic": false,
-        "isJumping": false
+        "isJumping": false,
+        "seats": 1,
+        "difficulty": 3,
+        "source": "loot"
     }, {
         "name": "Slate Primordial Direhorn",
+        "nameFr": "Navrecorne primordial ardoise",
         "spellId": 138425,
         "creatureId": 69830,
         "itemId": 94229,
@@ -2330,9 +2559,13 @@
         "isGround": true,
         "isFlying": false,
         "isAquatic": true,
-        "isJumping": true
+        "isJumping": true,
+        "seats": 1,
+        "difficulty": 2,
+        "source": "loot"
     }, {
         "name": "Yu'lei, Daughter of Jade",
+        "nameFr": "Yu'lei, fille du jade",
         "spellId": 127165,
         "creatureId": 64992,
         "itemId": 87775,
@@ -2341,9 +2574,13 @@
         "isGround": true,
         "isFlying": true,
         "isAquatic": false,
-        "isJumping": false
+        "isJumping": false,
+        "seats": 1,
+        "difficulty": 3,
+        "source": "event"
     }, {
         "name": "Vicious Skeletal Warhorse",
+        "nameFr": "Cheval de guerre squelette vicieux",
         "spellId": 146622,
         "creatureId": 73060,
         "itemId": 102533,
@@ -2352,9 +2589,14 @@
         "isGround": true,
         "isFlying": false,
         "isAquatic": true,
-        "isJumping": true
+        "isJumping": true,
+        "seats": 1,
+        "difficulty": 3,
+        "source": "achievement",
+        "faction": "Horde"
     }, {
         "name": "Black War Steed",
+        "nameFr": "Palefroi de guerre noir",
         "spellId": 22717,
         "creatureId": 14332,
         "itemId": 29468,
@@ -2363,9 +2605,14 @@
         "isGround": true,
         "isFlying": false,
         "isAquatic": true,
-        "isJumping": true
+        "isJumping": true,
+        "seats": 1,
+        "difficulty": 2,
+        "source": "vendor",
+        "faction": "Alliance"
     }, {
         "name": "Sunwalker Kodo",
+        "nameFr": "Kodo marche-soleil",
         "spellId": 69820,
         "creatureId": 36883,
         "itemId": 0,
@@ -2374,9 +2621,14 @@
         "isGround": true,
         "isFlying": false,
         "isAquatic": true,
-        "isJumping": true
+        "isJumping": true,
+        "seats": 1,
+        "difficulty": 1,
+        "source": "quest",
+        "faction": "Horde"
     }, {
         "name": "Heavenly Golden Cloud Serpent",
+        "nameFr": "Serpent-nuage céleste doré",
         "spellId": 127164,
         "creatureId": 64991,
         "itemId": 87774,
@@ -2385,9 +2637,13 @@
         "isGround": true,
         "isFlying": true,
         "isAquatic": false,
-        "isJumping": false
+        "isJumping": false,
+        "seats": 1,
+        "difficulty": 3,
+        "source": "reputation"
     }, {
         "name": "Black War Kodo",
+        "nameFr": "Kodo de guerre noir",
         "spellId": 22718,
         "creatureId": 14333,
         "itemId": 29466,
@@ -2396,9 +2652,14 @@
         "isGround": true,
         "isFlying": false,
         "isAquatic": true,
-        "isJumping": true
+        "isJumping": true,
+        "seats": 1,
+        "difficulty": 2,
+        "source": "vendor",
+        "faction": "Horde"
     }, {
         "name": "Black Battlestrider",
+        "nameFr": "Trotteur de bataille noir",
         "spellId": 22719,
         "creatureId": 14334,
         "itemId": 29465,
@@ -2407,9 +2668,14 @@
         "isGround": true,
         "isFlying": false,
         "isAquatic": true,
-        "isJumping": true
+        "isJumping": true,
+        "seats": 1,
+        "difficulty": 2,
+        "source": "vendor",
+        "faction": "Alliance"
     }, {
         "name": "Black War Ram",
+        "nameFr": "Bélier de guerre noir",
         "spellId": 22720,
         "creatureId": 14335,
         "itemId": 29467,
@@ -2418,9 +2684,14 @@
         "isGround": true,
         "isFlying": false,
         "isAquatic": true,
-        "isJumping": true
+        "isJumping": true,
+        "seats": 1,
+        "difficulty": 2,
+        "source": "vendor",
+        "faction": "Alliance"
     }, {
         "name": "Heavenly Azure Cloud Serpent",
+        "nameFr": "Serpent-nuage céleste azur",
         "spellId": 127169,
         "creatureId": 64993,
         "itemId": 87776,
@@ -2429,9 +2700,13 @@
         "isGround": true,
         "isFlying": true,
         "isAquatic": false,
-        "isJumping": false
+        "isJumping": false,
+        "seats": 1,
+        "difficulty": 3,
+        "source": "achievement"
     }, {
         "name": "Black War Raptor",
+        "nameFr": "Raptor de guerre noir",
         "spellId": 22721,
         "creatureId": 14330,
         "itemId": 29472,
@@ -2440,9 +2715,14 @@
         "isGround": true,
         "isFlying": false,
         "isAquatic": true,
-        "isJumping": true
+        "isJumping": true,
+        "seats": 1,
+        "difficulty": 2,
+        "source": "vendor",
+        "faction": "Horde"
     }, {
         "name": "Valarjar Stormwing",
+        "nameFr": "Aile-tempête valarjar",
         "spellId": 242882,
         "creatureId": -68053,
         "itemId": 147805,
@@ -2451,9 +2731,13 @@
         "isGround": true,
         "isFlying": true,
         "isAquatic": false,
-        "isJumping": false
+        "isJumping": false,
+        "seats": 1,
+        "difficulty": 2,
+        "source": "loot"
     }, {
         "name": "Red Skeletal Warhorse",
+        "nameFr": "Cheval de guerre squelette rouge",
         "spellId": 22722,
         "creatureId": 14331,
         "itemId": 29470,
@@ -2462,9 +2746,14 @@
         "isGround": true,
         "isFlying": false,
         "isAquatic": true,
-        "isJumping": true
+        "isJumping": true,
+        "seats": 1,
+        "difficulty": 2,
+        "source": "vendor",
+        "faction": "Horde"
     }, {
         "name": "Cloudwing Hippogryph",
+        "nameFr": "Hippogriffe nuelle",
         "spellId": 242881,
         "creatureId": -63628,
         "itemId": 147806,
@@ -2473,9 +2762,13 @@
         "isGround": true,
         "isFlying": true,
         "isAquatic": false,
-        "isJumping": false
+        "isJumping": false,
+        "seats": 1,
+        "difficulty": 2,
+        "source": "loot"
     }, {
         "name": "Black War Tiger",
+        "nameFr": "Tigre de guerre noir",
         "spellId": 22723,
         "creatureId": 14336,
         "itemId": 29471,
@@ -2484,9 +2777,14 @@
         "isGround": true,
         "isFlying": false,
         "isAquatic": true,
-        "isJumping": true
+        "isJumping": true,
+        "seats": 1,
+        "difficulty": 2,
+        "source": "vendor",
+        "faction": "Alliance"
     }, {
         "name": "Great Sunwalker Kodo",
+        "nameFr": "Grand kodo marche-soleil",
         "spellId": 69826,
         "creatureId": 37059,
         "itemId": 0,
@@ -2495,9 +2793,14 @@
         "isGround": true,
         "isFlying": false,
         "isAquatic": true,
-        "isJumping": true
+        "isJumping": true,
+        "seats": 1,
+        "difficulty": 1,
+        "source": "quest",
+        "faction": "Horde"
     }, {
         "name": "Astral Cloud Serpent",
+        "nameFr": "Serpent-nuage astral",
         "spellId": 127170,
         "creatureId": 64996,
         "itemId": 87777,
@@ -2506,9 +2809,13 @@
         "isGround": true,
         "isFlying": true,
         "isAquatic": false,
-        "isJumping": false
+        "isJumping": false,
+        "seats": 1,
+        "difficulty": 3,
+        "source": "loot"
     }, {
         "name": "Black War Wolf",
+        "nameFr": "Loup de guerre noir",
         "spellId": 22724,
         "creatureId": 14329,
         "itemId": 29469,
@@ -2517,9 +2824,14 @@
         "isGround": true,
         "isFlying": false,
         "isAquatic": true,
-        "isJumping": true
+        "isJumping": true,
+        "seats": 1,
+        "difficulty": 2,
+        "source": "vendor",
+        "faction": "Horde"
     }, {
         "name": "X-53 Touring Rocket",
+        "nameFr": "Fusée de tourisme X-53",
         "spellId": 75973,
         "creatureId": 40725,
         "itemId": 54860,
@@ -2528,9 +2840,13 @@
         "isGround": true,
         "isFlying": true,
         "isAquatic": false,
-        "isJumping": false
+        "isJumping": false,
+        "seats": 2,
+        "difficulty": 3,
+        "source": "diverse"
     }, {
         "name": "Swift Shorestrider",
+        "nameFr": "Trotteur du rivage rapide",
         "spellId": 101573,
         "creatureId": 54423,
         "itemId": 71718,
@@ -2539,9 +2855,13 @@
         "isGround": true,
         "isFlying": false,
         "isAquatic": true,
-        "isJumping": true
+        "isJumping": true,
+        "seats": 1,
+        "difficulty": 3,
+        "source": "diverse"
     }, {
         "name": "Azure Riding Crane",
+        "nameFr": "Grue de monte azur",
         "spellId": 127174,
         "creatureId": 65006,
         "itemId": 87781,
@@ -2550,9 +2870,13 @@
         "isGround": true,
         "isFlying": false,
         "isAquatic": true,
-        "isJumping": true
+        "isJumping": true,
+        "seats": 1,
+        "difficulty": 2,
+        "source": "reputation"
     }, {
         "name": "Regal Riding Crane",
+        "nameFr": "Grue de monte régalienne",
         "spellId": 127177,
         "creatureId": 65009,
         "itemId": 87783,
@@ -2561,9 +2885,13 @@
         "isGround": true,
         "isFlying": false,
         "isAquatic": true,
-        "isJumping": true
+        "isJumping": true,
+        "seats": 1,
+        "difficulty": 2,
+        "source": "reputation"
     }, {
         "name": "Golden Riding Crane",
+        "nameFr": "Grue de monte dorée",
         "spellId": 127176,
         "creatureId": 65007,
         "itemId": 87782,
@@ -2572,9 +2900,13 @@
         "isGround": true,
         "isFlying": false,
         "isAquatic": true,
-        "isJumping": true
+        "isJumping": true,
+        "seats": 1,
+        "difficulty": 2,
+        "source": "reputation"
     }, {
         "name": "Striped Frostsaber",
+        "nameFr": "Sabre-de-givre rayé",
         "spellId": 8394,
         "creatureId": 6074,
         "itemId": 8631,
@@ -2583,9 +2915,14 @@
         "isGround": true,
         "isFlying": false,
         "isAquatic": true,
-        "isJumping": true
+        "isJumping": true,
+        "seats": 1,
+        "difficulty": 1,
+        "source": "vendor",
+        "faction": "Alliance"
     }, {
         "name": "Purple Hawkstrider",
+        "nameFr": "Faucon-pérégrin violet",
         "spellId": 35018,
         "creatureId": 20217,
         "itemId": 29222,
@@ -2594,9 +2931,14 @@
         "isGround": true,
         "isFlying": false,
         "isAquatic": true,
-        "isJumping": true
+        "isJumping": true,
+        "seats": 1,
+        "difficulty": 1,
+        "source": "vendor",
+        "faction": "Horde"
     }, {
         "name": "Emerald Raptor",
+        "nameFr": "Raptor émeraude",
         "spellId": 8395,
         "creatureId": 6075,
         "itemId": 8588,
@@ -2605,9 +2947,14 @@
         "isGround": true,
         "isFlying": false,
         "isAquatic": true,
-        "isJumping": true
+        "isJumping": true,
+        "seats": 1,
+        "difficulty": 1,
+        "source": "vendor",
+        "faction": "Horde"
     }, {
         "name": "Blue Hawkstrider",
+        "nameFr": "Faucon-pérégrin bleu",
         "spellId": 35020,
         "creatureId": 20220,
         "itemId": 29220,
@@ -2616,9 +2963,14 @@
         "isGround": true,
         "isFlying": false,
         "isAquatic": true,
-        "isJumping": true
+        "isJumping": true,
+        "seats": 1,
+        "difficulty": 1,
+        "source": "vendor",
+        "faction": "Horde"
     }, {
         "name": "Black Hawkstrider",
+        "nameFr": "Faucon-pérégrin noir",
         "spellId": 35022,
         "creatureId": 20222,
         "itemId": 29221,
@@ -2627,9 +2979,14 @@
         "isGround": true,
         "isFlying": false,
         "isAquatic": true,
-        "isJumping": true
+        "isJumping": true,
+        "seats": 1,
+        "difficulty": 1,
+        "source": "vendor",
+        "faction": "Horde"
     }, {
         "name": "Swift Green Hawkstrider",
+        "nameFr": "Faucon-pérégrin vert rapide",
         "spellId": 35025,
         "creatureId": 20224,
         "itemId": 29223,
@@ -2638,9 +2995,14 @@
         "isGround": true,
         "isFlying": false,
         "isAquatic": true,
-        "isJumping": true
+        "isJumping": true,
+        "seats": 1,
+        "difficulty": 1,
+        "source": "vendor",
+        "faction": "Horde"
     }, {
         "name": "Armored Skyscreamer",
+        "nameFr": "Hurleciel cuirassé",
         "spellId": 136400,
         "creatureId": 69158,
         "itemId": 93662,
@@ -2649,9 +3011,13 @@
         "isGround": true,
         "isFlying": true,
         "isAquatic": false,
-        "isJumping": false
+        "isJumping": false,
+        "seats": 1,
+        "difficulty": 3,
+        "source": "achievement"
     }, {
         "name": "Warforged Nightmare",
+        "nameFr": "Méca-cavale de cauchemar",
         "spellId": 163024,
         "creatureId": 80651,
         "itemId": 112326,
@@ -2660,9 +3026,12 @@
         "isGround": true,
         "isFlying": true,
         "isAquatic": false,
-        "isJumping": false
+        "isJumping": false,
+        "seats": 1,
+        "source": "diverse"
     }, {
         "name": "Vicious War Fox",
+        "nameFr": "Renard de guerre vicieux",
         "spellId": 242897,
         "creatureId": -76426,
         "itemId": 152869,
@@ -2671,9 +3040,14 @@
         "isGround": true,
         "isFlying": false,
         "isAquatic": true,
-        "isJumping": true
+        "isJumping": true,
+        "seats": 1,
+        "difficulty": 3,
+        "source": "vendor",
+        "faction": "Horde"
     }, {
         "name": "Swift Purple Hawkstrider",
+        "nameFr": "Faucon-pérégrin violet rapide",
         "spellId": 35027,
         "creatureId": 20223,
         "itemId": 29224,
@@ -2682,9 +3056,14 @@
         "isGround": true,
         "isFlying": false,
         "isAquatic": true,
-        "isJumping": true
+        "isJumping": true,
+        "seats": 1,
+        "difficulty": 1,
+        "source": "vendor",
+        "faction": "Horde"
     }, {
         "name": "Grinning Reaver",
+        "nameFr": "Saccageur sinistre",
         "spellId": 163025,
         "creatureId": 80674,
         "itemId": 112327,
@@ -2693,9 +3072,12 @@
         "isGround": true,
         "isFlying": true,
         "isAquatic": false,
-        "isJumping": false
+        "isJumping": false,
+        "seats": 1,
+        "source": "diverse"
     }, {
         "name": "Vicious War Fox",
+        "nameFr": "Renard de guerre vicieux",
         "spellId": 242896,
         "creatureId": -76427,
         "itemId": 152870,
@@ -2704,9 +3086,14 @@
         "isGround": true,
         "isFlying": false,
         "isAquatic": true,
-        "isJumping": true
+        "isJumping": true,
+        "seats": 1,
+        "difficulty": 3,
+        "source": "vendor",
+        "faction": "Alliance"
     }, {
         "name": "Swift Warstrider",
+        "nameFr": "Faucon de guerre rapide",
         "spellId": 35028,
         "creatureId": 20225,
         "itemId": 34129,
@@ -2715,9 +3102,14 @@
         "isGround": true,
         "isFlying": false,
         "isAquatic": true,
-        "isJumping": true
+        "isJumping": true,
+        "seats": 1,
+        "difficulty": 2,
+        "source": "vendor",
+        "faction": "Horde"
     }, {
         "name": "Big Battle Bear",
+        "nameFr": "Grand ours de bataille",
         "spellId": 51412,
         "creatureId": 28363,
         "itemId": 49282,
@@ -2726,9 +3118,13 @@
         "isGround": true,
         "isFlying": false,
         "isAquatic": true,
-        "isJumping": true
+        "isJumping": true,
+        "seats": 1,
+        "difficulty": 3,
+        "source": "diverse"
     }, {
         "name": "Pureblood Fire Hawk",
+        "nameFr": "Faucon de feu sang-pur",
         "spellId": 97493,
         "creatureId": 52748,
         "itemId": 69224,
@@ -2737,9 +3133,13 @@
         "isGround": true,
         "isFlying": true,
         "isAquatic": false,
-        "isJumping": false
+        "isJumping": false,
+        "seats": 1,
+        "difficulty": 3,
+        "source": "loot"
     }, {
         "name": "Sky Golem",
+        "nameFr": "Golem céleste",
         "spellId": 134359,
         "creatureId": -46686,
         "itemId": 95416,
@@ -2748,9 +3148,14 @@
         "isGround": true,
         "isFlying": true,
         "isAquatic": false,
-        "isJumping": false
+        "isJumping": false,
+        "seats": 1,
+        "difficulty": 3,
+        "source": "profession",
+        "profession": "Engineering"
     }, {
         "name": "Steelbound Devourer",
+        "nameFr": "Dévoreur lige-acier",
         "spellId": 213209,
         "creatureId": 107475,
         "itemId": 137686,
@@ -2759,9 +3164,14 @@
         "isGround": true,
         "isFlying": false,
         "isAquatic": true,
-        "isJumping": true
+        "isJumping": true,
+        "seats": 1,
+        "difficulty": 3,
+        "source": "profession",
+        "profession": "Blacksmithing"
     }, {
         "name": "Sea Turtle",
+        "nameFr": "Tortue de mer",
         "spellId": 64731,
         "creatureId": 34187,
         "itemId": 46109,
@@ -2770,9 +3180,14 @@
         "isGround": true,
         "isFlying": false,
         "isAquatic": true,
-        "isJumping": true
+        "isJumping": true,
+        "seats": 1,
+        "difficulty": 2,
+        "source": "profession",
+        "profession": "Fishing"
     }, {
         "name": "Felfire Hawk",
+        "nameFr": "Faucon de gangrefeu",
         "spellId": 97501,
         "creatureId": 52756,
         "itemId": 69226,
@@ -2781,9 +3196,13 @@
         "isGround": true,
         "isFlying": true,
         "isAquatic": false,
-        "isJumping": false
+        "isJumping": false,
+        "seats": 1,
+        "difficulty": 3,
+        "source": "achievement"
     }, {
         "name": "Bristling Hellboar",
+        "nameFr": "Sanglier infernal hirsute",
         "spellId": 190690,
         "creatureId": -64726,
         "itemId": 128481,
@@ -2792,9 +3211,13 @@
         "isGround": true,
         "isFlying": false,
         "isAquatic": true,
-        "isJumping": true
+        "isJumping": true,
+        "seats": 1,
+        "difficulty": 2,
+        "source": "reputation"
     }, {
         "name": "Brewfest Riding Kodo",
+        "nameFr": "Kodo de monte de la fête des Brasseurs",
         "spellId": 49378,
         "creatureId": 27706,
         "itemId": 0,
@@ -2803,9 +3226,12 @@
         "isGround": true,
         "isFlying": false,
         "isAquatic": true,
-        "isJumping": true
+        "isJumping": true,
+        "seats": 1,
+        "source": "event"
     }, {
         "name": "Great Brewfest Kodo",
+        "nameFr": "Grand kodo de la fête des Brasseurs",
         "spellId": 49379,
         "creatureId": 27707,
         "itemId": 37828,
@@ -2814,9 +3240,13 @@
         "isGround": true,
         "isFlying": false,
         "isAquatic": true,
-        "isJumping": true
+        "isJumping": true,
+        "seats": 1,
+        "difficulty": 2,
+        "source": "event"
     }, {
         "name": "Black Riding Yak",
+        "nameFr": "Yack de monte noir",
         "spellId": 127209,
         "creatureId": 65015,
         "itemId": 87786,
@@ -2825,9 +3255,12 @@
         "isGround": true,
         "isFlying": false,
         "isAquatic": true,
-        "isJumping": true
+        "isJumping": true,
+        "seats": 1,
+        "difficulty": -1
     }, {
         "name": "Armored Razzashi Raptor",
+        "nameFr": "Raptor razzashi cuirassé",
         "spellId": 96491,
         "creatureId": 38987,
         "itemId": 68823,
@@ -2836,9 +3269,13 @@
         "isGround": true,
         "isFlying": false,
         "isAquatic": true,
-        "isJumping": true
+        "isJumping": true,
+        "seats": 1,
+        "difficulty": -1,
+        "source": "loot"
     }, {
         "name": "Jeweled Onyx Panther",
+        "nameFr": "Panthère d'onyx ornée de joyaux",
         "spellId": 120043,
         "creatureId": 61652,
         "itemId": 82453,
@@ -2847,7 +3284,11 @@
         "isGround": true,
         "isFlying": true,
         "isAquatic": false,
-        "isJumping": false
+        "isJumping": false,
+        "seats": 1,
+        "difficulty": 3,
+        "source": "profession",
+        "profession": "Jewelcrafting"
     }, {
         "name": "Mechano-Hog",
         "spellId": 55531,

@@ -3,6 +3,7 @@ package com.tpalt.upmc.wowmountcollection;
 import android.content.Context;
 import android.util.Log;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -17,26 +18,60 @@ import java.util.List;
 
 public class WMCApplication {
 
-    //Can not be instantiate
-    private WMCApplication(){}
-
+    public static final String MOUNTS_FILE = "mountsComplete.json";
     public static final String KEYS_FILE = "private_keys.json";
     private static String clientId;
     private static String clientSecret;
 
     public static final String WMC_URL = "https://www.wowmountcollection.ovh";
     public static String region = "eu"; //default value
-    public static List<Mount> mountList = new ArrayList<>();
+
+    public static List<Mount> allMountList = new ArrayList<>();
+    public static List<Integer> userMountList = new ArrayList<>(); // store the creatureId
+
+    //Can not be instantiate
+    private WMCApplication(){}
+
+    /**
+     * Loads the list of all the mounts from the json file of the application.
+     */
+    public static void loadAllMounts(Context context){
+        try {
+            JSONObject json = loadJSONFromAsset(context, MOUNTS_FILE);
+            JSONArray mountsArray = json.getJSONArray("mounts");
+            for(int i = 0; i < mountsArray.length(); i++){
+                JSONObject mount = mountsArray.getJSONObject(i);
+                addToAllMounts(new Mount(mount));
+            }
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
 
     public static void setRegion(String r){
         Log.i("OAUTH", "set region to: "+r);
         region = r;
     }
 
-    public static void addMount(Mount mount){
-        if(!mountList.contains(mount)){
-            mountList.add(mount);
+    public static void addUserMount(int creatureId){
+        if(!userMountList.contains(creatureId)){
+            userMountList.add(creatureId);
         }
+    }
+
+    private static void addToAllMounts(Mount mount){
+        if(!allMountList.contains(mount)){
+            allMountList.add(mount);
+        }
+    }
+
+    public static List<Integer> getUserMountList(){
+        return userMountList;
+    }
+
+    public static List<Mount> getALLMountList(){
+        return allMountList;
     }
 
     public static JSONObject loadJSONFromAsset(Context context, String fileName) {

@@ -3,6 +3,7 @@ package com.tpalt.upmc.wowmountcollection;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -37,7 +38,10 @@ public class LoadMountsActivity extends AppCompatActivity {
 
     private String accessToken;
     private RequestQueue mRequestQueue;
+    private final Handler handler = new Handler();
     private int tokenRequestCount = 0;
+
+    private List<WowCharacter> characterList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -118,7 +122,8 @@ public class LoadMountsActivity extends AppCompatActivity {
     }
 
     /**
-     * Send a request to the API to set the user's characters list.
+     * Send a request to the API to get the user's character list and load the mount list.
+     * As it's the first request with the access token, if the request fails we ask another access token.
      */
     private void requestUserCharacters(String code){
         String url = "https://" + WMCApplication.region + ".api.battle.net/wow/user/characters?access_token=" + this.accessToken;
@@ -142,14 +147,7 @@ public class LoadMountsActivity extends AppCompatActivity {
                         if(tokenRequestCount <= 3){
                             tokenRequestCount++;
                             Log.d("OAUTH", "requesting another token...");
-                            try {
-                                //delay to keep the requests number under 100 per second & 36000 per hour
-                                Thread.sleep(1000);
-                                new RequestAccessToken().execute(c);
-
-                            } catch (InterruptedException e) {
-                                e.printStackTrace();
-                            }
+                            new RequestAccessToken().execute(c);
                         }
                         else {
                             //TODO: inform the user
@@ -165,25 +163,18 @@ public class LoadMountsActivity extends AppCompatActivity {
     /**
      * Loads the mounts of each character in the WMCApplication.
      */
-    public void loadMountList(String characterList){
+    public void loadMountList(String characters){
         try {
-            JSONObject charactersJson = new JSONObject(characterList);
+            JSONObject charactersJson = new JSONObject(characters);
             JSONArray charactersArray = charactersJson.getJSONArray("characters");
             Log.d("OAUTH", "nb characters: " + charactersArray.length());
             for(int i = 0; i < charactersArray.length(); i++){
                 JSONObject charac = charactersArray.getJSONObject(i);
-                WowCharacter wowCharacter = new WowCharacter(charac);
-
-                try {
-                    //delay to keep the requests number under 100 per second & 36000 per hour
-                    Thread.sleep(1000);
-                    for(Mount m : wowCharacter.getMountList(getApplicationContext())){
-                        WMCApplication.addMount(m);
-                    }
-
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+                this.characterList.add(new WowCharacter(charac));
+            }
+            if(!this.characterList.isEmpty()) {
+                int characterCpt = 0;
+                requestCharacterMountsRec(characterCpt);
             }
 
         } catch (JSONException e) {
@@ -195,6 +186,59 @@ public class LoadMountsActivity extends AppCompatActivity {
     protected void onDestroy() {
         this.mRequestQueue.stop();
         super.onDestroy();
+    }
+
+    /**
+     * Send recursively requests to the API to get the mounts of the characters and fill the user mount list.
+     */
+    private void requestCharacterMountsRec(int characterCpt){
+        if(characterCpt >= this.characterList.size()) return;
+        WowCharacter character = this.characterList.get(characterCpt);
+        final int newCpt = ++characterCpt;
+
+        final String url = "https://" + WMCApplication.region + ".api.battle.net/wow/character/"
+                + character.getRealm() + "/" + character.getName()
+                +"?fields=mounts&locale=en_US&apikey=" + WMCApplication.getClientId(getApplicationContext());
+        Log.d("LOAD", "request url: "+url);
+
+        //delay to keep the requests number under 100 per second & 36000 per hour
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                        new Response.Listener<String>() {
+                            @Override
+                            public void onResponse(String response) {
+                                // Do something with the response
+                                Log.d("LOAD", "requestCharacterMounts success");
+                                try {
+                                    JSONObject res = new JSONObject(response);
+                                    JSONArray mountsArray = res.getJSONObject("mounts").getJSONArray("collected");
+                                    for(int i = 0; i < mountsArray.length(); i++){
+                                        JSONObject jsonMount = mountsArray.getJSONObject(i);
+                                        WMCApplication.addUserMount(jsonMount.getInt("creatureId"));
+                                    }
+                                    Log.d("LOAD", "userMountList size: "+WMCApplication.getUserMountList().size());
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                                requestCharacterMountsRec(newCpt);
+                            }
+                        },
+                        new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                                // failed probably because the character is to low level to have access to mounts
+                                Log.d("LOAD", "requestCharacterMounts failed");
+                                error.printStackTrace();
+                                //TODO: inform the user
+                                requestCharacterMountsRec(newCpt);
+                            }
+                        });
+
+                mRequestQueue.add(stringRequest);
+            }
+        }, 500);
     }
 
 }

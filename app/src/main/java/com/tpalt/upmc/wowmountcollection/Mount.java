@@ -59,4 +59,40 @@ public class Mount {
         }
         return false;
     }
+
+    public int getCreatureId() {
+        return creatureId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getNameFr() {
+        return nameFr;
+    }
+
+    public boolean isGround() {
+        return isGround;
+    }
+
+    public boolean isFlying() {
+        return isFlying;
+    }
+
+    public boolean isAquatic() {
+        return isAquatic;
+    }
+
+    public Integer getSeats() {
+        return seats;
+    }
+
+    public Integer getDifficulty() {
+        return difficulty;
+    }
+
+    public MountSource getSource() {
+        return source;
+    }
 }

@@ -26,15 +26,26 @@ public class WowCharacter {
             this.realm = characterJson.getString("realm");
             this.level = characterJson.getInt("level");
             this.avatarURL = characterJson.getString("thumbnail");
-            Log.d("OAUTH", "Create new character: "+name+" "+realm+" lvl"+level);
+            Log.d("LOAD", "Create new character: "+name+" "+realm+" lvl"+level);
 
         } catch (JSONException e) {
             e.printStackTrace();
         }
     }
 
-    public List<Mount> getMountList(Context context){
-        //TODO: get mounts from the api
-        return new ArrayList<>();
+    public String getName() {
+        return name;
+    }
+
+    public String getRealm() {
+        return realm;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public String getAvatarURL() {
+        return avatarURL;
     }
 }
