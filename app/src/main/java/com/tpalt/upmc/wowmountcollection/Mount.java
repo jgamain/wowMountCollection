@@ -18,10 +18,13 @@ public class Mount {
     private Integer seats; // can be null
     private Integer difficulty; //can be null
     private MountSource source;
+    private Faction faction;
 
     public enum MountSource{
         VENDOR, LOOT, QUEST, PROFESSION, OTHER
     }
+
+    public enum Faction {HORDE, ALLIANCE}
 
     public Mount(JSONObject jsonMount){
         try {
@@ -38,12 +41,18 @@ public class Mount {
                 difficulty = jsonMount.getInt("difficulty");
 
             if(jsonMount.has("source")){
-                switch (jsonMount.getString("source")){
-                    case "vendor": source = MountSource.VENDOR; break;
-                    case "loot": source = MountSource.LOOT; break;
-                    case "quest": source = MountSource.QUEST; break;
-                    case "profession": source = MountSource.PROFESSION;
+                switch (jsonMount.getString("source").toUpperCase()){
+                    case "VENDOR": source = MountSource.VENDOR; break;
+                    case "LOOT": source = MountSource.LOOT; break;
+                    case "QUEST": source = MountSource.QUEST; break;
+                    case "PROFESSION": source = MountSource.PROFESSION; break;
                     default: source = MountSource.OTHER;
+                }
+            }
+            if(jsonMount.has("faction")){
+                switch (jsonMount.getString("faction").toUpperCase()){
+                    case "ALLIANCE": faction = Faction.ALLIANCE; break;
+                    case "HORDE": faction = Faction.HORDE; break;
                 }
             }
 
@@ -94,5 +103,9 @@ public class Mount {
 
     public MountSource getSource() {
         return source;
+    }
+
+    public Faction getFaction() {
+        return faction;
     }
 }

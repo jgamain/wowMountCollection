@@ -18,6 +18,7 @@ import com.android.volley.toolbox.BasicNetwork;
 import com.android.volley.toolbox.DiskBasedCache;
 import com.android.volley.toolbox.HurlStack;
 import com.android.volley.toolbox.StringRequest;
+import com.tpalt.upmc.wowmountcollection.search.SearchActivity;
 
 import net.smartam.leeloo.client.OAuthClient;
 import net.smartam.leeloo.client.URLConnectionClient;
@@ -192,7 +193,13 @@ public class LoadMountsActivity extends AppCompatActivity {
      * Send recursively requests to the API to get the mounts of the characters and fill the user mount list.
      */
     private void requestCharacterMountsRec(int characterCpt){
-        if(characterCpt >= this.characterList.size()) return;
+        if(characterCpt >= this.characterList.size()){
+            //all the user mounts are loaded
+            Log.d("LOAD", "changing activity");
+            Intent intent = new Intent(this, SearchActivity.class);
+            startActivity(intent);
+            return;
+        }
         WowCharacter character = this.characterList.get(characterCpt);
         final int newCpt = ++characterCpt;
 
@@ -238,7 +245,7 @@ public class LoadMountsActivity extends AppCompatActivity {
 
                 mRequestQueue.add(stringRequest);
             }
-        }, 500);
+        }, 200);
     }
 
 }
