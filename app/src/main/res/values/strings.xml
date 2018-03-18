@@ -2,4 +2,24 @@
     <string name="app_name">WoW Mount Collection</string>
     <string name="asset_statements" translatable="false">[{\n  \"relation\": [\"delegate_permission/common.handle_all_urls\"],\n  \"target\": {\n    \"namespace\": \"web\",\n    \"site\": \"https://www.wowmountcollection.ovh\",\n  }\n}]</string>
     <string name="search_activity_title">Search</string>
+<!-- début de : à supprimer une fois les tests sur les fragments terminés -->
+
+    <string-array name="planets">
+        <item>Sun</item>
+        <item>Mercury</item>
+        <item>Venus</item>
+        <item>Earth</item>
+        <item>Mars</item>
+        <item>Jupiter</item>
+        <item>Saturn</item>
+        <item>Uranus</item>
+        <item>Neptune</item>
+    </string-array>
+
+    <!-- fin de : à supprimer une fois les tests sur les fragments terminés -->
+
+
+
+
+
 </resources>

@@ -17,6 +17,8 @@ import net.smartam.leeloo.common.exception.OAuthSystemException;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import static android.provider.AlarmClock.EXTRA_MESSAGE;
+
 public class MainActivity extends AppCompatActivity {
 
     private String selectedRegion;
@@ -26,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //set default selection for the region
+        //set default selection for the regions
         RadioGroup radioGroup = findViewById(R.id.regionGroup);
         radioGroup.check(R.id.euRegion);
         selectedRegion = "eu";
@@ -46,6 +48,9 @@ public class MainActivity extends AppCompatActivity {
             Mount m = WMCApplication.getALLMountList().get(i);
             Log.d("LOAD", "mount: "+m.getName()+ " - "+m.getNameFr());
         }
+        /*This was added to check if fragment works or not
+        setContentView(R.layout.activity_my_mounts);
+        */
     }
 
 
@@ -100,5 +105,4 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         }
     }
-
 }
