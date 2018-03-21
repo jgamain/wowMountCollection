@@ -26,7 +26,15 @@
             android:onClick="onFiltersClick"/>
     </LinearLayout>
 
-<!-- Fragment list view for results -->
+    <!-- Fragment list view for results
+    <fragment
+        android:id="@+id/fragment1"
+        class="com.tpalt.upmc.wowmountcollection.MyListFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+-->
+
 
     <fragment
         android:id="@+id/bottom_navigation_fragment_search"

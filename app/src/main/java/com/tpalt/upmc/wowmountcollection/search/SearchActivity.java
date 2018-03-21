@@ -1,5 +1,6 @@
 package com.tpalt.upmc.wowmountcollection.search;
 
+import android.app.ListFragment;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
@@ -15,12 +16,18 @@ import android.widget.SearchView;
 
 import com.tpalt.upmc.wowmountcollection.BottomNavigationFragment;
 import com.tpalt.upmc.wowmountcollection.Mount;
+import com.tpalt.upmc.wowmountcollection.MountApplication;
+import com.tpalt.upmc.wowmountcollection.MountArrayAdapter;
+import com.tpalt.upmc.wowmountcollection.MyListFragment;
 import com.tpalt.upmc.wowmountcollection.R;
 import com.tpalt.upmc.wowmountcollection.WMCApplication;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class SearchActivity extends AppCompatActivity implements BottomNavigationFragment.OnFragmentInteractionListener {
+public class SearchActivity extends AppCompatActivity implements BottomNavigationFragment.OnFragmentInteractionListener
+        /*,MyListFragment.OnFragmentInteractionListener*/
+{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,4 +84,24 @@ public class SearchActivity extends AppCompatActivity implements BottomNavigatio
     public void registerFragment(BottomNavigationFragment fragment) {
         fragment.setCurrentActivity(BottomNavigationFragment.NavBarItem.SEARCH);
     }
+
+
+
+
+    /*MyListFragment.OnFragmentInteractionListener
+    @Override
+    public List<Mount> getMounts() {
+        return ((MountApplication)getApplication()).getMounts();
+    }
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
+    }
+
+    @Override
+    public void registerFragment(MyListFragment myListFragment) {
+
+    }
+    */
 }

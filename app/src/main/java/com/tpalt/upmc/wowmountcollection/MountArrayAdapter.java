@@ -19,9 +19,16 @@ import java.util.List;
  */
 
 public class MountArrayAdapter extends ArrayAdapter<Mount> {
-    private Context _context;
+
+    static class MountHolder
+    {
+        //ImageView icon;
+        TextView name;
+    }
+
+   private Context _context;
     int _layoutId;
-    Mount _data [] = null;
+    List<Mount> _data = null;
 
 
     public MountArrayAdapter(Context context,
@@ -30,39 +37,34 @@ public class MountArrayAdapter extends ArrayAdapter<Mount> {
         super(context, layoutId, items);
         _context = context;
         _layoutId = layoutId;
-        _data = (Mount[])items.toArray();
+        _data = items;
     }
 
     @Override
     public View getView(int position, View view, ViewGroup parent) {
-        View row = view;
-        MountHolder holder = null;
         if (view == null) {
-            LayoutInflater inflater = ((Activity)_context).getLayoutInflater();
-            view = inflater.inflate(_layoutId, parent,false);
-            holder = new MountHolder();
-            //holder.imgIcon = (ImageView) row.findViewById(R.id.imgIcon);
-            holder.txtTitle = (TextView)row.findViewById(R.id.txtTitle);
-            //row.setTag(holder);
-
-        }else
-        {
-            holder = (MountHolder)row.getTag();
-
+            view = createView();
         }
+        Mount mount = _data.get(position);
 
-        Mount mount = _data[position];
-        holder.txtTitle.setText(mount.getName());
+        MountHolder holder = (MountHolder) view.getTag();
+        holder.name.setText(mount.getName());
         //holder.imgIcon.setImageResource(mount.getIcon());
 
-        return row;
+        return view;
+    }
+
+    private View createView(){
+        LayoutInflater inflater = LayoutInflater.from(getContext());
+        View view = inflater.inflate(_layoutId, null);
+
+        MountHolder holder = new MountHolder();
+        holder.name = view.findViewById(R.id.name);
+        view.setTag(holder);
+        return view;
     }
 
 
-    static class MountHolder
-    {
-        //ImageView imgIcon;
-        TextView txtTitle;
-    }
+
 
 }
