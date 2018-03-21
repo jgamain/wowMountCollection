@@ -1,6 +1,7 @@
 package com.tpalt.upmc.wowmountcollection.search;
 
 import com.tpalt.upmc.wowmountcollection.Mount;
+import com.tpalt.upmc.wowmountcollection.WMCApplication;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,31 +15,37 @@ public class SearchEngine {
     //search criteria with default values (package private)
     static String name = "";
     //faction
-    static boolean alliance = true;
-    static boolean horde = true;
+    static boolean alliance = false;
+    static boolean horde = false;
     //difficulty
-    static boolean easy = true;
-    static boolean medium = true;
-    static boolean hard = true;
-    static boolean removed = true;
-    static boolean unavailable = true; // not yet in the game
+    static boolean easy = false;
+    static boolean medium = false;
+    static boolean hard = false;
+    static boolean removed = false;
+    static boolean unavailable = false; // not yet in the game
     //seats
-    static boolean oneSeat = true;
-    static boolean twoSeats = true;
-    static boolean threeSeats = true;
+    static boolean oneSeat = false;
+    static boolean twoSeats = false;
+    static boolean threeSeats = false;
     //type
-    static boolean ground = true;
-    static boolean flying = true;
-
+    static boolean ground = false;
+    static boolean flying = false;
     //sources
-    static boolean vendor = true;
-    static boolean loot = true;
-    static boolean quest = true;
-    static boolean profession = true;
-    static boolean other = true;
+    static boolean vendor = false;
+    static boolean loot = false;
+    static boolean quest = false;
+    static boolean profession = false;
+    static boolean other = false;
 
-    public List<Mount> performOn(List<Mount> originList){
-        List<Mount> result = new ArrayList<>(originList);
+    public enum OriginListChoice {
+        ALL_MOUNTS, MY_MOUNTS, MISSING_MOUNTS
+    }
+    static OriginListChoice originList = OriginListChoice.ALL_MOUNTS;
+
+    private SearchEngine(){}
+
+    public static List<Mount> perform(){
+        List<Mount> result = getOriginList();
 
         result = filterName(result);
         result = filterFaction(result);
@@ -50,7 +57,31 @@ public class SearchEngine {
         return result;
     }
 
-    private List<Mount> filterType(List<Mount> origin){
+    private static List<Mount> getOriginList(){
+        List<Mount> result = new ArrayList<>();
+        switch (originList){
+            case ALL_MOUNTS:
+                result.addAll(WMCApplication.getALLMountList());
+                break;
+            case MY_MOUNTS:
+                for(Mount m : WMCApplication.getALLMountList()){
+                    if(WMCApplication.getUserMountList().contains(m.getCreatureId())){
+                        result.add(m);
+                    }
+                }
+                break;
+            case MISSING_MOUNTS:
+                for (Mount m : WMCApplication.getALLMountList()){
+                    if(!WMCApplication.getUserMountList().contains(m.getCreatureId())){
+                        result.add(m);
+                    }
+                }
+                break;
+        }
+        return result;
+    }
+
+    private static List<Mount> filterType(List<Mount> origin){
         if(ground == flying) return origin; // no filter
 
         List<Mount> result = new ArrayList<>();
@@ -62,7 +93,7 @@ public class SearchEngine {
         return result;
     }
 
-    private List<Mount> filterSeats(List<Mount> origin){
+    private static List<Mount> filterSeats(List<Mount> origin){
         if(oneSeat == twoSeats && oneSeat == threeSeats) return origin; // no filter
 
         List<Mount> result = new ArrayList<>();
@@ -77,7 +108,7 @@ public class SearchEngine {
         return result;
     }
 
-    private List<Mount> filterFaction(List<Mount> origin){
+    private static List<Mount> filterFaction(List<Mount> origin){
         if(alliance == horde) return origin;
 
         List<Mount> result = new ArrayList<>();
@@ -91,7 +122,7 @@ public class SearchEngine {
         return result;
     }
 
-    private List<Mount> filterDifficulty(List<Mount> origin){
+    private static List<Mount> filterDifficulty(List<Mount> origin){
         if(easy == medium && easy == hard && easy == removed && easy == unavailable) return origin;
 
         List<Mount> result = new ArrayList<>();
@@ -108,7 +139,7 @@ public class SearchEngine {
         return result;
     }
 
-    private List<Mount> filterSource(List<Mount> origin){
+    private static List<Mount> filterSource(List<Mount> origin){
         if(vendor == loot && vendor == quest && vendor == profession && vendor == other) return origin;
 
         List<Mount> result = new ArrayList<>();
@@ -125,13 +156,42 @@ public class SearchEngine {
         return result;
     }
 
-    private List<Mount> filterName(List<Mount> origin){
+    private static List<Mount> filterName(List<Mount> origin){
         if(name.isEmpty()) return origin;
 
         List<Mount> result = new ArrayList<>();
         for(Mount m : origin){
-            if(m.getName().contains(name)) result.add(m);
+            if(m.getName().toUpperCase().contains(name.toUpperCase())) result.add(m);
         }
         return result;
+    }
+
+    /**
+     * Sets all the filters to their default value (except the name)
+     */
+    public static void resetFilters(){
+        originList = OriginListChoice.ALL_MOUNTS;
+        //faction
+        alliance = false;
+        horde = false;
+        //difficulty
+        easy = false;
+        medium = false;
+        hard = false;
+        removed = false;
+        unavailable = false;
+        //seats
+        oneSeat = false;
+        twoSeats = false;
+        threeSeats = false;
+        //type
+        ground = false;
+        flying = false;
+        //sources
+        vendor = false;
+        loot = false;
+        quest = false;
+        profession = false;
+        other = false;
     }
 }

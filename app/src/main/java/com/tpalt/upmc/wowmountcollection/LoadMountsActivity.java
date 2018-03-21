@@ -245,7 +245,7 @@ public class LoadMountsActivity extends AppCompatActivity {
 
                 mRequestQueue.add(stringRequest);
             }
-        }, 200);
+        }, 0);
     }
 
 }
