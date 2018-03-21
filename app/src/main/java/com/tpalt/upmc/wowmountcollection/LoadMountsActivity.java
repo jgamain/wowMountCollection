@@ -1,6 +1,8 @@
 package com.tpalt.upmc.wowmountcollection;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Handler;
@@ -65,17 +67,30 @@ public class LoadMountsActivity extends AppCompatActivity {
     }
 
     private void handleIntent(Intent intent) {
-        String appLinkAction = intent.getAction();
-        Uri appLinkData = intent.getData();
-        if (Intent.ACTION_VIEW.equals(appLinkAction) && appLinkData != null){
-            Log.d("OAUTH", "**** Catch the redireted URI !");
-            String code = appLinkData.getQueryParameter("code");
+        SharedPreferences sharedPref = this.getSharedPreferences(getString(R.string.pref_name), Context.MODE_PRIVATE);
+        String defaultValue = "defaultValue";
+        String token = sharedPref.getString("accessToken", defaultValue);
+        String code = sharedPref.getString("code", defaultValue);
+        String region = sharedPref.getString("region", defaultValue);
+        if(!token.equals(defaultValue) && !region.equals(defaultValue) && !code.equals(defaultValue)){
+            this.accessToken = token;
+            WMCApplication.setRegion(region);
+            requestUserCharacters(code);
 
-            if(this.accessToken == null){
-                new RequestAccessToken().execute(code);
-            } else {
-                requestUserCharacters(code);
+        } else {
+            String appLinkAction = intent.getAction();
+            Uri appLinkData = intent.getData();
+            if (Intent.ACTION_VIEW.equals(appLinkAction) && appLinkData != null){
+                Log.d("OAUTH", "**** Catch the redirected URI !");
+                code = appLinkData.getQueryParameter("code");
+
+                if(this.accessToken == null){
+                    new RequestAccessToken().execute(code);
+                } else {
+                    requestUserCharacters(code);
+                }
             }
+
         }
     }
 
@@ -118,6 +133,13 @@ public class LoadMountsActivity extends AppCompatActivity {
         protected void onPostExecute(String token) {
             // TODO: check this.exception
             accessToken = token;
+            //save the token in the SharedPreferences
+            SharedPreferences sharedPref = getApplicationContext().getSharedPreferences(getString(R.string.pref_name), MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putString("accessToken", token);
+            editor.putString("code", code);
+            editor.putString("region", WMCApplication.region);
+            editor.commit();
             requestUserCharacters(code);
         }
     }

@@ -1,6 +1,8 @@
 package com.tpalt.upmc.wowmountcollection;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
@@ -51,6 +53,18 @@ public class MainActivity extends AppCompatActivity {
         /*This was added to check if fragment works or not
         setContentView(R.layout.activity_my_mounts);
         */
+
+        //Skip the log in page if we already have the access token
+        SharedPreferences sharedPref = this.getSharedPreferences(getString(R.string.pref_name), Context.MODE_PRIVATE);
+        String defaultValue = "defaultValue";
+        String token = sharedPref.getString("accessToken", defaultValue);
+        String region = sharedPref.getString("region", defaultValue);
+        String code = sharedPref.getString("code", defaultValue);
+        if(!token.equals(defaultValue) && !region.equals(defaultValue) && !code.equals(defaultValue)){
+            Log.d("OAUTH", "Skip log in page");
+            Intent intent = new Intent(this, LoadMountsActivity.class);
+            startActivity(intent);
+        }
     }
 
 
