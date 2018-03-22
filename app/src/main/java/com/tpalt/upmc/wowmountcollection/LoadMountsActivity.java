@@ -218,7 +218,7 @@ public class LoadMountsActivity extends AppCompatActivity {
         if(characterCpt >= this.characterList.size()){
             //all the user mounts are loaded
             Log.d("LOAD", "changing activity");
-            Intent intent = new Intent(this, SearchActivity.class);
+            Intent intent = new Intent(this, MyMountsActivity.class);
             startActivity(intent);
             return;
         }

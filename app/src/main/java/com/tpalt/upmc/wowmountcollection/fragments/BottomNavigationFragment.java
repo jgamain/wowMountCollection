@@ -1,6 +1,7 @@
 package com.tpalt.upmc.wowmountcollection.fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -12,7 +13,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.tpalt.upmc.wowmountcollection.MyMountsActivity;
 import com.tpalt.upmc.wowmountcollection.R;
+import com.tpalt.upmc.wowmountcollection.WishListActivity;
+import com.tpalt.upmc.wowmountcollection.search.SearchActivity;
+import com.tpalt.upmc.wowmountcollection.search.SearchEngine;
 
 
 /**
@@ -24,7 +29,7 @@ import com.tpalt.upmc.wowmountcollection.R;
 public class BottomNavigationFragment extends Fragment {
 
     public enum NavBarItem{
-        MY_MOUNTS, SEARCH, FAVORITES
+        MY_MOUNTS, SEARCH, WISH_LIST
     }
 
     private NavBarItem currentActivity;
@@ -46,7 +51,14 @@ public class BottomNavigationFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_bottom_navigation, container, false);
 
-        ((BottomNavigationView)view.findViewById(R.id.bottom_navigation)).setOnNavigationItemSelectedListener(
+        BottomNavigationView bottomBar = view.findViewById(R.id.bottom_navigation);
+        switch (currentActivity){
+            case MY_MOUNTS: bottomBar.setSelectedItemId(R.id.action_myMounts); break;
+            case SEARCH: bottomBar.setSelectedItemId(R.id.action_search); break;
+            case WISH_LIST: bottomBar.setSelectedItemId(R.id.action_wishlist); break;
+        }
+
+        bottomBar.setOnNavigationItemSelectedListener(
                 new BottomNavigationView.OnNavigationItemSelectedListener() {
                     @Override
                     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -56,16 +68,25 @@ public class BottomNavigationFragment extends Fragment {
                             case R.id.action_myMounts:
                                 if(currentActivity != NavBarItem.MY_MOUNTS){
                                     Log.d("MENU", "go to My mounts");
+                                    Intent intent = new Intent(getContext(), MyMountsActivity.class);
+                                    startActivity(intent);
+                                    getActivity().overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                                 }
                                 break;
                             case R.id.action_search:
                                 if(currentActivity != NavBarItem.SEARCH){
                                     Log.d("MENU", "go to Search");
+                                    Intent intent = new Intent(getContext(), SearchActivity.class);
+                                    startActivity(intent);
+                                    getActivity().overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                                 }
                                 break;
-                            case R.id.action_favorites:
-                                if(currentActivity != NavBarItem.FAVORITES){
-                                    Log.d("MENU", "go to Favorites");
+                            case R.id.action_wishlist:
+                                if(currentActivity != NavBarItem.WISH_LIST){
+                                    Log.d("MENU", "go to Wish list");
+                                    Intent intent = new Intent(getContext(), WishListActivity.class);
+                                    startActivity(intent);
+                                    getActivity().overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                                 }
                                 break;
                         }
@@ -104,8 +125,6 @@ public class BottomNavigationFragment extends Fragment {
      * >Communicating with Other Fragments</a> for more information.
      */
     public interface OnFragmentInteractionListener {
-        void onFragmentInteraction(Uri uri);
-
         void registerFragment(BottomNavigationFragment fragment);
     }
 

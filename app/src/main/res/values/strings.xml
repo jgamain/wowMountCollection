@@ -7,7 +7,7 @@
     <!-- bottom navigation bar -->
     <string name="menu_myMounts">My mounts</string>
     <string name="menu_search">Search</string>
-    <string name="menu_favorites">Favorites</string>
+    <string name="menu_favorites">Wish list</string>
 
     <!-- début de : à supprimer une fois les tests sur les fragments terminés -->
 
