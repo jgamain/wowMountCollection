@@ -16,11 +16,6 @@ import android.widget.RadioGroup;
 import net.smartam.leeloo.client.request.OAuthClientRequest;
 import net.smartam.leeloo.common.exception.OAuthSystemException;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import static android.provider.AlarmClock.EXTRA_MESSAGE;
-
 public class MainActivity extends AppCompatActivity {
 
     private String selectedRegion;

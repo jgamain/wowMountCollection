@@ -1,13 +1,9 @@
 package com.tpalt.upmc.wowmountcollection;
 
-import android.content.Context;
 import android.util.Log;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by Jeanne on 14/03/2018.

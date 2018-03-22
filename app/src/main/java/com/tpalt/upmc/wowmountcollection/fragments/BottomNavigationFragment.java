@@ -1,6 +1,5 @@
-package com.tpalt.upmc.wowmountcollection;
+package com.tpalt.upmc.wowmountcollection.fragments;
 
-import android.app.Activity;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
@@ -12,6 +11,8 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.tpalt.upmc.wowmountcollection.R;
 
 
 /**
