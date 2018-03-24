@@ -1,32 +1,15 @@
 <resources>
     <string name="app_name">WoW Mount Collection</string>
     <string name="asset_statements" translatable="false">[{\n  \"relation\": [\"delegate_permission/common.handle_all_urls\"],\n  \"target\": {\n    \"namespace\": \"web\",\n    \"site\": \"https://www.wowmountcollection.ovh\",\n  }\n}]</string>
+    <!-- Activities labels -->
     <string name="search_activity_title">Search</string>
+    <string name="myMounts_activity_title">My mounts</string>
+    <string name="wishList_activity_title">Wish list</string>
+
     <string name="search_hint">Search mounts</string>
     <string name="pref_name">userdetails</string>
     <!-- bottom navigation bar -->
     <string name="menu_myMounts">My mounts</string>
     <string name="menu_search">Search</string>
     <string name="menu_favorites">Wish list</string>
-
-    <!-- début de : à supprimer une fois les tests sur les fragments terminés -->
-
-    <string-array name="planets">
-        <item>Sun</item>
-        <item>Mercury</item>
-        <item>Venus</item>
-        <item>Earth</item>
-        <item>Mars</item>
-        <item>Jupiter</item>
-        <item>Saturn</item>
-        <item>Uranus</item>
-        <item>Neptune</item>
-    </string-array>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-
-    <!-- fin de : à supprimer une fois les tests sur les fragments terminés -->
-
-
 </resources>

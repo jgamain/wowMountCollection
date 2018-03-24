@@ -70,7 +70,7 @@ public class BottomNavigationFragment extends Fragment {
                                     Log.d("MENU", "go to My mounts");
                                     Intent intent = new Intent(getContext(), MyMountsActivity.class);
                                     startActivity(intent);
-                                    getActivity().overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+                                    //getActivity().overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                                 }
                                 break;
                             case R.id.action_search:
@@ -78,7 +78,7 @@ public class BottomNavigationFragment extends Fragment {
                                     Log.d("MENU", "go to Search");
                                     Intent intent = new Intent(getContext(), SearchActivity.class);
                                     startActivity(intent);
-                                    getActivity().overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+                                    //getActivity().overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                                 }
                                 break;
                             case R.id.action_wishlist:
@@ -86,7 +86,7 @@ public class BottomNavigationFragment extends Fragment {
                                     Log.d("MENU", "go to Wish list");
                                     Intent intent = new Intent(getContext(), WishListActivity.class);
                                     startActivity(intent);
-                                    getActivity().overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+                                    //getActivity().overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                                 }
                                 break;
                         }

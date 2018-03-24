@@ -10,6 +10,9 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -26,8 +29,9 @@ public class WMCApplication {
     public static final String WMC_URL = "https://www.wowmountcollection.ovh";
     public static String region = "eu"; //default value
 
-    public static List<Mount> allMountList = new ArrayList<>();
-    public static List<Integer> userMountList = new ArrayList<>(); // store the creatureId
+    private static List<Mount> allMountList = new ArrayList<>();
+    private static List<Integer> userMountList = new ArrayList<>(); // store the creatureId
+    private static List<Mount> myMountsList = new ArrayList<>();
 
     //Can not be instantiate
     private WMCApplication(){}
@@ -43,7 +47,12 @@ public class WMCApplication {
                 JSONObject mount = mountsArray.getJSONObject(i);
                 addToAllMounts(new Mount(mount));
             }
-
+            Collections.sort(allMountList, new Comparator<Mount>() {
+                @Override
+                public int compare(Mount mount, Mount t1) {
+                    return mount.getName().compareTo(t1.getName());
+                }
+            });
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -72,6 +81,17 @@ public class WMCApplication {
 
     public static List<Mount> getALLMountList(){
         return allMountList;
+    }
+
+    public static List<Mount> getMyMountsList(){
+        if(myMountsList.isEmpty() && !userMountList.isEmpty()){
+            for(Mount mount: allMountList){
+                if(userMountList.contains(mount.getCreatureId())){
+                    myMountsList.add(mount);
+                }
+            }
+        }
+        return myMountsList;
     }
 
     public static JSONObject loadJSONFromAsset(Context context, String fileName) {

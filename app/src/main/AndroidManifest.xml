@@ -40,8 +40,8 @@
         </activity>
         <activity
             android:name=".search.SearchActivity"
-            android:label="@string/search_activity_title">
-
+            android:label="@string/search_activity_title"
+            android:theme="@style/noAnimTheme">
             <!--
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
@@ -52,8 +52,12 @@
                 android:resource="@xml/searchable" />
         </activity>
         <activity android:name=".search.FilterActivity" />
-        <activity android:name=".MyMountsActivity" />
-        <activity android:name=".WishListActivity"></activity>
+        <activity android:name=".MyMountsActivity"
+            android:label="@string/myMounts_activity_title"
+            android:theme="@style/noAnimTheme" />
+        <activity android:name=".WishListActivity"
+            android:label="@string/wishList_activity_title"
+            android:theme="@style/noAnimTheme" />
     </application>
 
 </manifest>

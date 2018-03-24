@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="decoratedText" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@color/decoratedText</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:padding">16dp</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:background">@color/mainTabInactive</item>
+    </style>
+</resources>
