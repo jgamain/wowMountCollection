@@ -37,4 +37,10 @@ dependencies {
 
     //bottom navigation bar
     compile 'com.android.support:design:26.1.0'
+
+    //picasso library
+    implementation 'com.squareup.picasso:picasso:2.71828'
+    compile 'com.squareup.picasso:picasso:2.5.2'
+
+
 }
