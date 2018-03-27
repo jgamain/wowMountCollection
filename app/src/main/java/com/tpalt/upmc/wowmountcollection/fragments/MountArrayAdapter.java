@@ -77,7 +77,7 @@ public class MountArrayAdapter extends ArrayAdapter<Mount> {
 
         holder.addWish = (ImageView) view.findViewById(R.id.wish);
         holder.addWish.setImageResource(R.drawable.ic_favorite_border_black_24dp);
-        loadImageFromUrl(holder);
+        loadImageFromUrl(holder,getContext());
         holder.addWish.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -130,18 +130,17 @@ public class MountArrayAdapter extends ArrayAdapter<Mount> {
         return (int) (dp * Resources.getSystem().getDisplayMetrics().density);
     }
 
-    private void loadImageFromUrl(ViewHolder v) {
+    private void loadImageFromUrl(ViewHolder v, Context c) {
         System.out.println("LOADIMAGE");
         final AtomicBoolean loaded = new AtomicBoolean();
-        Picasso.get().setLoggingEnabled(true);
+        Picasso.with(c).setLoggingEnabled(true);
         Picasso
-                .get()
+                .with(c)
                 .load(v.url)
                 .resize(dpToPx(80), dpToPx(80))
-                .placeholder(R.drawable.ic_search_black_24dp)
+                .placeholder(R.drawable.ic_face_black_24dp)
                 .error(R.drawable.ic_search_black_24dp)
-                .into(v.icon
-                        /*,new com.squareup.picasso.Callback() {
+                .into(v.icon,new com.squareup.picasso.Callback() {
                     @Override
                     public void onSuccess() {
                         loaded.set(true);
@@ -149,11 +148,11 @@ public class MountArrayAdapter extends ArrayAdapter<Mount> {
                     }
 
                     @Override
-                    public void onError(Exception e) {
+                    public void onError() {
                         System.out.println("ERROOOOOOR" + e.toString());
                     }
 
-                }*/);
+                });
 
 
     }
