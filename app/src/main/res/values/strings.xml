@@ -5,6 +5,7 @@
     <string name="search_activity_title">Search</string>
     <string name="myMounts_activity_title">My mounts</string>
     <string name="wishList_activity_title">Wish list</string>
+    <string name="filter_activity_title">Filters</string>
 
     <string name="search_hint">Search mounts</string>
     <string name="pref_name">userdetails</string>
@@ -12,4 +13,9 @@
     <string name="menu_myMounts">My mounts</string>
     <string name="menu_search">Search</string>
     <string name="menu_favorites">Wish list</string>
+    <!-- alert dialog messages -->
+    <string name="alert_dialog_title">Error</string>
+    <string name="connection_error_message">A network error occurred.
+        Please check your network connection and press OK to retry.</string>
+    <string name="ok">OK</string>
 </resources>

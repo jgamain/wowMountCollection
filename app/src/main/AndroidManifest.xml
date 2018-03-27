@@ -51,7 +51,14 @@
                 android:name="android.app.searchable"
                 android:resource="@xml/searchable" />
         </activity>
-        <activity android:name=".search.FilterActivity" />
+        <activity android:name=".search.FilterActivity"
+            android:label="@string/filter_activity_title"
+            android:parentActivityName=".MainActivity">
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
         <activity android:name=".MyMountsActivity"
             android:label="@string/myMounts_activity_title"
             android:theme="@style/noAnimTheme" />
