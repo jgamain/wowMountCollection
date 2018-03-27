@@ -4,9 +4,11 @@ import android.content.Intent;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
@@ -14,6 +16,9 @@ import com.tpalt.upmc.wowmountcollection.R;
 import com.tpalt.upmc.wowmountcollection.search.SearchEngine.OriginListChoice;
 
 public class FilterActivity extends AppCompatActivity {
+
+    private boolean allianceActive = false;
+    private boolean hordeActive = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,8 +51,9 @@ public class FilterActivity extends AppCompatActivity {
             default: SearchEngine.originList = OriginListChoice.ALL_MOUNTS; break;
         }
         //faction
-        SearchEngine.alliance = ((CheckBox)findViewById(R.id.allianceBox)).isChecked();
-        SearchEngine.horde = ((CheckBox)findViewById(R.id.hordeBox)).isChecked();
+        SearchEngine.alliance = allianceActive;
+        SearchEngine.horde = hordeActive;
+
         //type
         SearchEngine.ground = ((CheckBox)findViewById(R.id.groundBox)).isChecked();
         SearchEngine.flying = ((CheckBox)findViewById(R.id.flyingBox)).isChecked();
@@ -77,13 +83,35 @@ public class FilterActivity extends AppCompatActivity {
             case MISSING_MOUNTS: ((RadioButton)findViewById(R.id.missingMounts)).setChecked(true); break;
         }
 
-        CheckBox checkBox = findViewById(R.id.allianceBox);
-        checkBox.setChecked(SearchEngine.alliance);
+        final ImageView allianceIcon = findViewById(R.id.allianceBox);
+        allianceActive = SearchEngine.alliance;
+        if(allianceActive) allianceIcon.setImageResource(R.drawable.ic_favorite_black_24dp);
+        else allianceIcon.setImageResource(R.drawable.ic_favorite_border_black_24dp);
 
-        checkBox = findViewById(R.id.hordeBox);
-        checkBox.setChecked(SearchEngine.horde);
+        allianceIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                allianceActive = !allianceActive;
+                if (allianceActive) allianceIcon.setImageResource(R.drawable.ic_favorite_black_24dp);
+                else allianceIcon.setImageResource(R.drawable.ic_favorite_border_black_24dp);
+            }
+        });
 
-        checkBox = findViewById(R.id.groundBox);
+        final ImageView hordeIcon = findViewById(R.id.hordeBox);
+        hordeActive = SearchEngine.horde;
+        if(hordeActive) hordeIcon.setImageResource(R.drawable.ic_favorite_black_24dp);
+        else hordeIcon.setImageResource(R.drawable.ic_favorite_border_black_24dp);
+
+        hordeIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                hordeActive = !hordeActive;
+                if (hordeActive) hordeIcon.setImageResource(R.drawable.ic_favorite_black_24dp);
+                else hordeIcon.setImageResource(R.drawable.ic_favorite_border_black_24dp);
+            }
+        });
+
+        CheckBox checkBox = findViewById(R.id.groundBox);
         checkBox.setChecked(SearchEngine.ground);
 
         checkBox = findViewById(R.id.flyingBox);
