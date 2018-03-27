@@ -1,11 +1,13 @@
 package com.tpalt.upmc.wowmountcollection;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Handler;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -46,10 +48,26 @@ public class LoadMountsActivity extends AppCompatActivity {
 
     private List<WowCharacter> characterList = new ArrayList<>();
 
+    private AlertDialog connectionErrorDialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_load_mounts);
+
+        //set connectionErrorDialog
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(R.string.connection_error_message)
+                .setTitle(R.string.alert_dialog_title);
+
+        builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                Intent intent = new Intent(getBaseContext(), MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        connectionErrorDialog = builder.create();
 
         startRequestQueue();
         handleIntent(getIntent());
@@ -131,7 +149,6 @@ public class LoadMountsActivity extends AppCompatActivity {
         }
 
         protected void onPostExecute(String token) {
-            // TODO: check this.exception
             accessToken = token;
             //save the token in the SharedPreferences
             SharedPreferences sharedPref = getApplicationContext().getSharedPreferences(getString(R.string.pref_name), MODE_PRIVATE);
@@ -173,7 +190,7 @@ public class LoadMountsActivity extends AppCompatActivity {
                             new RequestAccessToken().execute(c);
                         }
                         else {
-                            //TODO: inform the user
+                            connectionErrorDialog.show();
                         }
                     }
                 });
@@ -208,6 +225,7 @@ public class LoadMountsActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         this.mRequestQueue.stop();
+        connectionErrorDialog.dismiss();
         super.onDestroy();
     }
 
@@ -260,7 +278,6 @@ public class LoadMountsActivity extends AppCompatActivity {
                                 // failed probably because the character is to low level to have access to mounts
                                 Log.d("LOAD", "requestCharacterMounts failed");
                                 error.printStackTrace();
-                                //TODO: inform the user
                                 requestCharacterMountsRec(newCpt);
                             }
                         });

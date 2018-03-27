@@ -12,4 +12,9 @@
     <string name="menu_myMounts">My mounts</string>
     <string name="menu_search">Search</string>
     <string name="menu_favorites">Wish list</string>
+    <!-- alert dialog messages -->
+    <string name="alert_dialog_title">Error</string>
+    <string name="connection_error_message">A network error occurred.
+        Please check your network connection and press OK to retry.</string>
+    <string name="ok">OK</string>
 </resources>

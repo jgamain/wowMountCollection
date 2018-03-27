@@ -149,7 +149,7 @@ public class MountArrayAdapter extends ArrayAdapter<Mount> {
 
                     @Override
                     public void onError() {
-                        System.out.println("ERROOOOOOR" + e.toString());
+                        System.out.println("ERROOOOOOR" );
                     }
 
                 });
