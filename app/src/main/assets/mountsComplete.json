@@ -5593,6 +5593,7 @@
         "faction": "Alliance"
     }, {
         "name": "Illidari Felstalker",
+        "nameFr": "Traqueur gangrené illidari",
         "spellId": 189998,
         "creatureId": 91905,
         "itemId": 128425,
@@ -5601,9 +5602,12 @@
         "isGround": true,
         "isFlying": false,
         "isAquatic": true,
-        "isJumping": true
+        "isJumping": true,
+        "seats": 1,
+        "source": "diverse"
     }, {
         "name": "Gray Kodo",
+        "nameFr": "Kodo gris",
         "spellId": 18989,
         "creatureId": 12149,
         "itemId": 15277,
@@ -5612,9 +5616,14 @@
         "isGround": true,
         "isFlying": false,
         "isAquatic": true,
-        "isJumping": true
+        "isJumping": true,
+        "seats": 1,
+        "difficulty": 1,
+        "source": "vendor",
+        "faction": "Horde"
     }, {
         "name": "Veridian Netherwing Drake",
+        "nameFr": "Drake de l'Aile-du-Néant viride",
         "spellId": 41517,
         "creatureId": 23457,
         "itemId": 32861,
@@ -5623,9 +5632,13 @@
         "isGround": true,
         "isFlying": true,
         "isAquatic": false,
-        "isJumping": false
+        "isJumping": false,
+        "seats": 1,
+        "difficulty": 2,
+        "source": "vendor"
     }, {
         "name": "Red Dragonhawk",
+        "nameFr": "Faucon-dragon rouge",
         "spellId": 61997,
         "creatureId": 32944,
         "itemId": 44842,
@@ -5634,9 +5647,14 @@
         "isGround": true,
         "isFlying": true,
         "isAquatic": false,
-        "isJumping": false
+        "isJumping": false,
+        "seats": 1,
+        "difficulty": 1,
+        "source": "achievement",
+        "faction": "Horde"
     }, {
         "name": "Geosynchronous World Spinner",
+        "nameFr": "File-monde géosynchrone",
         "spellId": 126508,
         "creatureId": 64716,
         "itemId": 87251,
@@ -5645,9 +5663,14 @@
         "isGround": true,
         "isFlying": true,
         "isAquatic": false,
-        "isJumping": false
+        "isJumping": false,
+        "seats": 1,
+        "difficulty": 2,
+        "source": "profession",
+        "profession": "Engineering"
     }, {
         "name": "Grove Warden",
+        "nameFr": "Gardien du Bosquet",
         "spellId": 189999,
         "creatureId": 95827,
         "itemId": 128422,
@@ -5656,9 +5679,13 @@
         "isGround": true,
         "isFlying": true,
         "isAquatic": false,
-        "isJumping": false
+        "isJumping": false,
+        "seats": 1,
+        "difficulty": -1,
+        "source": "quest"
     }, {
         "name": "Brown Kodo",
+        "nameFr": "Kodo brun",
         "spellId": 18990,
         "creatureId": 11689,
         "itemId": 15290,
@@ -5667,9 +5694,14 @@
         "isGround": true,
         "isFlying": false,
         "isAquatic": true,
-        "isJumping": true
+        "isJumping": true,
+        "seats": 1,
+        "difficulty": 1,
+        "source": "vendor",
+        "faction": "Horde"
     }, {
         "name": "Violet Netherwing Drake",
+        "nameFr": "Drake de l'Aile-du-Néant pourpre",
         "spellId": 41518,
         "creatureId": 23459,
         "itemId": 32862,
@@ -5678,9 +5710,13 @@
         "isGround": true,
         "isFlying": true,
         "isAquatic": false,
-        "isJumping": false
+        "isJumping": false,
+        "seats": 1,
+        "difficulty": 2,
+        "source": "vendor"
     }, {
         "name": "Jade Cloud Serpent",
+        "nameFr": "Serpent-nuage de jade",
         "spellId": 113199,
         "creatureId": 58523,
         "itemId": 79802,
@@ -5689,9 +5725,13 @@
         "isGround": true,
         "isFlying": true,
         "isAquatic": false,
-        "isJumping": false
+        "isJumping": false,
+        "seats": 1,
+        "difficulty": 2,
+        "source": "quest"
     }, {
         "name": "Violet Raptor",
+        "nameFr": "Raptor violet",
         "spellId": 10799,
         "creatureId": 7708,
         "itemId": 8592,
@@ -5700,9 +5740,14 @@
         "isGround": true,
         "isFlying": false,
         "isAquatic": true,
-        "isJumping": true
+        "isJumping": true,
+        "seats": 1,
+        "difficulty": 1,
+        "source": "vendor",
+        "faction": "Horde"
     }, {
         "name": "Green Kodo",
+        "nameFr": "Kodo vert",
         "spellId": 18991,
         "creatureId": 12151,
         "itemId": 0,
@@ -5711,9 +5756,14 @@
         "isGround": true,
         "isFlying": false,
         "isAquatic": true,
-        "isJumping": true
+        "isJumping": true,
+        "seats": 1,
+        "difficulty": -1,
+        "source": "vendor",
+        "faction": "Horde"
     }, {
         "name": "Teal Kodo",
+        "nameFr": "Kodo bleu",
         "spellId": 18992,
         "creatureId": 12148,
         "itemId": 0,
@@ -5722,9 +5772,14 @@
         "isGround": true,
         "isFlying": false,
         "isAquatic": true,
-        "isJumping": true
+        "isJumping": true,
+        "seats": 1,
+        "difficulty": -1,
+        "source": "vendor",
+        "faction": "Horde"
     }, {
         "name": "Darkwater Skate",
+        "nameFr": "Raie des eaux sombres",
         "spellId": 228919,
         "creatureId": -73254,
         "itemId": 142398,
@@ -5733,9 +5788,13 @@
         "isGround": false,
         "isFlying": false,
         "isAquatic": true,
-        "isJumping": false
+        "isJumping": false,
+        "seats": 1,
+        "difficulty": 1,
+        "source": "event"
     }, {
         "name": "Red Proto-Drake",
+        "nameFr": "Proto-drake rouge",
         "spellId": 59961,
         "creatureId": 31902,
         "itemId": 44160,
@@ -5744,9 +5803,13 @@
         "isGround": true,
         "isFlying": true,
         "isAquatic": false,
-        "isJumping": false
+        "isJumping": false,
+        "seats": 1,
+        "difficulty": 2,
+        "source": "achievement"
     }, {
         "name": "Ironbound Wraithcharger",
+        "nameFr": "Destrier spectral bardé de fer",
         "spellId": 142910,
         "creatureId": 71497,
         "itemId": 129922,
@@ -5755,9 +5818,13 @@
         "isGround": true,
         "isFlying": true,
         "isAquatic": false,
-        "isJumping": false
+        "isJumping": false,
+        "seats": 1,
+        "difficulty": 2,
+        "source": "event"
     }, {
         "name": "Black Wolf",
+        "nameFr": "Loup noir",
         "spellId": 578,
         "creatureId": 356,
         "itemId": 0,
@@ -5766,9 +5833,14 @@
         "isGround": true,
         "isFlying": false,
         "isAquatic": true,
-        "isJumping": true
+        "isJumping": true,
+        "seats": 1,
+        "difficulty": 1,
+        "source": "vendor",
+        "faction": "Horde"
     }, {
         "name": "Red Wolf",
+        "nameFr": "Loup roux",
         "spellId": 579,
         "creatureId": 4270,
         "itemId": 0,
@@ -5777,9 +5849,14 @@
         "isGround": true,
         "isFlying": false,
         "isAquatic": true,
-        "isJumping": true
+        "isJumping": true,
+        "seats": 1,
+        "difficulty": -1,
+        "source": "vendor",
+        "faction": "Horde"
     }, {
         "name": "Timber Wolf",
+        "nameFr": "Loup des bois",
         "spellId": 580,
         "creatureId": 358,
         "itemId": 1132,
@@ -5788,9 +5865,14 @@
         "isGround": true,
         "isFlying": false,
         "isAquatic": true,
-        "isJumping": true
+        "isJumping": true,
+        "seats": 1,
+        "difficulty": 1,
+        "source": "vendor",
+        "faction": "Horde"
     }, {
         "name": "Winter Wolf",
+        "nameFr": "Loup blanc",
         "spellId": 581,
         "creatureId": 359,
         "itemId": 0,
@@ -5799,9 +5881,14 @@
         "isGround": true,
         "isFlying": false,
         "isAquatic": true,
-        "isJumping": true
+        "isJumping": true,
+        "seats": 1,
+        "difficulty": -1,
+        "source": "vendor",
+        "faction": "Horde"
     }, {
         "name": "Mechanized Lumber Extractor",
+        "nameFr": "Extracteur de bois mécanique",
         "spellId": 223814,
         "creatureId": 112432,
         "itemId": 140500,
@@ -5810,9 +5897,13 @@
         "isGround": true,
         "isFlying": true,
         "isAquatic": false,
-        "isJumping": false
+        "isJumping": false,
+        "seats": 1,
+        "difficulty": 1,
+        "source": "achievement"
     }, {
         "name": "Black Proto-Drake",
+        "nameFr": "Proto-drake noir",
         "spellId": 59976,
         "creatureId": 31912,
         "itemId": 44164,
@@ -5821,9 +5912,13 @@
         "isGround": true,
         "isFlying": true,
         "isAquatic": false,
-        "isJumping": false
+        "isJumping": false,
+        "seats": 1,
+        "difficulty": -1,
+        "source": "achievement"
     }, {
         "name": "Arcanist's Manasaber",
+        "nameFr": "Sabre-de-mana d’arcaniste",
         "spellId": 230987,
         "creatureId": 124149,
         "itemId": 142436,
@@ -5832,20 +5927,13 @@
         "isGround": true,
         "isFlying": true,
         "isAquatic": false,
-        "isJumping": false
-    }, {
-        "name": "Magic Rooster",
-        "spellId": 66123,
-        "creatureId": 34731,
-        "itemId": 0,
-        "qualityId": 1,
-        "icon": "spell_magic_polymorphchicken",
-        "isGround": true,
-        "isFlying": false,
-        "isAquatic": true,
-        "isJumping": true
+        "isJumping": false,
+        "seats": 1,
+        "difficulty": 3,
+        "source": "quest"
     }, {
         "name": "Green Dragon Turtle",
+        "nameFr": "Tortue-dragon verte",
         "spellId": 120395,
         "creatureId": 61809,
         "itemId": 91004,
@@ -5854,29 +5942,10 @@
         "isGround": true,
         "isFlying": false,
         "isAquatic": true,
-        "isJumping": true
-    }, {
-        "name": "Magic Rooster",
-        "spellId": 66122,
-        "creatureId": 34655,
-        "itemId": 0,
-        "qualityId": 1,
-        "icon": "spell_magic_polymorphchicken",
-        "isGround": true,
-        "isFlying": false,
-        "isAquatic": true,
-        "isJumping": true
-    }, {
-        "name": "Magic Rooster",
-        "spellId": 66124,
-        "creatureId": 34732,
-        "itemId": 0,
-        "qualityId": 1,
-        "icon": "spell_magic_polymorphchicken",
-        "isGround": true,
-        "isFlying": false,
-        "isAquatic": true,
-        "isJumping": true
+        "isJumping": true,
+        "seats": 1,
+        "difficulty": 1,
+        "source": "vendor"
     }, {
         "name": "Vicious War Scorpion",
         "spellId": 230988,
