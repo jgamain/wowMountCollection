@@ -19,6 +19,7 @@ public class Mount {
     private Integer difficulty; //can be null
     private MountSource source;
     private Faction faction;
+    private String icon;
 
     public enum MountSource{
         VENDOR, LOOT, QUEST, PROFESSION, OTHER
@@ -55,7 +56,7 @@ public class Mount {
                     case "HORDE": faction = Faction.HORDE; break;
                 }
             }
-
+            icon = jsonMount.getString("icon");
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -108,4 +109,6 @@ public class Mount {
     public Faction getFaction() {
         return faction;
     }
+
+    public String getIcon (){ return icon; }
 }

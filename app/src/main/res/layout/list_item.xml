@@ -14,10 +14,14 @@
         android:layout_margin="@dimen/text_margin"
         android:textAppearance="?attr/textAppearanceListItem" />
 
-    <!--
     <ImageView
         android:id="@+id/mount_icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
-     -->
+
+    <ImageView
+        android:id="@+id/wish"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_favorite_border_black_24dp" />
 </LinearLayout>

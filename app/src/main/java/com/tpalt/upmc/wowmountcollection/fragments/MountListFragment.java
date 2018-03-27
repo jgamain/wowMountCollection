@@ -9,7 +9,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.tpalt.upmc.wowmountcollection.Mount;
 import com.tpalt.upmc.wowmountcollection.R;
@@ -44,16 +47,15 @@ public class MountListFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_mount_list, container, false);
         listView = view.findViewById(R.id.listView);
-        mountList = mListener.getMountList();
 
+        mountList = mListener.getMountList();
         adapter = new MountArrayAdapter(
                 getContext(),
                 R.layout.list_item,
                 mountList);
 
         listView.setAdapter(adapter);
-
-        return view;
+              return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event

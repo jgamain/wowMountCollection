@@ -33,6 +33,7 @@ public class WMCApplication {
     private static List<Integer> userMountList = new ArrayList<>(); // store the creatureId
     private static List<Mount> myMountsList = new ArrayList<>();
 
+    private static List<Mount> wishList = new ArrayList<Mount>();
     //Can not be instantiate
     private WMCApplication(){}
 
@@ -137,5 +138,21 @@ public class WMCApplication {
             }
         }
         return clientSecret;
+    }
+
+    public static void addToWishList(int position){
+        wishList.add(allMountList.get(position));
+    }
+
+    /*remove from all mounts list*/
+    public static void removeFromAllMountToWishList(int position){
+        Mount m = allMountList.get(position);
+        wishList.remove(m);
+    }
+
+
+    /*remove from wish list*/
+    public static void removeFromWishListToWishList(int position){
+        wishList.remove(position);
     }
 }
