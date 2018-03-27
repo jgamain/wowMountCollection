@@ -1,18 +1,13 @@
 package com.tpalt.upmc.wowmountcollection.fragments;
 
 import android.content.Context;
-import android.database.DataSetObserver;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.tpalt.upmc.wowmountcollection.Mount;
 import com.tpalt.upmc.wowmountcollection.R;
@@ -30,7 +25,7 @@ public class MountListFragment extends Fragment {
     private OnFragmentInteractionListener mListener;
     private ListView listView;
     private List<Mount> mountList;
-    private MountArrayAdapter adapter;
+    private SimpleMountArrayAdapterFill adapter;
 
     public MountListFragment() {
         // Required empty public constructor
@@ -49,7 +44,7 @@ public class MountListFragment extends Fragment {
         listView = view.findViewById(R.id.listView);
 
         mountList = mListener.getMountList();
-        adapter = new MountArrayAdapter(
+        adapter = new SimpleMountArrayAdapterFill(
                 getContext(),
                 R.layout.list_item,
                 mountList);

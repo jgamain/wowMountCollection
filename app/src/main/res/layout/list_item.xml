@@ -6,22 +6,28 @@
     android:padding="8dp"
     android:gravity="center_vertical">
 
+    <ImageView
+        android:id="@+id/mount_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+
+        />
+
     <TextView
         android:id="@+id/mount_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="default value"
         android:layout_margin="@dimen/text_margin"
-        android:textAppearance="?attr/textAppearanceListItem" />
-
-    <ImageView
-        android:id="@+id/mount_icon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:textAppearance="?attr/textAppearanceListItem"
+        />
 
     <ImageView
         android:id="@+id/wish"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_favorite_border_black_24dp" />
+        android:src="@drawable/ic_favorite_border_black_24dp"
+
+        />
 </LinearLayout>

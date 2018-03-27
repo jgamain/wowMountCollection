@@ -140,13 +140,18 @@ public class WMCApplication {
         return clientSecret;
     }
 
+    public static List<Mount> getWishList(){ return wishList;}
+
+
     public static void addToWishList(int position){
         wishList.add(allMountList.get(position));
     }
+    public static void addToWishList(Mount m){
+        wishList.add(m);
+    }
 
     /*remove from all mounts list*/
-    public static void removeFromAllMountToWishList(int position){
-        Mount m = allMountList.get(position);
+    public static void removeFromAllMountToWishList(Mount m){
         wishList.remove(m);
     }
 
