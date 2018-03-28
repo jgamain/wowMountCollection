@@ -10,7 +10,6 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -23,6 +22,8 @@ public class WMCApplication {
 
     public static final String MOUNTS_FILE = "mountsComplete.json";
     public static final String KEYS_FILE = "private_keys.json";
+    public static final String WISH_FILE = "wish_mounts.json";
+
     private static String clientId;
     private static String clientSecret;
 
@@ -33,18 +34,22 @@ public class WMCApplication {
     private static List<Integer> userMountList = new ArrayList<>(); // store the creatureId
     private static List<Mount> myMountsList = new ArrayList<>();
 
-    private static List<Mount> wishList = new ArrayList<Mount>();
+
+    private static List<Integer> userWishList = new ArrayList<Integer>(); // store the creatureId
+    private static List<Mount> wishList = new ArrayList<>();
+
     //Can not be instantiate
-    private WMCApplication(){}
+    private WMCApplication() {
+    }
 
     /**
      * Loads the list of all the mounts from the json file of the application.
      */
-    public static void loadAllMounts(Context context){
+    public static void loadAllMounts(Context context) {
         try {
             JSONObject json = loadJSONFromAsset(context, MOUNTS_FILE);
             JSONArray mountsArray = json.getJSONArray("mounts");
-            for(int i = 0; i < mountsArray.length(); i++){
+            for (int i = 0; i < mountsArray.length(); i++) {
                 JSONObject mount = mountsArray.getJSONObject(i);
                 addToAllMounts(new Mount(mount));
             }
@@ -59,35 +64,35 @@ public class WMCApplication {
         }
     }
 
-    public static void setRegion(String r){
-        Log.i("OAUTH", "set region to: "+r);
+    public static void setRegion(String r) {
+        Log.i("OAUTH", "set region to: " + r);
         region = r;
     }
 
-    public static void addUserMount(int creatureId){
-        if(!userMountList.contains(creatureId)){
+    public static void addUserMount(int creatureId) {
+        if (!userMountList.contains(creatureId)) {
             userMountList.add(creatureId);
         }
     }
 
-    private static void addToAllMounts(Mount mount){
-        if(!allMountList.contains(mount)){
+    private static void addToAllMounts(Mount mount) {
+        if (!allMountList.contains(mount)) {
             allMountList.add(mount);
         }
     }
 
-    public static List<Integer> getUserMountList(){
+    public static List<Integer> getUserMountList() {
         return userMountList;
     }
 
-    public static List<Mount> getALLMountList(){
+    public static List<Mount> getALLMountList() {
         return allMountList;
     }
 
-    public static List<Mount> getMyMountsList(){
-        if(myMountsList.isEmpty() && !userMountList.isEmpty()){
-            for(Mount mount: allMountList){
-                if(userMountList.contains(mount.getCreatureId())){
+    public static List<Mount> getMyMountsList() {
+        if (myMountsList.isEmpty() && !userMountList.isEmpty()) {
+            for (Mount mount : allMountList) {
+                if (userMountList.contains(mount.getCreatureId())) {
                     myMountsList.add(mount);
                 }
             }
@@ -114,8 +119,8 @@ public class WMCApplication {
         }
     }
 
-    public static String getClientId(Context context){
-        if(clientId == null){
+    public static String getClientId(Context context) {
+        if (clientId == null) {
             JSONObject keysJson = loadJSONFromAsset(context, KEYS_FILE);
             try {
                 clientId = keysJson.getString("clientId");
@@ -127,8 +132,8 @@ public class WMCApplication {
         return clientId;
     }
 
-    public static String getClientSecret(Context context){
-        if(clientSecret == null){
+    public static String getClientSecret(Context context) {
+        if (clientSecret == null) {
             JSONObject keysJson = loadJSONFromAsset(context, KEYS_FILE);
             try {
                 clientId = keysJson.getString("clientId");
@@ -140,16 +145,45 @@ public class WMCApplication {
         return clientSecret;
     }
 
-    public static List<Mount> getWishList(){ return wishList;}
+    public static List<Mount> getWishList() {
+        return wishList;
+    }
 
-   public static void addToWishList(Mount m){
+    public static void addToWishList(Mount m) {
         wishList.add(m);
     }
+
     /*remove from all mounts list*/
-    public static void removeFromAllMountToWishList(Mount m){
+    public static void removeFromWishList(Mount m) {
         wishList.remove(m);
     }
 
 
-    
+    /**
+     * Loads the list of all wish mounts from the json file of the application.
+     */
+    public static void loadWishMounts(Context context) {
+        Log.d("LOADWISH", "YES");
+
+        try {
+            JSONObject json = loadJSONFromAsset(context, WISH_FILE);
+            JSONArray mountsArray = json.getJSONArray("wish");
+            for (int i = 0; i < mountsArray.length(); i++) {
+                JSONObject mount = mountsArray.getJSONObject(i);
+
+                for (Mount m : allMountList) {
+                    if (m.getCreatureId() == Integer.parseInt(mount.get("creatureId").toString())) {
+                        Log.d("FIND OUT MOUNT", mount.get("creatureId").toString());
+                        wishList.add(m);
+                    }
+                }
+            }
+        } catch (JSONException e) {
+            Log.d("LOADWISH", "FAILURE");
+
+            e.printStackTrace();
+        }
+    }
+
+
 }
