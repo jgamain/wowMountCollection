@@ -42,6 +42,8 @@ public class MainActivity extends AppCompatActivity {
         WMCApplication.loadAllMounts(getApplicationContext());
         Log.d("LOAD", "Total mounts = "+WMCApplication.getALLMountList().size());
 
+        WMCApplication.loadWishMounts(getApplicationContext());
+
         /*This was added to check if fragment works or not
         setContentView(R.layout.activity_my_mounts);
         */

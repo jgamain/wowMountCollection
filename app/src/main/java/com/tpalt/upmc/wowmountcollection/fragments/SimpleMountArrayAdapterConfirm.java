@@ -126,7 +126,7 @@ public class SimpleMountArrayAdapterConfirm extends ArrayAdapter<Mount> implemen
                             DialogInterface dialog,
                             int whichButton) {
 
-                        WMCApplication.removeFromAllMountToWishList(item);
+                        WMCApplication.removeFromWishList(item);
                         notifyDataSetChanged();
                     }
                 });
@@ -134,7 +134,6 @@ public class SimpleMountArrayAdapterConfirm extends ArrayAdapter<Mount> implemen
     }
 
     private void loadImageFromUrl(SimpleMountArrayAdapterConfirm.ViewHolder v, Context c) {
-        System.out.println("LOADIMAGE");
         final AtomicBoolean loaded = new AtomicBoolean();
         //Picasso.with(c).setLoggingEnabled(true);
         Glide.with(c)
