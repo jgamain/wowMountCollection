@@ -85,29 +85,29 @@ public class FilterActivity extends AppCompatActivity {
 
         final ImageView allianceIcon = findViewById(R.id.allianceBox);
         allianceActive = SearchEngine.alliance;
-        if(allianceActive) allianceIcon.setImageResource(R.drawable.ic_favorite_black_24dp);
-        else allianceIcon.setImageResource(R.drawable.ic_favorite_border_black_24dp);
+        if(allianceActive) allianceIcon.setImageResource(R.drawable.ic_alliance_color);
+        else allianceIcon.setImageResource(R.drawable.ic_alliance_grey);
 
         allianceIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 allianceActive = !allianceActive;
-                if (allianceActive) allianceIcon.setImageResource(R.drawable.ic_favorite_black_24dp);
-                else allianceIcon.setImageResource(R.drawable.ic_favorite_border_black_24dp);
+                if (allianceActive) allianceIcon.setImageResource(R.drawable.ic_alliance_color);
+                else allianceIcon.setImageResource(R.drawable.ic_alliance_grey);
             }
         });
 
         final ImageView hordeIcon = findViewById(R.id.hordeBox);
         hordeActive = SearchEngine.horde;
-        if(hordeActive) hordeIcon.setImageResource(R.drawable.ic_favorite_black_24dp);
-        else hordeIcon.setImageResource(R.drawable.ic_favorite_border_black_24dp);
+        if(hordeActive) hordeIcon.setImageResource(R.drawable.ic_horde_red);
+        else hordeIcon.setImageResource(R.drawable.ic_horde_grey);
 
         hordeIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 hordeActive = !hordeActive;
-                if (hordeActive) hordeIcon.setImageResource(R.drawable.ic_favorite_black_24dp);
-                else hordeIcon.setImageResource(R.drawable.ic_favorite_border_black_24dp);
+                if (hordeActive) hordeIcon.setImageResource(R.drawable.ic_horde_red);
+                else hordeIcon.setImageResource(R.drawable.ic_horde_grey);
             }
         });
 
