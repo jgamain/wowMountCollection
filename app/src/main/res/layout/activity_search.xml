@@ -17,16 +17,17 @@
         <SearchView
             android:id="@+id/searchView"
             android:layout_width="0dp"
-            android:layout_weight="3"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
             android:queryHint="@string/search_hint">
         </SearchView>
         <Button
             android:id="@+id/filterButton"
-            android:layout_width="0dp"
-            android:layout_weight="1"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Filters"
+            android:drawableLeft="@drawable/ic_filter_list_black_24dp"
+            android:drawableStart="@drawable/ic_filter_list_black_24dp"
+            android:text=" Filters"
             android:onClick="onFiltersClick"/>
     </LinearLayout>
 
