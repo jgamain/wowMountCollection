@@ -55,7 +55,7 @@ public class SimpleMountArrayAdapterFill extends ArrayAdapter<Mount> implements 
         final SimpleMountArrayAdapterFill.ViewHolder holder = (SimpleMountArrayAdapterFill.ViewHolder) convertView.getTag();
         holder.name.setText(item.getName());
         holder.url = preUrl + item.getIcon() + ".jpg";
-        Log.i("URL ", "voici l'URL :" +holder.url);
+        Log.d("URL ", "voici l'URL :" +holder.url);
         loadImageFromUrl(holder,getContext());
 
         holder.addWish = (ImageView) convertView.findViewById(R.id.wish);
@@ -80,7 +80,7 @@ public class SimpleMountArrayAdapterFill extends ArrayAdapter<Mount> implements 
         holder.name = view.findViewById(R.id.mount_name);
         holder.icon = (ImageView) view.findViewById(R.id.mount_icon);
         if(holder.icon == null){
-            Log.i("holder state" , "NULL");
+            Log.d("holder state" , "NULL");
         }
         holder.addWish = (ImageView) view.findViewById(R.id.wish);
         holder.addWish.setImageResource(R.drawable.ic_favorite_border_black_24dp);
@@ -103,25 +103,31 @@ public class SimpleMountArrayAdapterFill extends ArrayAdapter<Mount> implements 
 
     private void setHeartStatus(Mount item, ViewHolder holder){
         if(WMCApplication.getWishList().contains(item)){
+            Log.d("WISH LIST SIZE 1 :" , "= "+ WMCApplication.getWishList().size());
             WMCApplication.removeFromAllMountToWishList(item);
+            Log.d("WISH LIST SIZE 2 :" , "= "+ WMCApplication.getWishList().size());
+
             holder.addWish.setImageResource(R.drawable.ic_favorite_border_black_24dp);
+            notifyDataSetChanged();
+
         }
         else {
+            Log.d("WISH LIST SIZE 3 :" , "= "+ WMCApplication.getWishList().size());
+
             WMCApplication.addToWishList(item);
+            Log.d("WISH LIST SIZE 4 :" , "= "+ WMCApplication.getWishList().size());
+
             holder.addWish.setImageResource(R.drawable.ic_favorite_black_24dp);
+            notifyDataSetChanged();
+
         }
     }
 
     private void loadImageFromUrl(ViewHolder v, Context c) {
-        System.out.println("LOADIMAGE");
-        final AtomicBoolean loaded = new AtomicBoolean();
-        //Picasso.with(c).setLoggingEnabled(true);
         Glide.with(c)
                 .load(v.url)
                 .placeholder(R.drawable.ic_search_black_24dp)
                 .error(R.drawable.ic_face_black_24dp)
                 .into(v.icon);
-
-
     }
 }

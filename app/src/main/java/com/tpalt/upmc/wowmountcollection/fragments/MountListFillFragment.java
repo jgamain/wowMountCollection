@@ -18,16 +18,16 @@ import java.util.List;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link MountListFragment.OnFragmentInteractionListener} interface
+ * {@link MountListFillFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
  */
-public class MountListFragment extends Fragment {
+public class MountListFillFragment extends Fragment {
     private OnFragmentInteractionListener mListener;
     private ListView listView;
     private List<Mount> mountList;
     private SimpleMountArrayAdapterFill adapter;
 
-    public MountListFragment() {
+    public MountListFillFragment() {
         // Required empty public constructor
     }
 
@@ -103,6 +103,6 @@ public class MountListFragment extends Fragment {
 
         void onFragmentInteraction(Uri uri);
         List<Mount> getMountList();
-        void registerFragment(MountListFragment fragment);
+        void registerFragment(MountListFillFragment fragment);
     }
 }

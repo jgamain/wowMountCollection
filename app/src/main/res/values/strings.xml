@@ -18,4 +18,11 @@
     <string name="connection_error_message">A network error occurred.
         Please check your network connection and press OK to retry.</string>
     <string name="ok">OK</string>
+
+    <!-- alert dialog messages in case of deleting an element from wish list-->
+    <string name="yes">YES</string>
+    <string name="cancel">CANCEL</string>
+    <string name="alert_dialog_deleting">Delete from wish list</string>
+    <string name="confirmation_delete"> Are you sure to delete this from your wish list ?</string>
+
 </resources>

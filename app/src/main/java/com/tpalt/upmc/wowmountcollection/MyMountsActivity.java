@@ -6,14 +6,14 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import com.tpalt.upmc.wowmountcollection.fragments.BottomNavigationFragment;
-import com.tpalt.upmc.wowmountcollection.fragments.MountListFragment;
+import com.tpalt.upmc.wowmountcollection.fragments.MountListFillFragment;
 
 import java.util.List;
 
 public class MyMountsActivity extends AppCompatActivity implements BottomNavigationFragment.OnFragmentInteractionListener,
-        MountListFragment.OnFragmentInteractionListener{
+        MountListFillFragment.OnFragmentInteractionListener{
 
-    private MountListFragment mountListFragement;
+    private MountListFillFragment mountListFragement;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +40,7 @@ public class MyMountsActivity extends AppCompatActivity implements BottomNavigat
     }
 
     @Override
-    public void registerFragment(MountListFragment fragment) {
+    public void registerFragment(MountListFillFragment fragment) {
         this.mountListFragement = fragment;
     }
 }
