@@ -142,22 +142,14 @@ public class WMCApplication {
 
     public static List<Mount> getWishList(){ return wishList;}
 
-
-    public static void addToWishList(int position){
-        wishList.add(allMountList.get(position));
-    }
-    public static void addToWishList(Mount m){
+   public static void addToWishList(Mount m){
         wishList.add(m);
     }
-
     /*remove from all mounts list*/
     public static void removeFromAllMountToWishList(Mount m){
         wishList.remove(m);
     }
 
 
-    /*remove from wish list*/
-    public static void removeFromWishListToWishList(int position){
-        wishList.remove(position);
-    }
+    
 }

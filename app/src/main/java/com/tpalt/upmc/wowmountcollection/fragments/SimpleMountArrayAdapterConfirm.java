@@ -1,6 +1,10 @@
 package com.tpalt.upmc.wowmountcollection.fragments;
 
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.res.Resources;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -33,18 +37,18 @@ public class SimpleMountArrayAdapterConfirm extends ArrayAdapter<Mount> implemen
     }
 
     private final int layoutId;
-    private Context context;
+    private final Context context;
     public final String preUrl = "http://media.blizzard.com/wow/icons/56/";
 
     public SimpleMountArrayAdapterConfirm(@NonNull Context context, int resource, @NonNull List<Mount> objects) {
         super(context, resource, objects);
-        layoutId = resource;
-        context = context;
+        this.layoutId = resource;
+        this.context = context;
     }
 
     @NonNull
     @Override
-    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+    public View getView(final int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         if (convertView == null) {
             convertView = createView();
         }
@@ -74,6 +78,7 @@ public class SimpleMountArrayAdapterConfirm extends ArrayAdapter<Mount> implemen
     public  View createView() {
         LayoutInflater inflater = LayoutInflater.from(getContext());
         View view = inflater.inflate(layoutId, null);
+
         final SimpleMountArrayAdapterConfirm.ViewHolder holder = new SimpleMountArrayAdapterConfirm.ViewHolder();
         holder.name = view.findViewById(R.id.mount_name);
         holder.icon = (ImageView) view.findViewById(R.id.mount_icon);
@@ -92,7 +97,6 @@ public class SimpleMountArrayAdapterConfirm extends ArrayAdapter<Mount> implemen
 
     private void setHeartStatusOut(Mount item, SimpleMountArrayAdapterConfirm.ViewHolder holder){
         if(WMCApplication.getWishList().contains(item)){
-
             holder.addWish.setImageResource(R.drawable.ic_favorite_black_24dp);
         }
         else {
@@ -100,15 +104,33 @@ public class SimpleMountArrayAdapterConfirm extends ArrayAdapter<Mount> implemen
         }
     }
 
-    private void setHeartStatus(Mount item, SimpleMountArrayAdapterConfirm.ViewHolder holder){
-        if(WMCApplication.getWishList().contains(item)){
-            WMCApplication.removeFromAllMountToWishList(item);
-            holder.addWish.setImageResource(R.drawable.ic_favorite_border_black_24dp);
-        }
-        else {
-            WMCApplication.addToWishList(item);
-            holder.addWish.setImageResource(R.drawable.ic_favorite_black_24dp);
-        }
+    private void setHeartStatus(final Mount item, SimpleMountArrayAdapterConfirm.ViewHolder holder){
+        AlertDialog.Builder alert = new AlertDialog.Builder(context);
+
+        alert.setMessage(R.string.confirmation_delete);
+        alert.setTitle(R.string.alert_dialog_deleting);
+        alert.setNegativeButton(R.string.cancel,
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(
+                            DialogInterface dialog,
+                            int whichButton) {
+                        dialog.cancel();
+                    }
+                });
+
+        alert.setPositiveButton(R.string.yes,
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(
+                            DialogInterface dialog,
+                            int whichButton) {
+
+                        WMCApplication.removeFromAllMountToWishList(item);
+                        notifyDataSetChanged();
+                    }
+                });
+        alert.create().show(); // btw show() creates and shows it..
     }
 
     private void loadImageFromUrl(SimpleMountArrayAdapterConfirm.ViewHolder v, Context c) {

@@ -16,7 +16,7 @@
         android:id="@+id/myMounts_list_fragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:name="com.tpalt.upmc.wowmountcollection.fragments.MountListFragment"
+        android:name="com.tpalt.upmc.wowmountcollection.fragments.MountListFillFragment"
         android:layout_below="@id/myMounts_text_view"
         android:layout_above="@+id/bottom_navigation_fragment_mymounts"/>
 

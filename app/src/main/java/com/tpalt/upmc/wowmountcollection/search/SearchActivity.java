@@ -12,7 +12,7 @@ import android.widget.SearchView;
 
 import com.tpalt.upmc.wowmountcollection.fragments.BottomNavigationFragment;
 import com.tpalt.upmc.wowmountcollection.Mount;
-import com.tpalt.upmc.wowmountcollection.fragments.MountListFragment;
+import com.tpalt.upmc.wowmountcollection.fragments.MountListFillFragment;
 import com.tpalt.upmc.wowmountcollection.R;
 import com.tpalt.upmc.wowmountcollection.WMCApplication;
 
@@ -20,10 +20,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SearchActivity extends AppCompatActivity implements BottomNavigationFragment.OnFragmentInteractionListener
-        ,MountListFragment.OnFragmentInteractionListener {
+        ,MountListFillFragment.OnFragmentInteractionListener {
 
     private List<Mount> searchResult = new ArrayList<>();
-    private MountListFragment mountListFragement;
+    private MountListFillFragment mountListFragement;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,7 +102,7 @@ public class SearchActivity extends AppCompatActivity implements BottomNavigatio
     }
 
     @Override
-    public void registerFragment(MountListFragment fragment) {
+    public void registerFragment(MountListFillFragment fragment) {
         this.mountListFragement = fragment;
     }
 
