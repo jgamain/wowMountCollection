@@ -15,15 +15,16 @@ import com.tpalt.upmc.wowmountcollection.Mount;
 import com.tpalt.upmc.wowmountcollection.fragments.MountListFillFragment;
 import com.tpalt.upmc.wowmountcollection.R;
 import com.tpalt.upmc.wowmountcollection.WMCApplication;
+import com.tpalt.upmc.wowmountcollection.fragments.MountListFragment;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class SearchActivity extends AppCompatActivity implements BottomNavigationFragment.OnFragmentInteractionListener
-        ,MountListFillFragment.OnFragmentInteractionListener {
+        ,MountListFragment.OnFragmentInteractionListener {
 
     private List<Mount> searchResult = new ArrayList<>();
-    private MountListFillFragment mountListFragement;
+    private MountListFragment mountListFragement;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,7 +103,7 @@ public class SearchActivity extends AppCompatActivity implements BottomNavigatio
     }
 
     @Override
-    public void registerFragment(MountListFillFragment fragment) {
+    public void registerFragment(MountListFragment fragment) {
         this.mountListFragement = fragment;
     }
 

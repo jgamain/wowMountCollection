@@ -7,15 +7,17 @@ import android.widget.TextView;
 
 import com.tpalt.upmc.wowmountcollection.fragments.BottomNavigationFragment;
 import com.tpalt.upmc.wowmountcollection.fragments.MountListConfirmFragment;
+import com.tpalt.upmc.wowmountcollection.fragments.MountListFillFragment;
+import com.tpalt.upmc.wowmountcollection.fragments.MountListFragment;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class WishListActivity extends AppCompatActivity implements BottomNavigationFragment.OnFragmentInteractionListener,
-        MountListConfirmFragment.OnFragmentInteractionListener{
+        MountListFragment.OnFragmentInteractionListener{
 
     private List<Mount> wishMounts = new ArrayList<>();
-    private MountListConfirmFragment mountListFragement;
+    private MountListFragment mountListFragement;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +48,7 @@ public class WishListActivity extends AppCompatActivity implements BottomNavigat
     }
 
     @Override
-    public void registerFragment(MountListConfirmFragment fragment) {
+    public void registerFragment(MountListFragment fragment) {
         this.mountListFragement = fragment;
     }
 }

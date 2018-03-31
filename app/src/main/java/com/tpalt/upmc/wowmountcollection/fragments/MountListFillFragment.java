@@ -1,31 +1,18 @@
 package com.tpalt.upmc.wowmountcollection.fragments;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
 
-import com.tpalt.upmc.wowmountcollection.Mount;
 import com.tpalt.upmc.wowmountcollection.R;
-
-import java.util.List;
 
 
 /**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link MountListFillFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
+ * Fragment for the ListView with heart icon (without confirm dialog alert).
+ * (used in search activity)
  */
-public class MountListFillFragment extends Fragment {
-    private OnFragmentInteractionListener mListener;
-    private ListView listView;
-    private List<Mount> mountList;
-    private SimpleMountArrayAdapterFill adapter;
+public class MountListFillFragment extends MountListFragment {
 
     public MountListFillFragment() {
         // Required empty public constructor
@@ -46,63 +33,11 @@ public class MountListFillFragment extends Fragment {
         mountList = mListener.getMountList();
         adapter = new SimpleMountArrayAdapterFill(
                 getContext(),
-                R.layout.list_item,
+                R.layout.list_item_heart,
                 mountList);
 
         listView.setAdapter(adapter);
               return view;
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
-    }
-
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-            mListener.registerFragment(this);
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }
-    }
-
-    private void refreshMounts(){
-        adapter.clear();
-        mountList.clear();
-        mountList.addAll(mListener.getMountList());
-    }
-
-    public void refresh(){
-        refreshMounts();
-        adapter.notifyDataSetChanged();
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        mListener = null;
-    }
-
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
-    public interface OnFragmentInteractionListener {        // TODO: Update argument type and name
-
-        void onFragmentInteraction(Uri uri);
-        List<Mount> getMountList();
-        void registerFragment(MountListFillFragment fragment);
-    }
 }

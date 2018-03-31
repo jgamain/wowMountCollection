@@ -2,7 +2,6 @@ package com.tpalt.upmc.wowmountcollection.fragments;
 
 import android.content.Context;
 import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.Log;
@@ -13,14 +12,11 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-
-import com.bumptech.glide.Glide;
 import com.tpalt.upmc.wowmountcollection.Mount;
 import com.tpalt.upmc.wowmountcollection.R;
 import com.tpalt.upmc.wowmountcollection.WMCApplication;
 
 import java.util.List;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
  * Created by Vanessa on 17-Mar-18.
@@ -54,17 +50,19 @@ public class SimpleMountArrayAdapterFill extends ArrayAdapter<Mount> {
         holder.icon.setImageResource(getDrawableId(item.getIcon()));
 
         holder.addWish = (ImageView) convertView.findViewById(R.id.wish);
-
-        /*MAJ de l'état du coeur*/
-        setHeartStatusOut(item,holder);
+        if(holder.addWish != null){
+            /*MAJ de l'état du coeur*/
+            setHeartStatusOut(item,holder);
 
         /*MAJ de l'état du coeur au clic sur le coeur*/
-        holder.addWish.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-               setHeartStatus(item,holder);
-            }
-        });
+            holder.addWish.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    setHeartStatus(item,holder);
+                }
+            });
+        }
+
         return convertView;
     }
 
@@ -89,7 +87,9 @@ public class SimpleMountArrayAdapterFill extends ArrayAdapter<Mount> {
             Log.d("holder state" , "NULL");
         }
         holder.addWish = (ImageView) view.findViewById(R.id.wish);
-        holder.addWish.setImageResource(R.drawable.ic_favorite_border_black_24dp);
+        if(holder.addWish != null){
+            holder.addWish.setImageResource(R.drawable.ic_favorite_border_black_24dp);
+        }
         view.setTag(holder);
         return view;
     }
