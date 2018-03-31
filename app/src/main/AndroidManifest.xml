@@ -42,6 +42,7 @@
             android:name=".search.SearchActivity"
             android:label="@string/search_activity_title"
             android:theme="@style/noAnimTheme">
+
             <!--
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
@@ -51,20 +52,33 @@
                 android:name="android.app.searchable"
                 android:resource="@xml/searchable" />
         </activity>
-        <activity android:name=".search.FilterActivity"
+        <activity
+            android:name=".search.FilterActivity"
             android:label="@string/filter_activity_title"
             android:parentActivityName=".MainActivity">
+
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
-        <activity android:name=".MyMountsActivity"
+        <activity
+            android:name=".MyMountsActivity"
             android:label="@string/myMounts_activity_title"
             android:theme="@style/noAnimTheme" />
-        <activity android:name=".WishListActivity"
+        <activity
+            android:name=".WishListActivity"
             android:label="@string/wishList_activity_title"
             android:theme="@style/noAnimTheme" />
+        <activity android:name=".DetailsActivity"
+            android:label="@string/details_activity_title"
+            android:parentActivityName=".MainActivity">
+
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
     </application>
 
 </manifest>

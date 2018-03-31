@@ -15,10 +15,10 @@ import android.widget.FilterQueryProvider;
 import android.widget.SearchView;
 import android.widget.SimpleCursorAdapter;
 
+import com.tpalt.upmc.wowmountcollection.DetailsActivity;
 import com.tpalt.upmc.wowmountcollection.fragments.BottomNavigationFragment;
 import com.tpalt.upmc.wowmountcollection.Mount;
 import com.tpalt.upmc.wowmountcollection.R;
-import com.tpalt.upmc.wowmountcollection.WMCApplication;
 import com.tpalt.upmc.wowmountcollection.fragments.MountListFragment;
 
 import java.util.ArrayList;
@@ -113,9 +113,10 @@ public class SearchActivity extends AppCompatActivity implements BottomNavigatio
 
             @Override
             public boolean onSuggestionClick(int i) {
-                Mount selectedMount = SearchEngine.getSuggestedMount(i);
-                SearchEngine.name = selectedMount.getName();
-                performSearch();
+                String selectedMount = SearchEngine.getSuggestedMount(i);
+                Intent intent = new Intent(getApplicationContext(), DetailsActivity.class);
+                intent.putExtra("mountName",selectedMount);
+                startActivity(intent);
                 return true;
             }
         });

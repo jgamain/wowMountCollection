@@ -212,9 +212,9 @@ public class SearchEngine {
         return suggestions;
     }
 
-    public static Mount getSuggestedMount(int i){
+    public static String getSuggestedMount(int i){
         if(i >= 0 && i < suggestedMounts.size()){
-            return suggestedMounts.get(i);
+            return suggestedMounts.get(i).getName();
         }
         return null;
     }

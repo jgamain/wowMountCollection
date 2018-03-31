@@ -6,6 +6,7 @@
     <string name="myMounts_activity_title">My mounts</string>
     <string name="wishList_activity_title">Wish list</string>
     <string name="filter_activity_title">Filters</string>
+    <string name="details_activity_title">Details</string>
 
     <string name="search_hint">Search mounts</string>
     <string name="pref_name">userdetails</string>

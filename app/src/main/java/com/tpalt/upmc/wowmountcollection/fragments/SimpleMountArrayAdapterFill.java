@@ -1,6 +1,7 @@
 package com.tpalt.upmc.wowmountcollection.fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -12,6 +13,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.tpalt.upmc.wowmountcollection.DetailsActivity;
 import com.tpalt.upmc.wowmountcollection.Mount;
 import com.tpalt.upmc.wowmountcollection.R;
 import com.tpalt.upmc.wowmountcollection.WMCApplication;
@@ -80,6 +82,15 @@ public class SimpleMountArrayAdapterFill extends ArrayAdapter<Mount> {
     public  View createView() {
         LayoutInflater inflater = LayoutInflater.from(getContext());
         View view = inflater.inflate(layoutId, null);
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                TextView textView = view.findViewById(R.id.mount_name);
+                Intent intent = new Intent(getContext(), DetailsActivity.class);
+                intent.putExtra("mountName",textView.getText());
+                getContext().startActivity(intent);
+            }
+        });
         final SimpleMountArrayAdapterFill.ViewHolder holder = new SimpleMountArrayAdapterFill.ViewHolder();
         holder.name = view.findViewById(R.id.mount_name);
         holder.icon = (ImageView) view.findViewById(R.id.mount_icon);
