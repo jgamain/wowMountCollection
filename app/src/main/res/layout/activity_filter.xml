@@ -15,11 +15,11 @@
         android:text="Reset filters"
         android:onClick="onResetFiltersClick"/>
 
-    <include layout="@layout/filters_grid"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/resetFilters"
-        android:layout_above="@+id/searchButton"/>
+        <include layout="@layout/filters_grid"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/resetFilters"
+            android:layout_above="@+id/searchButton"/>
 
     <Button
         android:id="@+id/searchButton"

@@ -49,7 +49,7 @@ public class SearchActivity extends AppCompatActivity implements BottomNavigatio
 
     public void performSearch(){
         searchResult = SearchEngine.perform();
-        Log.d("FRAGMENT", "result: "+searchResult.size());
+        Log.d("RESEARCH", "result: "+searchResult.size());
         mountListFragement.refresh();
     }
 

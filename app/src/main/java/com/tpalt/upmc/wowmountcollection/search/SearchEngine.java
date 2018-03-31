@@ -32,6 +32,7 @@ public class SearchEngine {
     //type
     static boolean ground = false;
     static boolean flying = false;
+    static boolean aquatic = false;
     //sources
     static boolean vendor = false;
     static boolean loot = false;
@@ -86,11 +87,17 @@ public class SearchEngine {
     }
 
     private static List<Mount> filterType(List<Mount> origin){
-        if(ground == flying) return origin; // no filter
+        if(ground == flying && ground == aquatic) return origin; // no filter
 
         List<Mount> result = new ArrayList<>();
         for(Mount m : origin){
-            if(m.isFlying() == flying){
+            if(ground && m.isGround()){
+                result.add(m);
+            }
+            else if(flying && m.isFlying()){
+                result.add(m);
+            }
+            else if(aquatic && m.isAquatic() && !m.isGround()){
                 result.add(m);
             }
         }
@@ -117,10 +124,13 @@ public class SearchEngine {
 
         List<Mount> result = new ArrayList<>();
         for(Mount m : origin){
-            if(m.getFaction() == null) continue;
-            switch (m.getFaction()){
-                case ALLIANCE: if(alliance) result.add(m); break;
-                case HORDE: if(horde) result.add(m); break;
+            if(m.getFaction() == null){
+                result.add(m);
+            } else {
+                switch (m.getFaction()){
+                    case ALLIANCE: if(alliance) result.add(m); break;
+                    case HORDE: if(horde) result.add(m); break;
+                }
             }
         }
         return result;
@@ -191,6 +201,7 @@ public class SearchEngine {
         //type
         ground = false;
         flying = false;
+        aquatic = false;
         //sources
         vendor = false;
         loot = false;

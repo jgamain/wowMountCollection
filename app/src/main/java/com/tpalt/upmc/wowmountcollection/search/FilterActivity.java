@@ -57,6 +57,7 @@ public class FilterActivity extends AppCompatActivity {
         //type
         SearchEngine.ground = ((CheckBox)findViewById(R.id.groundBox)).isChecked();
         SearchEngine.flying = ((CheckBox)findViewById(R.id.flyingBox)).isChecked();
+        SearchEngine.aquatic = ((CheckBox)findViewById(R.id.aquaticBox)).isChecked();
         //seats
         SearchEngine.oneSeat = ((CheckBox)findViewById(R.id.oneSeatBox)).isChecked();
         SearchEngine.twoSeats = ((CheckBox)findViewById(R.id.twoSeatsBox)).isChecked();
@@ -116,6 +117,9 @@ public class FilterActivity extends AppCompatActivity {
 
         checkBox = findViewById(R.id.flyingBox);
         checkBox.setChecked(SearchEngine.flying);
+
+        checkBox = findViewById(R.id.aquaticBox);
+        checkBox.setChecked(SearchEngine.aquatic);
 
         checkBox = findViewById(R.id.oneSeatBox);
         checkBox.setChecked(SearchEngine.oneSeat);
