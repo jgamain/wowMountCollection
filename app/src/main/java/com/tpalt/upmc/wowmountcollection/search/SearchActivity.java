@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.FilterQueryProvider;
 import android.widget.SearchView;
 import android.widget.SimpleCursorAdapter;
+import android.widget.TextView;
 
 import com.tpalt.upmc.wowmountcollection.DetailsActivity;
 import com.tpalt.upmc.wowmountcollection.fragments.BottomNavigationFragment;
@@ -29,11 +30,14 @@ public class SearchActivity extends AppCompatActivity implements BottomNavigatio
 
     private List<Mount> searchResult = new ArrayList<>();
     private MountListFragment mountListFragement;
+    private TextView header;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
+
+        header = findViewById(R.id.search_header);
 
         initSearchView();
 
@@ -51,6 +55,11 @@ public class SearchActivity extends AppCompatActivity implements BottomNavigatio
         searchResult = SearchEngine.perform();
         Log.d("RESEARCH", "result: "+searchResult.size());
         mountListFragement.refresh();
+        if(searchResult.size() > 1){
+            header.setText("Search results: "+searchResult.size()+" hits");
+        } else {
+            header.setText("Search results: "+searchResult.size()+" hit");
+        }
     }
 
     public void onFiltersClick(View view){
@@ -71,6 +80,11 @@ public class SearchActivity extends AppCompatActivity implements BottomNavigatio
     @Override
     public void registerFragment(MountListFragment fragment) {
         this.mountListFragement = fragment;
+    }
+
+    @Override
+    public void setViewStatus(int status) {
+        if(header != null) header.setVisibility(status);
     }
 
     @Override

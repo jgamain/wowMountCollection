@@ -27,21 +27,13 @@ public class MountListConfirmFragment extends MountListFillFragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_mount_list, container, false);
-        listView = view.findViewById(R.id.listView);
-
-        mountList = mListener.getMountList();
-        Log.d("CONFIRM WISH size = ", " "+ mountList.size());
+    protected void setAdapter(){
         adapter = new SimpleMountArrayAdapterConfirm(
                 getContext(),
                 R.layout.list_item_heart,
                 mountList);
 
         listView.setAdapter(adapter);
-        return view;
     }
 
 }

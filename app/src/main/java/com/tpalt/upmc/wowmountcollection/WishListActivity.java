@@ -18,6 +18,7 @@ public class WishListActivity extends AppCompatActivity implements BottomNavigat
 
     private List<Mount> wishMounts = new ArrayList<>();
     private MountListFragment mountListFragement;
+    private TextView header;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,8 +28,8 @@ public class WishListActivity extends AppCompatActivity implements BottomNavigat
         wishMounts = WMCApplication.getWishList();
         //mountListFragement.refresh();
 
-        TextView text = findViewById(R.id.wish_text);
-        text.setText("Your wish list contains: "+WMCApplication.getWishList().size()+" mount");
+        header = findViewById(R.id.wish_header);
+        header.setText("Your wish list contains "+WMCApplication.getWishList().size()+" mount");
 
     }
 
@@ -50,5 +51,10 @@ public class WishListActivity extends AppCompatActivity implements BottomNavigat
     @Override
     public void registerFragment(MountListFragment fragment) {
         this.mountListFragement = fragment;
+    }
+
+    @Override
+    public void setViewStatus(int status) {
+        if(header != null) header.setVisibility(status);
     }
 }

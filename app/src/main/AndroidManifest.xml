@@ -41,7 +41,8 @@
         <activity
             android:name=".search.SearchActivity"
             android:label="@string/search_activity_title"
-            android:theme="@style/noAnimTheme">
+            android:theme="@style/noAnimTheme"
+            android:windowSoftInputMode="adjustPan">
 
             <!--
             <intent-filter>

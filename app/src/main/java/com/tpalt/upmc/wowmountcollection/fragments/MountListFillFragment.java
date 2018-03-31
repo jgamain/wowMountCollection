@@ -24,20 +24,13 @@ public class MountListFillFragment extends MountListFragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_mount_list, container, false);
-        listView = view.findViewById(R.id.listView);
-
-        mountList = mListener.getMountList();
+    protected void setAdapter(){
         adapter = new SimpleMountArrayAdapterFill(
                 getContext(),
                 R.layout.list_item_heart,
                 mountList);
 
         listView.setAdapter(adapter);
-              return view;
     }
 
 }

@@ -7,17 +7,17 @@
     tools:context="com.tpalt.upmc.wowmountcollection.MyMountsActivity">
 
     <TextView
-        android:id="@+id/myMounts_text_view"
+        android:id="@+id/myMounts_header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        style="@style/decoratedText" />
+        style="@style/decoratedTextWithColor" />
 
     <fragment
         android:id="@+id/myMounts_list_fragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:name="com.tpalt.upmc.wowmountcollection.fragments.MountListFragment"
-        android:layout_below="@id/myMounts_text_view"
+        android:layout_below="@id/myMounts_header"
         android:layout_above="@+id/bottom_navigation_fragment_mymounts"/>
 
     <fragment

@@ -7,18 +7,18 @@
     tools:context="com.tpalt.upmc.wowmountcollection.WishListActivity">
 
     <TextView
-        android:id="@+id/wish_text"
+        android:id="@+id/wish_header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="WishList Activity"
-        style="@style/decoratedText"/>
+        style="@style/decoratedTextWithColor"/>
 
     <fragment
         android:id="@+id/wish_list_fragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:name="com.tpalt.upmc.wowmountcollection.fragments.MountListConfirmFragment"
-        android:layout_below="@id/wish_text"
+        android:layout_below="@id/wish_header"
         android:layout_above="@+id/bottom_navigation_fragment_wishlist"/>
     <fragment
         android:id="@+id/bottom_navigation_fragment_wishlist"

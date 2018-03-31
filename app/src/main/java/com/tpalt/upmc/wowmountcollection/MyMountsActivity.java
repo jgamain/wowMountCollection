@@ -15,14 +15,15 @@ public class MyMountsActivity extends AppCompatActivity implements BottomNavigat
         MountListFragment.OnFragmentInteractionListener{
 
     private MountListFragment mountListFragement;
+    private TextView header;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_mounts);
 
-        TextView text = findViewById(R.id.myMounts_text_view);
-        text.setText("Collected: "+WMCApplication.getUserMountList().size()+"/"+WMCApplication.getALLMountList().size());
+        header = findViewById(R.id.myMounts_header);
+        header.setText("Collected: "+WMCApplication.getUserMountList().size()+"/"+WMCApplication.getALLMountList().size());
     }
 
     @Override
@@ -43,5 +44,10 @@ public class MyMountsActivity extends AppCompatActivity implements BottomNavigat
     @Override
     public void registerFragment(MountListFragment fragment) {
         this.mountListFragement = fragment;
+    }
+
+    @Override
+    public void setViewStatus(int status) {
+        if(header != null) header.setVisibility(status);
     }
 }

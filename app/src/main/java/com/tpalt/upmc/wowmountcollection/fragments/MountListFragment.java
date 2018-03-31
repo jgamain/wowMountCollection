@@ -4,9 +4,11 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.ListView;
 
 import com.tpalt.upmc.wowmountcollection.Mount;
@@ -40,15 +42,19 @@ public class MountListFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_mount_list, container, false);
         listView = view.findViewById(R.id.listView);
-
+        listView.setOnScrollListener(onScrollListener());
         mountList = mListener.getMountList();
+        setAdapter();
+        return view;
+    }
+
+    protected void setAdapter(){
         adapter = new SimpleMountArrayAdapterFill(
                 getContext(),
                 R.layout.list_item,
                 mountList);
 
         listView.setAdapter(adapter);
-        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -102,5 +108,34 @@ public class MountListFragment extends Fragment {
         void onFragmentInteraction(Uri uri);
         List<Mount> getMountList();
         void registerFragment(MountListFragment fragment);
+        void setViewStatus(int status);
+    }
+
+    private AbsListView.OnScrollListener onScrollListener() {
+        return new AbsListView.OnScrollListener() {
+
+            @Override
+            public void onScrollStateChanged(AbsListView view, int scrollState) {
+            }
+
+            @Override
+            public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount,
+                                 int totalItemCount) {
+                if (firstVisibleItem == 0) {
+                    // check if we reached the top or bottom of the list
+                    View v = listView.getChildAt(0);
+                    int offset = (v == null) ? 0 : v.getTop();
+                    if (offset == 0) {
+                        // reached the top: visible header and footer
+                        Log.d("SCROLL", "top reached");
+                        mListener.setViewStatus(View.VISIBLE);
+                    }
+                } else if (totalItemCount - visibleItemCount > firstVisibleItem){
+                    // on scrolling
+                    mListener.setViewStatus(View.GONE);
+                    Log.d("SCROLL", "on scroll");
+                }
+            }
+        };
     }
 }
