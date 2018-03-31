@@ -9,6 +9,8 @@ import org.json.JSONObject;
 
 public class Mount {
 
+    public final static String DEFAULT_ICON = "ability_mount_dreadsteed";
+
     private int creatureId; // can not be null
     private String name;
     private String nameFr;
@@ -56,10 +58,15 @@ public class Mount {
                     case "HORDE": faction = Faction.HORDE; break;
                 }
             }
-            icon = jsonMount.getString("icon");
+            setIcon(jsonMount);
         } catch (JSONException e) {
             e.printStackTrace();
         }
+    }
+
+    private void setIcon(JSONObject jsonMount) throws JSONException {
+        String iconName = jsonMount.getString("icon");
+        icon = iconName.replace("-", "_");
     }
 
     @Override
@@ -110,5 +117,7 @@ public class Mount {
         return faction;
     }
 
-    public String getIcon (){ return icon; }
+    public String getIcon (){
+        return icon;
+    }
 }

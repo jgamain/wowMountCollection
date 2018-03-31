@@ -2,6 +2,7 @@ package com.tpalt.upmc.wowmountcollection.fragments;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.Log;
@@ -25,23 +26,19 @@ import java.util.concurrent.atomic.AtomicBoolean;
  * Created by Vanessa on 17-Mar-18.
  */
 
-public class SimpleMountArrayAdapterFill extends ArrayAdapter<Mount> implements SimpleArrayAdapter{
+public class SimpleMountArrayAdapterFill extends ArrayAdapter<Mount> {
 
-    private static class ViewHolder {
+    protected static class ViewHolder {
         public TextView name;
         public ImageView icon;
         public ImageView addWish;
-        public String url;
     }
 
     private final int layoutId;
-    private Context context;
-    public final String preUrl = "http://media.blizzard.com/wow/icons/56/";
 
     public SimpleMountArrayAdapterFill(@NonNull Context context, int resource, @NonNull List<Mount> objects) {
         super(context, resource, objects);
         layoutId = resource;
-        context = context;
     }
 
     @NonNull
@@ -54,8 +51,7 @@ public class SimpleMountArrayAdapterFill extends ArrayAdapter<Mount> implements 
         final Mount item = getItem(position);
         final SimpleMountArrayAdapterFill.ViewHolder holder = (SimpleMountArrayAdapterFill.ViewHolder) convertView.getTag();
         holder.name.setText(item.getName());
-        holder.url = preUrl + item.getIcon() + ".jpg";
-        loadImageFromUrl(holder,getContext());
+        holder.icon.setImageResource(getDrawableId(item.getIcon()));
 
         holder.addWish = (ImageView) convertView.findViewById(R.id.wish);
 
@@ -70,6 +66,17 @@ public class SimpleMountArrayAdapterFill extends ArrayAdapter<Mount> implements 
             }
         });
         return convertView;
+    }
+
+    private int getDrawableId(String name){
+        Resources resources = getContext().getResources();
+        int resourceId = resources.getIdentifier(name, "drawable",
+                getContext().getPackageName());
+        if(resourceId == 0){
+            resourceId = resources.getIdentifier(Mount.DEFAULT_ICON, "drawable",
+                    getContext().getPackageName());
+        }
+        return resourceId;
     }
 
     public  View createView() {
@@ -100,7 +107,7 @@ public class SimpleMountArrayAdapterFill extends ArrayAdapter<Mount> implements 
         }
     }
 
-    private void setHeartStatus(Mount item, ViewHolder holder){
+    protected void setHeartStatus(final Mount item, ViewHolder holder){
         if(WMCApplication.getWishList().contains(item)){
             WMCApplication.removeFromWishList(item);
             holder.addWish.setImageResource(R.drawable.ic_favorite_border_black_24dp);
@@ -114,7 +121,7 @@ public class SimpleMountArrayAdapterFill extends ArrayAdapter<Mount> implements 
 
         }
     }
-
+/*
     private void loadImageFromUrl(ViewHolder v, Context c) {
         Glide.with(c)
                 .load(v.url)
@@ -122,4 +129,5 @@ public class SimpleMountArrayAdapterFill extends ArrayAdapter<Mount> implements 
                 .error(R.drawable.ic_face_black_24dp)
                 .into(v.icon);
     }
+    */
 }
