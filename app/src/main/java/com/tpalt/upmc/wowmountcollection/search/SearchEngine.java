@@ -1,5 +1,7 @@
 package com.tpalt.upmc.wowmountcollection.search;
 
+import android.util.Log;
+
 import com.tpalt.upmc.wowmountcollection.Mount;
 import com.tpalt.upmc.wowmountcollection.WMCApplication;
 
@@ -41,6 +43,8 @@ public class SearchEngine {
         ALL_MOUNTS, MY_MOUNTS, MISSING_MOUNTS
     }
     static OriginListChoice originList = OriginListChoice.ALL_MOUNTS;
+
+    private static List<Mount> suggestedMounts = new ArrayList<>();
 
     private SearchEngine(){}
 
@@ -193,5 +197,25 @@ public class SearchEngine {
         quest = false;
         profession = false;
         other = false;
+    }
+
+    public static List<String> getSuggestions(String query){
+        String constraint = query.toUpperCase();
+        List<String> suggestions = new ArrayList<>();
+        suggestedMounts.clear();
+        for(Mount m : getOriginList()){
+            if(m.getName().toUpperCase().startsWith(constraint)){
+                suggestions.add(m.getName());
+                suggestedMounts.add(m);
+            }
+        }
+        return suggestions;
+    }
+
+    public static Mount getSuggestedMount(int i){
+        if(i >= 0 && i < suggestedMounts.size()){
+            return suggestedMounts.get(i);
+        }
+        return null;
     }
 }

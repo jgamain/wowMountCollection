@@ -38,7 +38,7 @@ public class FilterActivity extends AppCompatActivity {
     public void onSearchButtonClick(View view){
         saveFilters();
         Intent intent = new Intent(this, SearchActivity.class);
-        intent.putExtra("methodName","preformSearch");
+        intent.putExtra("methodName","performSearch");
         startActivity(intent);
     }
 
