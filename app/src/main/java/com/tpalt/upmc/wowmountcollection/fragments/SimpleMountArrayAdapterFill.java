@@ -120,13 +120,13 @@ public class SimpleMountArrayAdapterFill extends ArrayAdapter<Mount> {
 
     protected void setHeartStatus(final Mount item, ViewHolder holder){
         if(WMCApplication.getWishList().contains(item)){
-            WMCApplication.removeFromWishList(item);
+            WMCApplication.removeFromWishList(item,getContext());
             holder.addWish.setImageResource(R.drawable.ic_favorite_border_black_24dp);
             notifyDataSetChanged();
 
         }
         else {
-            WMCApplication.addToWishList(item);
+            WMCApplication.addToWishList(item,getContext());
             holder.addWish.setImageResource(R.drawable.ic_favorite_black_24dp);
             notifyDataSetChanged();
 

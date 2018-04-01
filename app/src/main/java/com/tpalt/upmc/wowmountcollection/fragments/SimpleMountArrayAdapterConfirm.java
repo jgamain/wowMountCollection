@@ -43,7 +43,7 @@ public class SimpleMountArrayAdapterConfirm extends SimpleMountArrayAdapterFill 
                             DialogInterface dialog,
                             int whichButton) {
 
-                        WMCApplication.removeFromWishList(item);
+                        WMCApplication.removeFromWishList(item,getContext());
                         notifyDataSetChanged();
                     }
                 });

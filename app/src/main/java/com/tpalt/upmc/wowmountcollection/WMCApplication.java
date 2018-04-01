@@ -1,12 +1,14 @@
 package com.tpalt.upmc.wowmountcollection;
 
 import android.content.Context;
+import android.os.Environment;
 import android.util.Log;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -35,7 +37,7 @@ public class WMCApplication {
     private static List<Mount> myMountsList = new ArrayList<>();
 
 
-    private static List<Integer> userWishList = new ArrayList<Integer>(); // store the creatureId
+    private static List<Integer> userWishList = new ArrayList<>(); // store the creatureId
     private static List<Mount> wishList = new ArrayList<>();
 
     //Can not be instantiate
@@ -97,6 +99,7 @@ public class WMCApplication {
                 }
             }
         }
+        Log.d("My" , "= "+ myMountsList.size());
         return myMountsList;
     }
 
@@ -149,13 +152,15 @@ public class WMCApplication {
         return wishList;
     }
 
-    public static void addToWishList(Mount m) {
+    public static void addToWishList(Mount m,Context context) {
         wishList.add(m);
+        addMountToWishFile(m,context);
     }
 
     /*remove from all mounts list*/
-    public static void removeFromWishList(Mount m) {
+    public static void removeFromWishList(Mount m,Context context) {
         wishList.remove(m);
+        deleteMountToWishFile(m,context);
     }
 
 
@@ -164,26 +169,47 @@ public class WMCApplication {
      */
     public static void loadWishMounts(Context context) {
         Log.d("LOADWISH", "YES");
+        File directory = new File( Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), "needs");
 
-        try {
-            JSONObject json = loadJSONFromAsset(context, WISH_FILE);
-            JSONArray mountsArray = json.getJSONArray("wish");
-            for (int i = 0; i < mountsArray.length(); i++) {
-                JSONObject mount = mountsArray.getJSONObject(i);
+           if (!directory.exists()) {
+               try {
+               directory.mkdirs();
 
-                for (Mount m : allMountList) {
-                    if (m.getCreatureId() == Integer.parseInt(mount.get("creatureId").toString())) {
-                        Log.d("FIND OUT MOUNT", mount.get("creatureId").toString());
-                        wishList.add(m);
-                    }
-                }
-            }
-        } catch (JSONException e) {
-            Log.d("LOADWISH", "FAILURE");
-
-            e.printStackTrace();
-        }
+               }
+               catch(Exception e){
+                   e.printStackTrace();
+                   System.err.println("MKDIRS echec");
+               }
+           }
+           System.out.println("FIN MKDIR");
+        //AccessFile.readFile(context,directory);
     }
+
+    public static boolean addWishList(Mount m){
+        return wishList.add(m);
+    }
+
+
+
+
+    public static void addMountToWishFile(Mount m,Context context){
+        Log.d("WRITEFILE_ADD", "YES");
+
+        File directory = new File( Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), "needs");
+
+        //AccessFile.writeFile(m,context,directory,true);
+    }
+
+    public static void deleteMountToWishFile(Mount m,Context context){
+        Log.d("WRITEFILE_DELETE", "YES");
+
+        File directory = new File( Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), "needs");
+
+        //AccessFile.writeFile(m,context,directory,false);
+
+    }
+
+
 
 
 }
