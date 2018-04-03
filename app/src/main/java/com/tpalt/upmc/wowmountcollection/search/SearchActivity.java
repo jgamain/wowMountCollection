@@ -62,6 +62,12 @@ public class SearchActivity extends AppCompatActivity implements BottomNavigatio
         }
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mountListFragement.notifyDataSetChanged();
+    }
+
     public void onFiltersClick(View view){
         Intent intent = new Intent(this, FilterActivity.class);
         startActivity(intent);
