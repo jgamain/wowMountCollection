@@ -214,8 +214,6 @@ public class WMCApplication {
     }
 
 
-
-
     public static void addMountToWishFile(Mount m,Context context){
         Log.d("WRITEFILE_ADD", "YES");
 
@@ -233,7 +231,11 @@ public class WMCApplication {
 
     }
 
-
-
+    public static Mount getMountByName(String name){
+        for(Mount m : allMountList){
+            if(m.getName().equalsIgnoreCase(name)) return m;
+        }
+        return null;
+    }
 
 }

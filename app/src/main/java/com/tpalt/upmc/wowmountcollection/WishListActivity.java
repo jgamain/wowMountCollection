@@ -16,7 +16,6 @@ import java.util.List;
 public class WishListActivity extends AppCompatActivity implements BottomNavigationFragment.OnFragmentInteractionListener,
         MountListFragment.OnFragmentInteractionListener{
 
-    private List<Mount> wishMounts = new ArrayList<>();
     private MountListFragment mountListFragement;
     private TextView header;
 
@@ -24,9 +23,6 @@ public class WishListActivity extends AppCompatActivity implements BottomNavigat
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wish_list);
-
-        wishMounts = WMCApplication.getWishList();
-        //mountListFragement.refresh();
 
         header = findViewById(R.id.wish_header);
         header.setText("Your wish list contains "+WMCApplication.getWishList().size()+" mount");
@@ -57,4 +53,5 @@ public class WishListActivity extends AppCompatActivity implements BottomNavigat
     public void setViewStatus(int status) {
         if(header != null) header.setVisibility(status);
     }
+
 }
