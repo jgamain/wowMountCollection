@@ -53,30 +53,21 @@ public class SearchActivity extends AppCompatActivity implements BottomNavigatio
     }
 
     public void performSearch(){
-        searchResult = SearchEngine.perform();
+        searchResult.clear();
+        searchResult.addAll(SearchEngine.perform());
         Log.d("RESEARCH", "result: "+searchResult.size());
         mountListFragement.refresh();
-        if(searchResult.size() > 1){
-            header.setText("Search results: "+searchResult.size()+" hits");
-        } else {
-            header.setText("Search results: "+searchResult.size()+" hit");
-        }
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        mountListFragement.notifyDataSetChanged();
+        mountListFragement.refresh();
     }
 
     public void onFiltersClick(View view){
         Intent intent = new Intent(this, FilterActivity.class);
         startActivity(intent);
-    }
-
-    @Override
-    public void onFragmentInteraction(Uri uri) {
-
     }
 
     @Override
@@ -92,6 +83,15 @@ public class SearchActivity extends AppCompatActivity implements BottomNavigatio
     @Override
     public void setViewStatus(int status) {
         if(header != null) header.setVisibility(status);
+    }
+
+    @Override
+    public void refreshHeader() {
+        if(searchResult.size() > 1){
+            header.setText("Search results: "+searchResult.size()+" hits");
+        } else {
+            header.setText("Search results: "+searchResult.size()+" hit");
+        }
     }
 
     @Override

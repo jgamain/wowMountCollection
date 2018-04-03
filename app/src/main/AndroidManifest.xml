@@ -3,8 +3,9 @@
     package="com.tpalt.upmc.wowmountcollection">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/app_icon"
@@ -72,7 +73,8 @@
             android:name=".WishListActivity"
             android:label="@string/wishList_activity_title"
             android:theme="@style/noAnimTheme" />
-        <activity android:name=".DetailsActivity"
+        <activity
+            android:name=".DetailsActivity"
             android:label="@string/details_activity_title"
             android:parentActivityName=".MainActivity">
 
@@ -81,6 +83,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
+        <activity android:name=".ImageDialogActivity" />
     </application>
 
 </manifest>

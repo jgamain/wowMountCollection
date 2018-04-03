@@ -1,16 +1,11 @@
 package com.tpalt.upmc.wowmountcollection;
 
-import android.os.PersistableBundle;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.tpalt.upmc.wowmountcollection.search.SearchEngine;
 
 public class DetailsActivity extends AppCompatActivity {
 
@@ -112,5 +107,11 @@ public class DetailsActivity extends AppCompatActivity {
         } else {
             seats.append(Integer.toString(mount.getSeats()));
         }
+    }
+
+    public void showImage(View view){
+        Intent intent = new Intent(this, ImageDialogActivity.class);
+        intent.putExtra("creatureId", mount.getCreatureId());
+        startActivity(intent);
     }
 }

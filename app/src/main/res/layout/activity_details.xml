@@ -44,14 +44,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                app:srcCompat="@drawable/ability_mount_dreadsteed" />
+                app:srcCompat="@drawable/ability_mount_dreadsteed"
+                android:onClick="showImage"/>
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@+id/details_mount_icon"
                 android:layout_toEndOf="@+id/details_mount_icon"
                 android:layout_alignParentBottom="true"
-                android:src="@drawable/ic_zoom_in_black_24dp"/>
+                android:src="@drawable/ic_zoom_in_black_24dp"
+                android:onClick="showImage"/>
         </RelativeLayout>
 
         <TextView

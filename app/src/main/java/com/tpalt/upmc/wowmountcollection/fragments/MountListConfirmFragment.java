@@ -1,10 +1,6 @@
 package com.tpalt.upmc.wowmountcollection.fragments;
 
 import android.os.Bundle;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import com.tpalt.upmc.wowmountcollection.R;
 
 /**
@@ -31,7 +27,7 @@ public class MountListConfirmFragment extends MountListFillFragment {
         adapter = new SimpleMountArrayAdapterConfirm(
                 getContext(),
                 R.layout.list_item_heart,
-                mountList);
+                mountList, this);
 
         listView.setAdapter(adapter);
     }

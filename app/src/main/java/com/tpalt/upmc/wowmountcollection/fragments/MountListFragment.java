@@ -1,7 +1,6 @@
 package com.tpalt.upmc.wowmountcollection.fragments;
 
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -57,13 +56,6 @@ public class MountListFragment extends Fragment {
         listView.setAdapter(adapter);
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
-    }
-
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -76,19 +68,9 @@ public class MountListFragment extends Fragment {
         }
     }
 
-    private void refreshMounts(){
-        adapter.clear();
-        mountList.clear();
-        mountList.addAll(mListener.getMountList());
-    }
-
     public void refresh(){
-        refreshMounts();
         adapter.notifyDataSetChanged();
-    }
-
-    public void notifyDataSetChanged(){
-        adapter.notifyDataSetChanged();
+        mListener.refreshHeader();
     }
 
     @Override
@@ -107,12 +89,11 @@ public class MountListFragment extends Fragment {
      * "http://developer.android.com/training/basics/fragments/communicating.html"
      * >Communicating with Other Fragments</a> for more information.
      */
-    public interface OnFragmentInteractionListener {        // TODO: Update argument type and name
-
-        void onFragmentInteraction(Uri uri);
+    public interface OnFragmentInteractionListener {
         List<Mount> getMountList();
         void registerFragment(MountListFragment fragment);
         void setViewStatus(int status);
+        void refreshHeader();
     }
 
     private AbsListView.OnScrollListener onScrollListener() {

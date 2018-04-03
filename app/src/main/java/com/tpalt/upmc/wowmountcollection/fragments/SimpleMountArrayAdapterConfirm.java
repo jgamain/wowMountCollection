@@ -16,8 +16,11 @@ import java.util.List;
 
 public class SimpleMountArrayAdapterConfirm extends SimpleMountArrayAdapterFill {
 
-    public SimpleMountArrayAdapterConfirm(@NonNull Context context, int resource, @NonNull List<Mount> objects) {
+    MountListConfirmFragment fragment;
+
+    public SimpleMountArrayAdapterConfirm(@NonNull Context context, int resource, @NonNull List<Mount> objects, MountListConfirmFragment fragment) {
         super(context, resource, objects);
+        this.fragment = fragment;
     }
 
     @Override
@@ -42,9 +45,8 @@ public class SimpleMountArrayAdapterConfirm extends SimpleMountArrayAdapterFill 
                     public void onClick(
                             DialogInterface dialog,
                             int whichButton) {
-
                         WMCApplication.removeFromWishList(item,getContext());
-                        notifyDataSetChanged();
+                        fragment.refresh();
                     }
                 });
         alert.create().show(); // btw show() creates and shows it..

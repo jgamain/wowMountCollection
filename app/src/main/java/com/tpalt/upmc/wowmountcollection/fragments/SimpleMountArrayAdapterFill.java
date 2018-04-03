@@ -123,13 +123,5 @@ public class SimpleMountArrayAdapterFill extends ArrayAdapter<Mount> {
 
         }
     }
-/*
-    private void loadImageFromUrl(ViewHolder v, Context c) {
-        Glide.with(c)
-                .load(v.url)
-                .placeholder(R.drawable.ic_search_black_24dp)
-                .error(R.drawable.ic_face_black_24dp)
-                .into(v.icon);
-    }
-    */
+
 }
