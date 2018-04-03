@@ -17,6 +17,7 @@ import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 
 import com.tpalt.upmc.wowmountcollection.DetailsActivity;
+import com.tpalt.upmc.wowmountcollection.WMCApplication;
 import com.tpalt.upmc.wowmountcollection.fragments.BottomNavigationFragment;
 import com.tpalt.upmc.wowmountcollection.Mount;
 import com.tpalt.upmc.wowmountcollection.R;
@@ -133,9 +134,10 @@ public class SearchActivity extends AppCompatActivity implements BottomNavigatio
 
             @Override
             public boolean onSuggestionClick(int i) {
-                String selectedMount = SearchEngine.getSuggestedMount(i);
+                String selectedName = SearchEngine.getSuggestedMount(i);
+                Mount selectedMount = WMCApplication.getMountByName(selectedName);
                 Intent intent = new Intent(getApplicationContext(), DetailsActivity.class);
-                intent.putExtra("mountName",selectedMount);
+                intent.putExtra("creatureId",selectedMount.getCreatureId());
                 startActivity(intent);
                 return true;
             }

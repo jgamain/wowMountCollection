@@ -13,9 +13,7 @@ import android.widget.ListView;
 
 import com.tpalt.upmc.wowmountcollection.Mount;
 import com.tpalt.upmc.wowmountcollection.R;
-import com.tpalt.upmc.wowmountcollection.WMCApplication;
 
-import java.util.ArrayList;
 import java.util.List;
 
 

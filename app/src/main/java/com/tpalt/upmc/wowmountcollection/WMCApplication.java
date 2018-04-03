@@ -1,6 +1,7 @@
 package com.tpalt.upmc.wowmountcollection;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.os.Environment;
 import android.util.Log;
 
@@ -207,11 +208,34 @@ public class WMCApplication {
 
     }
 
-    public static Mount getMountByName(String name){
+    public static Mount getMountById(int creatureId){
         for(Mount m : allMountList){
-            if(m.getName().equalsIgnoreCase(name)) return m;
+            if(m.getCreatureId() == creatureId) return m;
         }
         return null;
     }
 
+    /**
+     * Returns the first mount found with the given name (mounts' names are not unique).
+     */
+    public static Mount getMountByName(String mountName){
+        for(Mount m : allMountList){
+            if(m.getName().equalsIgnoreCase(mountName)) return m;
+        }
+        return null;
+    }
+
+    /**
+     * Returns the drawable id of the given file name or the default mount icon if the resource is not found.
+     */
+    public static int getDrawableId(String iconName, Context context){
+        Resources resources = context.getResources();
+        int resourceId = resources.getIdentifier(iconName, "drawable",
+                context.getPackageName());
+        if(resourceId == 0){
+            resourceId = resources.getIdentifier(Mount.DEFAULT_ICON, "drawable",
+                    context.getPackageName());
+        }
+        return resourceId;
+    }
 }

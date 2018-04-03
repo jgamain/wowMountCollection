@@ -30,6 +30,7 @@ public class SimpleMountArrayAdapterFill extends ArrayAdapter<Mount> {
         public TextView name;
         public ImageView icon;
         public ImageView addWish;
+        public int creatureId;
     }
 
     private final int layoutId;
@@ -49,7 +50,8 @@ public class SimpleMountArrayAdapterFill extends ArrayAdapter<Mount> {
         final Mount item = getItem(position);
         final SimpleMountArrayAdapterFill.ViewHolder holder = (SimpleMountArrayAdapterFill.ViewHolder) convertView.getTag();
         holder.name.setText(item.getName());
-        holder.icon.setImageResource(getDrawableId(item.getIcon()));
+        holder.creatureId = item.getCreatureId();
+        holder.icon.setImageResource(WMCApplication.getDrawableId(item.getIcon(), getContext()));
 
         holder.addWish = (ImageView) convertView.findViewById(R.id.wish);
         if(holder.addWish != null){
@@ -68,26 +70,15 @@ public class SimpleMountArrayAdapterFill extends ArrayAdapter<Mount> {
         return convertView;
     }
 
-    private int getDrawableId(String name){
-        Resources resources = getContext().getResources();
-        int resourceId = resources.getIdentifier(name, "drawable",
-                getContext().getPackageName());
-        if(resourceId == 0){
-            resourceId = resources.getIdentifier(Mount.DEFAULT_ICON, "drawable",
-                    getContext().getPackageName());
-        }
-        return resourceId;
-    }
-
     public  View createView() {
         LayoutInflater inflater = LayoutInflater.from(getContext());
         View view = inflater.inflate(layoutId, null);
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                TextView textView = view.findViewById(R.id.mount_name);
+                final ViewHolder holder = (ViewHolder)view.getTag();
                 Intent intent = new Intent(getContext(), DetailsActivity.class);
-                intent.putExtra("mountName",textView.getText());
+                intent.putExtra("creatureId", holder.creatureId);
                 getContext().startActivity(intent);
             }
         });

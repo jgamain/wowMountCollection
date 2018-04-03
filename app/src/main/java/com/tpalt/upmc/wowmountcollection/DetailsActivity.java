@@ -1,9 +1,12 @@
 package com.tpalt.upmc.wowmountcollection;
 
+import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -20,20 +23,22 @@ public class DetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
 
+        int creatureId;
         if(savedInstanceState == null) {
             Bundle extras = getIntent().getExtras();
             if (extras == null) {
                 this.finish();
             }
-            String mountName = extras.getString("mountName");
-            if (TextUtils.isEmpty(mountName)){
-                this.finish();
-            }
-            TextView name = findViewById(R.id.details_mount_name);
-            name.setText(mountName);
-            mount = WMCApplication.getMountByName(mountName);
+            creatureId = extras.getInt("creatureId");
+        } else {
+            creatureId = savedInstanceState.getInt("creatureId");
         }
 
+        mount = WMCApplication.getMountById(creatureId);
+        TextView name = findViewById(R.id.details_mount_name);
+        name.setText(mount.getName());
+
+        //set favorite icon
         favIcon = findViewById(R.id.details_fav);
         wished = WMCApplication.getWishList().contains(mount);
         setFavIconStatus();
@@ -47,6 +52,17 @@ public class DetailsActivity extends AppCompatActivity {
             }
         });
 
+        //set mount icon
+        ImageView mountIcon = findViewById(R.id.details_mount_icon);
+        mountIcon.setImageResource(WMCApplication.getDrawableId(mount.getIcon(), this));
+
+        setInformation();
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        outState.putInt("creatureId", mount.getCreatureId());
+        super.onSaveInstanceState(outState);
     }
 
     private void setFavIconStatus(){
@@ -58,4 +74,43 @@ public class DetailsActivity extends AppCompatActivity {
         else WMCApplication.removeFromWishList(mount, getBaseContext());
     }
 
+    private void setInformation(){
+        //difficulty
+        TextView difficulty = findViewById(R.id.details_difficulty);
+        difficulty.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_favorite_black_24dp,0);
+
+        //source
+        TextView source = findViewById(R.id.details_source);
+        if(mount.getSource() == null || mount.getSource().equals(Mount.MountSource.OTHER)){
+            source.setVisibility(View.GONE);
+        } else {
+            source.append(mount.getSource().toString().toLowerCase());
+        }
+
+        //type
+        TextView type = findViewById(R.id.details_type);
+        if(mount.isGround()) type.append("ground   ");
+        if(mount.isFlying()) type.append("flying   ");
+        if(mount.isAquatic()) type.append("aquatic");
+
+        //faction
+        if(mount.getFaction() == null){
+            findViewById(R.id.details_faction_layout).setVisibility(View.GONE);
+        } else {
+            ImageView faction = findViewById(R.id.details_faction);
+            if(mount.getFaction().equals(Mount.Faction.ALLIANCE)) {
+                faction.setImageResource(R.drawable.ic_alliance_color);
+            } else {
+                faction.setImageResource(R.drawable.ic_horde_red);
+            }
+        }
+
+        //seats
+        TextView seats = findViewById(R.id.details_seats);
+        if(mount.getSeats() == null){
+            seats.setVisibility(View.GONE);
+        } else {
+            seats.append(Integer.toString(mount.getSeats()));
+        }
+    }
 }
