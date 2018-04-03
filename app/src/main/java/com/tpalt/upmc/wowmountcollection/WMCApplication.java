@@ -78,6 +78,12 @@ public class WMCApplication {
         }
     }
 
+    public static void addUserWishMount(int creatureId) {
+        if (!userWishList.contains(creatureId)) {
+            userWishList.add(creatureId);
+        }
+    }
+
     private static void addToAllMounts(Mount mount) {
         if (!allMountList.contains(mount)) {
             allMountList.add(mount);
@@ -183,29 +189,12 @@ public class WMCApplication {
         deleteMountToWishFile(m,context);
     }
 
-
     /**
      * Loads the list of all wish mounts from the json file of the application.
      */
     public static void loadWishMounts(Context context) {
         Log.d("LOADWISH", "YES");
         File directory = context.getFilesDir();
-
-       /* File directory = new File( Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), "needs");
-
-           if (!directory.exists()) {
-               try {
-               directory.mkdirs();
-
-               }
-               catch(Exception e){
-                   e.printStackTrace();
-                   System.err.println("MKDIRS echec");
-               }
-           }
-           System.out.println("FIN MKDIR");
-           */
-
         AccessFile.readFile(context,directory);
     }
 
@@ -216,19 +205,30 @@ public class WMCApplication {
 
     public static void addMountToWishFile(Mount m,Context context){
         Log.d("WRITEFILE_ADD", "YES");
-
         File directory = context.getFilesDir();
-
         AccessFile.writeFile(m,context,directory,true);
     }
 
     public static void deleteMountToWishFile(Mount m,Context context){
         Log.d("WRITEFILE_DELETE", "YES");
-
         File directory = context.getFilesDir();
-
         AccessFile.writeFile(m,context,directory,false);
 
+    }
+
+    public static List<Integer> getIntegerWishList(){
+        return userWishList;
+    }
+
+
+    public static void addAllWishIntegerMounts(){
+        for(Mount m : getALLMountList()){
+            for(Integer i : getIntegerWishList()){
+                if(m.getCreatureId() == i ){
+                    wishList.add(m);
+                }
+            }
+        }
     }
 
     public static Mount getMountByName(String name){

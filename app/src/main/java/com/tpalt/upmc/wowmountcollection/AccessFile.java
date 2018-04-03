@@ -58,22 +58,12 @@ public class AccessFile {
                 return;
             }
             for(int i = 0; i<wish.length();i++){
-                //Object iii = wish.getJSONObject(i);
                 JSONObject ii = new JSONObject(wish.get(i).toString());
                 Integer currentId = Integer.parseInt(ii.get("creatureId").toString());
-                wish_mounts_ID.add(currentId);
+                WMCApplication.addUserWishMount(currentId);
                 //CALL ADD MOUNT FROM INTEGER
-                for(Mount m : WMCApplication.getALLMountList()){
-                    if(m.getCreatureId() == currentId) {
-                        if (!WMCApplication.getWishList().contains(m)) {
-                            boolean add = WMCApplication.addWishList(m);
-                            Log.d("ADDING", "" + add);
-                            System.out.println("ADDING =" + add + "\nMonture ajoutée = " + m.toString());
-                        }
-                    }
-                    continue;
-                }
             }
+                        WMCApplication.addAllWishIntegerMounts();
             fr.close();
 
         }catch (Exception e){
@@ -126,8 +116,6 @@ public class AccessFile {
                     return;
                 }
             }
-            /*Modify to Generic*/
-            //JSONObject res = (JSONObject) parser.parse(new FileReader(path));
             JSONObject res = WMCApplication.loadJSONFromFile(inFile);
             if (res != null) {
                 System.out.println("READING FILE BEFORE ADDING ");
