@@ -9,6 +9,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -122,6 +123,25 @@ public class WMCApplication {
         }
     }
 
+    public static JSONObject loadJSONFromFile(File f) {
+        try {
+            InputStream is = new FileInputStream(f);
+            int size = is.available();
+            byte[] buffer = new byte[size];
+            is.read(buffer);
+            is.close();
+            String json = new String(buffer, "UTF-8");
+            return new JSONObject(json);
+
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            return null;
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
     public static String getClientId(Context context) {
         if (clientId == null) {
             JSONObject keysJson = loadJSONFromAsset(context, KEYS_FILE);
@@ -169,7 +189,9 @@ public class WMCApplication {
      */
     public static void loadWishMounts(Context context) {
         Log.d("LOADWISH", "YES");
-        File directory = new File( Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), "needs");
+        File directory = context.getFilesDir();
+
+       /* File directory = new File( Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), "needs");
 
            if (!directory.exists()) {
                try {
@@ -182,7 +204,9 @@ public class WMCApplication {
                }
            }
            System.out.println("FIN MKDIR");
-        //AccessFile.readFile(context,directory);
+           */
+
+        AccessFile.readFile(context,directory);
     }
 
     public static boolean addWishList(Mount m){
@@ -195,17 +219,17 @@ public class WMCApplication {
     public static void addMountToWishFile(Mount m,Context context){
         Log.d("WRITEFILE_ADD", "YES");
 
-        File directory = new File( Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), "needs");
+        File directory = context.getFilesDir();
 
-        //AccessFile.writeFile(m,context,directory,true);
+        AccessFile.writeFile(m,context,directory,true);
     }
 
     public static void deleteMountToWishFile(Mount m,Context context){
         Log.d("WRITEFILE_DELETE", "YES");
 
-        File directory = new File( Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), "needs");
+        File directory = context.getFilesDir();
 
-        //AccessFile.writeFile(m,context,directory,false);
+        AccessFile.writeFile(m,context,directory,false);
 
     }
 
