@@ -10,6 +10,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -78,6 +79,12 @@ public class WMCApplication {
         }
     }
 
+    public static void addUserWishMount(int creatureId) {
+        if (!userWishList.contains(creatureId)) {
+            userWishList.add(creatureId);
+        }
+    }
+
     private static void addToAllMounts(Mount mount) {
         if (!allMountList.contains(mount)) {
             allMountList.add(mount);
@@ -107,6 +114,25 @@ public class WMCApplication {
     public static JSONObject loadJSONFromAsset(Context context, String fileName) {
         try {
             InputStream is = context.getAssets().open(fileName);
+            int size = is.available();
+            byte[] buffer = new byte[size];
+            is.read(buffer);
+            is.close();
+            String json = new String(buffer, "UTF-8");
+            return new JSONObject(json);
+
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            return null;
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public static JSONObject loadJSONFromFile(File f) {
+        try {
+            InputStream is = new FileInputStream(f);
             int size = is.available();
             byte[] buffer = new byte[size];
             is.read(buffer);
@@ -164,26 +190,13 @@ public class WMCApplication {
         deleteMountToWishFile(m,context);
     }
 
-
     /**
      * Loads the list of all wish mounts from the json file of the application.
      */
     public static void loadWishMounts(Context context) {
         Log.d("LOADWISH", "YES");
-        File directory = new File( Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), "needs");
-
-           if (!directory.exists()) {
-               try {
-               directory.mkdirs();
-
-               }
-               catch(Exception e){
-                   e.printStackTrace();
-                   System.err.println("MKDIRS echec");
-               }
-           }
-           System.out.println("FIN MKDIR");
-        //AccessFile.readFile(context,directory);
+        File directory = context.getFilesDir();
+        AccessFile.readFile(context,directory);
     }
 
     public static boolean addWishList(Mount m){
@@ -193,19 +206,30 @@ public class WMCApplication {
 
     public static void addMountToWishFile(Mount m,Context context){
         Log.d("WRITEFILE_ADD", "YES");
-
-        File directory = new File( Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), "needs");
-
-        //AccessFile.writeFile(m,context,directory,true);
+        File directory = context.getFilesDir();
+        AccessFile.writeFile(m,context,directory,true);
     }
 
     public static void deleteMountToWishFile(Mount m,Context context){
         Log.d("WRITEFILE_DELETE", "YES");
+        File directory = context.getFilesDir();
+        AccessFile.writeFile(m,context,directory,false);
 
-        File directory = new File( Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), "needs");
+    }
 
-        //AccessFile.writeFile(m,context,directory,false);
+    public static List<Integer> getIntegerWishList(){
+        return userWishList;
+    }
 
+
+    public static void addAllWishIntegerMounts(){
+        for(Mount m : getALLMountList()){
+            for(Integer i : getIntegerWishList()){
+                if(m.getCreatureId() == i ){
+                    wishList.add(m);
+                }
+            }
+        }
     }
 
     public static Mount getMountById(int creatureId){
