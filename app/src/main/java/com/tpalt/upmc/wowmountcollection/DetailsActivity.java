@@ -3,6 +3,7 @@ package com.tpalt.upmc.wowmountcollection;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -72,7 +73,23 @@ public class DetailsActivity extends AppCompatActivity {
     private void setInformation(){
         //difficulty
         TextView difficulty = findViewById(R.id.details_difficulty);
-        difficulty.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_favorite_black_24dp,0);
+        if(mount.getDifficulty() == null){
+            difficulty.setVisibility(View.GONE);
+        } else {
+            switch (mount.getDifficulty()){
+                case -1: difficulty.append(Html.fromHtml("<font color='#CD0000'>removed</font>")); break;
+                case 1: difficulty.setCompoundDrawablesWithIntrinsicBounds
+                        (0, 0, R.drawable.ic_favorite_black_24dp,0);
+                    break;
+                case 2: difficulty.setCompoundDrawablesWithIntrinsicBounds
+                        (0, 0, R.drawable.ic_favorite_border_black_24dp,0);
+                    break;
+                case 3: difficulty.setCompoundDrawablesWithIntrinsicBounds
+                        (0, 0, R.drawable.ic_face_black_24dp,0);
+                    break;
+                case 4: difficulty.append(Html.fromHtml("<font color='#CD0000'>not yet available</font>")); break;
+            }
+        }
 
         //source
         TextView source = findViewById(R.id.details_source);
@@ -84,9 +101,9 @@ public class DetailsActivity extends AppCompatActivity {
 
         //type
         TextView type = findViewById(R.id.details_type);
-        if(mount.isGround()) type.append("ground   ");
-        if(mount.isFlying()) type.append("flying   ");
-        if(mount.isAquatic()) type.append("aquatic");
+        if(mount.isGround()) type.append(Html.fromHtml("<font color='#026200'>ground   </font>"));
+        if(mount.isFlying()) type.append(Html.fromHtml("<font color='#FF7500'>flying   </font>"));
+        if(mount.isAquatic()) type.append(Html.fromHtml("<font color='#0055AA'>aquatic</font>"));
 
         //faction
         if(mount.getFaction() == null){

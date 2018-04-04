@@ -1,11 +1,18 @@
 package com.tpalt.upmc.wowmountcollection;
 
 import android.app.Activity;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.drawable.GlideDrawable;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.target.Target;
 
 public class ImageDialogActivity extends Activity {
 
@@ -28,12 +35,12 @@ public class ImageDialogActivity extends Activity {
         }
 
         image = findViewById(R.id.dialog_image);
-        image.setClickable(true);
 
         loadImageFromUrl();
 
-        //finish the activity (dismiss the image dialog) if the user clicks anywhere on the image
-        image.setOnClickListener(new View.OnClickListener() {
+        //finish the activity (dismiss the image dialog) if the user clicks anywhere on the screen
+        RelativeLayout layout = findViewById(R.id.image_dialog_layout);
+        layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
@@ -49,9 +56,24 @@ public class ImageDialogActivity extends Activity {
     }
 
     private void loadImageFromUrl() {
+        final ProgressBar progressBar = findViewById(R.id.image_progress);
         Glide.with(this)
                 .load(getImageUrl(creatureId))
-                .error(R.drawable.ic_face_black_24dp)
+                .listener(new RequestListener<String, GlideDrawable>() {
+
+                    @Override
+                    public boolean onResourceReady(GlideDrawable resource, String model, Target<GlideDrawable> target, boolean isFromMemoryCache, boolean isFirstResource) {
+                        progressBar.setVisibility(View.GONE);
+                        return false;
+                    }
+
+                    @Override
+                    public boolean onException(Exception e, String model, Target target, boolean isFirstResource) {
+                        progressBar.setVisibility(View.GONE);
+                        findViewById(R.id.image_not_found).setVisibility(View.VISIBLE);
+                        return false;
+                    }
+                })
                 .into(image);
     }
 

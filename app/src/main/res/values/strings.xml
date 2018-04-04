@@ -26,4 +26,6 @@
     <string name="alert_dialog_deleting">Delete from wish list</string>
     <string name="confirmation_delete"> Are you sure to delete this from your wish list ?</string>
 
+    <string name="image_not_found">No image available</string>
+
 </resources>
