@@ -42,6 +42,8 @@ public class WMCApplication {
     private static List<Integer> userWishList = new ArrayList<>(); // store the creatureId
     private static List<Mount> wishList = new ArrayList<>();
 
+    public static boolean offline = false;
+
     //Can not be instantiate
     private WMCApplication() {
     }
@@ -180,8 +182,10 @@ public class WMCApplication {
     }
 
     public static void addToWishList(Mount m,Context context) {
-        wishList.add(m);
-        addMountToWishFile(m,context);
+        if(!wishList.contains(m)){
+            wishList.add(m);
+            addMountToWishFile(m,context);
+        }
     }
 
     /*remove from all mounts list*/
@@ -197,10 +201,6 @@ public class WMCApplication {
         Log.d("LOADWISH", "YES");
         File directory = context.getFilesDir();
         AccessFile.readFile(context,directory);
-    }
-
-    public static boolean addWishList(Mount m){
-        return wishList.add(m);
     }
 
 
@@ -225,7 +225,7 @@ public class WMCApplication {
     public static void addAllWishIntegerMounts(){
         for(Mount m : getALLMountList()){
             for(Integer i : getIntegerWishList()){
-                if(m.getCreatureId() == i ){
+                if(i.equals(m.getCreatureId()) && !wishList.contains(m)){
                     wishList.add(m);
                 }
             }
@@ -262,4 +262,5 @@ public class WMCApplication {
         }
         return resourceId;
     }
+
 }

@@ -27,5 +27,6 @@
     <string name="confirmation_delete"> Are you sure to delete this from your wish list ?</string>
 
     <string name="image_not_found">No image available</string>
+    <string name="offline_message">Log in to see your mounts</string>
 
 </resources>

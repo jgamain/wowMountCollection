@@ -7,11 +7,15 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Html;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
+
+import com.tpalt.upmc.wowmountcollection.search.SearchActivity;
 
 import net.smartam.leeloo.client.request.OAuthClientRequest;
 import net.smartam.leeloo.common.exception.OAuthSystemException;
@@ -30,23 +34,24 @@ public class MainActivity extends AppCompatActivity {
         radioGroup.check(R.id.euRegion);
         selectedRegion = "eu";
 
-        Button coButton = findViewById(R.id.button);
+        Button coButton = findViewById(R.id.log_in_button);
         coButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                WMCApplication.offline = false;
                 WMCApplication.setRegion(selectedRegion);
                 new RequestAuthorize().execute();
             }
         });
+
+        TextView offline = findViewById(R.id.offline_button);
+        offline.setText(Html.fromHtml("<u>Offline mode</u>"));
 
         WMCApplication.loadAllMounts(getApplicationContext());
         Log.d("LOAD", "Total mounts = "+WMCApplication.getALLMountList().size());
 
         WMCApplication.loadWishMounts(getApplicationContext());
 
-        /*This was added to check if fragment works or not
-        setContentView(R.layout.activity_my_mounts);
-        */
 
         //Skip the log in page if we already have the access token
         SharedPreferences sharedPref = this.getSharedPreferences(getString(R.string.pref_name), Context.MODE_PRIVATE);
@@ -112,5 +117,11 @@ public class MainActivity extends AppCompatActivity {
             // TODO: check this.exception
             startActivity(intent);
         }
+    }
+
+    public void startOfflineMode(View view){
+        WMCApplication.offline = true;
+        Intent intent = new Intent(this, SearchActivity.class);
+        startActivity(intent);
     }
 }

@@ -2,6 +2,7 @@ package com.tpalt.upmc.wowmountcollection;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 import com.tpalt.upmc.wowmountcollection.fragments.BottomNavigationFragment;
@@ -22,6 +23,11 @@ public class MyMountsActivity extends AppCompatActivity implements BottomNavigat
 
         header = findViewById(R.id.myMounts_header);
         refreshHeader();
+
+        if(WMCApplication.offline){
+            findViewById(R.id.myMounts_list_fragment).setVisibility(View.GONE);
+            findViewById(R.id.offline_message).setVisibility(View.VISIBLE);
+        }
     }
 
     @Override
