@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Html;
+import android.text.method.LinkMovementMethod;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -124,11 +125,27 @@ public class DetailsActivity extends AppCompatActivity {
         } else {
             seats.append(Integer.toString(mount.getSeats()));
         }
+
+        //Wowhead link
+        TextView textView =(TextView)findViewById(R.id.wowhead_hyperlink);
+        textView.setClickable(true);
+        textView.setMovementMethod(LinkMovementMethod.getInstance());
+        String text = "<a href='" + getWowheadUrl() + "'> Wowhead data </a>";
+        textView.setText(Html.fromHtml(text));
     }
 
     public void showImage(View view){
         Intent intent = new Intent(this, ImageDialogActivity.class);
         intent.putExtra("creatureId", mount.getCreatureId());
         startActivity(intent);
+    }
+
+    public String getWowheadUrl(){
+        String url = "http://www.wowhead.com/";
+        if(mount.getItemId() != 0){
+            return url + "item=" + mount.getItemId();
+        } else {
+            return url + "spell=" + mount.getSpellId();
+        }
     }
 }

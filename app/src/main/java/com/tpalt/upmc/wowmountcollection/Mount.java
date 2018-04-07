@@ -12,6 +12,8 @@ public class Mount {
     public final static String DEFAULT_ICON = "ability_mount_dreadsteed";
 
     private int creatureId; // can not be null
+    private int spellId; // can not be null
+    private int itemId; // can not be null
     private String name;
     private String nameFr;
     private boolean isGround;
@@ -32,6 +34,8 @@ public class Mount {
     public Mount(JSONObject jsonMount){
         try {
             creatureId = jsonMount.getInt("creatureId");
+            spellId = jsonMount.getInt("spellId");
+            itemId = jsonMount.getInt("itemId");
             name = jsonMount.getString("name");
             if(jsonMount.has("nameFr"))
                 nameFr = jsonMount.getString("nameFr");
@@ -79,6 +83,14 @@ public class Mount {
 
     public int getCreatureId() {
         return creatureId;
+    }
+
+    public int getSpellId() {
+        return spellId;
+    }
+
+    public int getItemId() {
+        return itemId;
     }
 
     public String getName() {

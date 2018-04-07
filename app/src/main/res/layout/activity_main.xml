@@ -65,7 +65,6 @@
         android:layout_marginBottom="30dp"
         android:onClick="startOfflineMode"
         android:text="Offline mode"
-        android:textColor="#1976d2"
-        android:textSize="16sp"/>
+        style="@style/hyperlink"/>
 
 </RelativeLayout>

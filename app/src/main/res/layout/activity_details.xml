@@ -106,16 +106,10 @@
             style="@style/detailsItem"/>
 
         <TextView
+            android:id="@+id/wowhead_hyperlink"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Wowhead data: "
             style="@style/detailsItem"/>
-
-        <TextView
-            android:id="@+id/wowhead_data"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
 
     </LinearLayout>
 </ScrollView>
