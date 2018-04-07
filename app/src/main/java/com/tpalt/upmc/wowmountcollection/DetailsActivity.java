@@ -79,13 +79,13 @@ public class DetailsActivity extends AppCompatActivity {
             switch (mount.getDifficulty()){
                 case -1: difficulty.append(Html.fromHtml("<font color='#CD0000'>removed</font>")); break;
                 case 1: difficulty.setCompoundDrawablesWithIntrinsicBounds
-                        (0, 0, R.drawable.ic_favorite_black_24dp,0);
+                        (0, 0, R.drawable.easy_star,0);
                     break;
                 case 2: difficulty.setCompoundDrawablesWithIntrinsicBounds
-                        (0, 0, R.drawable.ic_favorite_border_black_24dp,0);
+                        (0, 0, R.drawable.medium_star,0);
                     break;
                 case 3: difficulty.setCompoundDrawablesWithIntrinsicBounds
-                        (0, 0, R.drawable.ic_face_black_24dp,0);
+                        (0, 0, R.drawable.hard_star,0);
                     break;
                 case 4: difficulty.append(Html.fromHtml("<font color='#CD0000'>not yet available</font>")); break;
             }
