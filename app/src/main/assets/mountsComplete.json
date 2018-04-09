@@ -8534,6 +8534,7 @@
         "source": "diverse"
     }, {
         "name": "Green Proto-Drake",
+        "nameFr": "Proto-drake vert",
         "spellId": 61294,
         "creatureId": 32562,
         "itemId": 44707,
@@ -8542,9 +8543,13 @@
         "isGround": true,
         "isFlying": true,
         "isAquatic": false,
-        "isJumping": false
+        "isJumping": false,
+        "seats": 1,
+        "difficulty": 2,
+        "source": "reputation"
     }, {
         "name": "Netherlord's Accursed Wrathsteed",
+        "nameFr": "Destrier du courroux maudit de seigneur du Néant",
         "spellId": 238454,
         "creatureId": -75533,
         "itemId": 142233,
@@ -8553,9 +8558,13 @@
         "isGround": true,
         "isFlying": true,
         "isAquatic": false,
-        "isJumping": false
+        "isJumping": false,
+        "seats": 1,
+        "difficulty": 3,
+        "source": "quest"
     }, {
         "name": "Green Riding Nether Ray",
+        "nameFr": "Raie du Néant verte",
         "spellId": 39798,
         "creatureId": 22958,
         "itemId": 32314,
@@ -8564,9 +8573,13 @@
         "isGround": true,
         "isFlying": true,
         "isAquatic": false,
-        "isJumping": false
+        "isJumping": false,
+        "seats": 1,
+        "difficulty": 2,
+        "source": "reputation"
     }, {
         "name": "Netherlord's Brimstone Wrathsteed",
+        "nameFr": "Destrier du courroux sulfureux de seigneur du Néant",
         "spellId": 238452,
         "creatureId": -75532,
         "itemId": 143637,
@@ -8575,9 +8588,13 @@
         "isGround": true,
         "isFlying": true,
         "isAquatic": false,
-        "isJumping": false
+        "isJumping": false,
+        "seats": 1,
+        "difficulty": 3,
+        "source": "quest"
     }, {
         "name": "Red Riding Nether Ray",
+        "nameFr": "Raie du Néant rouge",
         "spellId": 39800,
         "creatureId": 22976,
         "itemId": 32317,
@@ -8586,9 +8603,13 @@
         "isGround": true,
         "isFlying": true,
         "isAquatic": false,
-        "isJumping": false
+        "isJumping": false,
+        "seats": 1,
+        "difficulty": 2,
+        "source": "reputation"
     }, {
         "name": "Purple Riding Nether Ray",
+        "nameFr": "Raie du Néant violette",
         "spellId": 39801,
         "creatureId": 22975,
         "itemId": 32316,
@@ -8597,9 +8618,13 @@
         "isGround": true,
         "isFlying": true,
         "isAquatic": false,
-        "isJumping": false
+        "isJumping": false,
+        "seats": 1,
+        "difficulty": 2,
+        "source": "reputation"
     }, {
         "name": "Silver Riding Nether Ray",
+        "nameFr": "Raie du Néant argentée",
         "spellId": 39802,
         "creatureId": 22977,
         "itemId": 32318,
@@ -8608,9 +8633,13 @@
         "isGround": true,
         "isFlying": true,
         "isAquatic": false,
-        "isJumping": false
+        "isJumping": false,
+        "seats": 1,
+        "difficulty": 2,
+        "source": "reputation"
     }, {
         "name": "Blue Riding Nether Ray",
+        "nameFr": "Raie du Néant bleue",
         "spellId": 39803,
         "creatureId": 22978,
         "itemId": 32319,
@@ -8619,9 +8648,13 @@
         "isGround": true,
         "isFlying": true,
         "isAquatic": false,
-        "isJumping": false
+        "isJumping": false,
+        "seats": 1,
+        "difficulty": 2,
+        "source": "reputation"
     }, {
         "name": "Brewfest Ram",
+        "nameFr": "Bélier de la fête des Brasseurs",
         "spellId": 43899,
         "creatureId": 23588,
         "itemId": 33976,
@@ -8630,9 +8663,13 @@
         "isGround": true,
         "isFlying": false,
         "isAquatic": true,
-        "isJumping": true
+        "isJumping": true,
+        "seats": 1,
+        "difficulty": -1,
+        "source": "event"
     }, {
         "name": "Swift Pink Hawkstrider",
+        "nameFr": "Faucon-pérégrin rose rapide",
         "spellId": 33660,
         "creatureId": 19281,
         "itemId": 28936,
@@ -8641,9 +8678,14 @@
         "isGround": true,
         "isFlying": false,
         "isAquatic": true,
-        "isJumping": true
+        "isJumping": true,
+        "seats": 1,
+        "difficulty": 1,
+        "source": "vendor",
+        "faction": "Horde"
     }, {
         "name": "Swift Brewfest Ram",
+        "nameFr": "Bélier rapide de la fête des Brasseurs",
         "spellId": 43900,
         "creatureId": 24368,
         "itemId": 33977,
@@ -8652,7 +8694,10 @@
         "isGround": true,
         "isFlying": false,
         "isAquatic": true,
-        "isJumping": true
+        "isJumping": true,
+        "seats": 1,
+        "difficulty": 2,
+        "source": "event"
     }, {
         "name": "Swift Spectral Gryphon",
         "spellId": 55164,

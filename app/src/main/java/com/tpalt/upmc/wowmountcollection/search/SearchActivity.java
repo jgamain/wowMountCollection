@@ -164,13 +164,19 @@ public class SearchActivity extends AppCompatActivity implements BottomNavigatio
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String s) {
+                Log.d("SEARCHVIEW", "onQueryTextSubmit");
                 performSearch();
                 return false;
             }
 
             @Override
             public boolean onQueryTextChange(String s) {
+                Log.d("SEARCHVIEW", "onQueryTextChange");
                 SearchEngine.name = s;
+                //onQueryTextSubmit is not triggered when the user tries to submit an empty text
+                if(s.isEmpty()){
+                    performSearch();
+                }
                 return false;
             }
         });
